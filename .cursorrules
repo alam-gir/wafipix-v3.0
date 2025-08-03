@@ -1,0 +1,262 @@
+## Project Overview
+- **Project**: Wafipix - Digital Magic Creators
+- **Framework**: Next.js 15.4.5 with App Router
+- **React**: 19.1.0
+- **TypeScript**: 5+ (strict mode)
+- **Styling**: Tailwind CSS v4+
+- **Animations**: Framer Motion
+- **Icons**: React Icons
+- **Fonts**: Geist (Sans & Mono)
+
+## Production File Structure
+
+### Recommended Directory Structure
+├── app/
+│ ├── components/ # Shared components
+│ │ ├── ui/ # Base UI components
+│ │ ├── layout/ # Layout components
+│ │ └── sections/ # Page sections
+│ ├── lib/ # Utility functions
+│ ├── hooks/ # Custom React hooks
+│ ├── types/ # TypeScript type definitions
+│ ├── styles/ # Global styles
+│ ├── globals.css
+│ ├── layout.tsx
+│ ├── page.tsx
+│ ├── loading.tsx
+│ ├── error.tsx
+│ └── not-found.tsx
+│ └── favicon.ico
+├── public/
+│ ├── images/
+│ ├── fonts/
+├── .cursorrules
+├── .env.local
+├── .env.example
+├── .gitignore
+├── next.config.ts
+├── package.json
+├── tsconfig.json
+└── README.md
+
+## Code Style & Architecture
+
+### TypeScript Standards
+- Use strict TypeScript with proper type definitions
+- Prefer interfaces over types for object shapes
+- Use generic types where appropriate
+- Implement proper error handling with typed errors
+- Use const assertions for immutable data
+- Define proper API response types
+- Use branded types for IDs and special values
+
+### React & Next.js Patterns
+- Use functional components with hooks
+- Implement proper TypeScript interfaces for props
+- Use Next.js App Router patterns (page.tsx, layout.tsx, loading.tsx, error.tsx)
+- Implement proper error boundaries
+- Use React.memo() for performance optimization when needed
+- Prefer server components by default, use 'use client' only when necessary
+- Implement proper loading states with Suspense
+- Use dynamic imports for code splitting
+
+### Component Architecture
+- Follow atomic design principles (atoms, molecules, organisms, templates, pages)
+- One component per file with index.ts exports
+- Use PascalCase for component names
+- Export components as default exports
+- Implement proper prop validation with TypeScript
+- Use composition over inheritance
+- Implement proper error boundaries
+
+### State Management
+- Use React hooks for local state
+- Implement proper state lifting when needed
+- Use Context API for global state when appropriate
+- Consider Zustand for complex state management
+- Implement proper loading and error states
+- Use optimistic updates where appropriate
+
+## Styling & UI
+
+### Tailwind CSS v4 Guidelines
+- Use Tailwind v4 syntax and features
+- Prefer utility classes over custom CSS
+- Use CSS variables for theming when needed
+- Implement responsive design with Tailwind breakpoints
+- Use semantic color names and maintain consistent spacing
+- Implement dark mode support
+- Use container queries for responsive components
+
+### Design System
+- Maintain consistent spacing using Tailwind's spacing scale
+- Use a cohesive color palette with CSS variables
+- Implement proper typography hierarchy
+- Ensure accessibility with proper contrast ratios
+- Use consistent border radius and shadows
+- Implement proper focus states
+- Use consistent animation durations and easing
+
+### Animation & Interactions
+- Use Framer Motion for complex animations
+- Implement smooth transitions and micro-interactions
+- Ensure animations enhance UX, not distract from it
+- Use proper easing functions for natural movement
+- Implement proper loading animations
+- Use intersection observer for scroll-triggered animations
+
+## Performance & Best Practices
+
+### Performance Optimization
+- Implement proper image optimization with Next.js Image component
+- Use dynamic imports for code splitting
+- Implement proper loading states
+- Optimize bundle size with tree shaking
+- Use React.lazy() for component lazy loading when appropriate
+- Implement proper caching strategies
+- Use service workers for offline functionality
+- Optimize Core Web Vitals
+
+### SEO & Accessibility
+- Implement proper meta tags and structured data
+- Use semantic HTML elements
+- Ensure proper ARIA labels and roles
+- Implement keyboard navigation support
+- Maintain proper heading hierarchy
+- Implement proper alt text for images
+- Use proper form labels and descriptions
+- Ensure color contrast compliance
+
+### Code Quality
+- Write self-documenting code with clear variable names
+- Add JSDoc comments for complex functions
+- Implement proper error handling
+- Use ESLint and Prettier for code formatting
+- Write unit tests for critical functionality
+- Implement proper logging and monitoring
+- Use proper TypeScript strict mode
+
+## API Integration
+
+### Data Fetching Patterns
+- Use SWR or React Query for server state management
+- Implement proper error handling for API calls
+- Use TypeScript for API response types
+- Implement proper loading states
+- Use optimistic updates where appropriate
+- Implement proper retry logic
+- Use proper caching strategies
+
+### API Route Structure
+- Organize API routes by feature
+- Implement proper validation with Zod
+- Use proper HTTP status codes
+- Implement rate limiting
+- Add proper error logging
+- Use TypeScript for API route handlers
+
+## Security & Best Practices
+
+### Security Measures
+- Implement proper input validation
+- Use HTTPS in production
+- Implement proper CORS policies
+- Sanitize user inputs
+- Use environment variables for sensitive data
+- Implement proper authentication and authorization
+- Use Content Security Policy headers
+
+### Error Handling
+- Implement proper try-catch blocks
+- Use TypeScript for error types
+- Provide meaningful error messages
+- Implement fallback UI for errors
+- Log errors appropriately
+- Implement proper error boundaries
+- Use proper error reporting services
+
+## Testing Strategy
+
+### Testing Considerations
+- Write testable code with proper separation of concerns
+- Use descriptive test names
+- Implement proper mocking strategies
+- Test both success and error scenarios
+- Ensure good test coverage for critical paths
+- Use Jest and React Testing Library
+- Implement E2E tests with Playwright
+- Test accessibility with axe-core
+
+## Development Workflow
+
+### Import Organization
+- React imports first
+- Next.js imports
+- Third-party libraries
+- Internal components and utilities
+- Type imports last
+- Use absolute imports with @/ alias
+
+### File Naming Conventions
+- Components: PascalCase (e.g., UserProfile.tsx)
+- Pages: kebab-case (e.g., user-profile.tsx)
+- Utilities: camelCase (e.g., formatDate.ts)
+- Types: PascalCase with descriptive names (e.g., UserProfileProps.ts)
+- Constants: UPPER_SNAKE_CASE (e.g., API_ENDPOINTS.ts)
+
+### Git Workflow
+- Use conventional commits
+- Implement proper branch naming
+- Use feature branches for new development
+- Implement proper PR reviews
+- Use semantic versioning
+
+## Environment Configuration
+
+### Environment Variables
+- Use .env.local for local development
+- Use .env.example for documentation
+- Implement proper environment validation
+- Use TypeScript for environment variable types
+- Implement proper fallback values
+
+## Monitoring & Analytics
+
+### Performance Monitoring
+- Implement Core Web Vitals tracking
+- Use proper error tracking (Sentry, LogRocket)
+- Implement user analytics
+- Monitor API performance
+- Track user interactions
+
+## Deployment & CI/CD
+
+### Deployment Considerations
+- Use Vercel for deployment
+- Implement proper build optimization
+- Use proper environment variables
+- Implement proper caching strategies
+- Use CDN for static assets
+- Implement proper monitoring
+
+## Code Generation Preferences
+- Generate complete, working code examples
+- Include all necessary imports
+- Provide TypeScript interfaces for all components
+- Include proper error handling
+- Add comments for complex logic
+- Ensure code follows accessibility best practices
+- Use modern React patterns and hooks
+- Implement responsive design by default
+- Include proper loading states
+- Implement proper SEO meta tags
+- Use proper semantic HTML
+- Include proper ARIA attributes
+- Implement proper keyboard navigation
+- Use proper color contrast
+- Include proper error boundaries
+- Implement proper logging
+- Use proper TypeScript strict mode
+- Include proper test examples
+- Implement proper documentation
+- Use proper naming conventions
