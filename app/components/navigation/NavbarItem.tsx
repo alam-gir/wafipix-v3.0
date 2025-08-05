@@ -1,6 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import MagneticWrapper from '@/components/ui/MagneticWrapper';
 import { NavItem } from '@/lib/navigation';
@@ -12,6 +13,7 @@ interface NavbarItemProps {
   isActive: boolean;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
+  onClick?: () => void;
 }
 
 export default function NavbarItem({
@@ -21,7 +23,21 @@ export default function NavbarItem({
   isActive,
   onMouseEnter,
   onMouseLeave,
+  onClick,
 }: NavbarItemProps) {
+  const router = useRouter();
+
+  const handleClick = () => {
+    // If item doesn't have submenu, navigate using Next.js router
+    if (!item.hasSubmenu && item.href) {
+      router.push(item.href);
+    }
+    // If onClick prop is provided, call it
+    if (onClick) {
+      onClick();
+    }
+  };
+
   return (
     <div
       className="relative"
@@ -39,7 +55,9 @@ export default function NavbarItem({
                 : "text-foreground hover:text-primary/80"
           )}
           whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+          onClick={handleClick}
         >
           <span className={cn(
             "font-medium transition-all duration-300",
