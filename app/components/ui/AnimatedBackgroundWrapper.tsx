@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion} from "framer-motion";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -44,9 +44,9 @@ function AnimatedShape({
     : "from-primary/15 to-secondary/15";
 
   // Calculate parallax transforms based on scroll position
-  const yOffset = enableParallax ? (scrollY / 2000) * 300 * parallaxIntensity : 0;
-  const xOffset = enableParallax ? (scrollY / 2000) * 150 * parallaxIntensity : 0;
-  const rotateOffset = enableParallax ? (scrollY / 2000) * 8 : 0;
+  const yOffset = enableParallax ? (scrollY / 1000) * 500 * parallaxIntensity : 0;
+  const xOffset = enableParallax ? (scrollY / 1000) * 300 * parallaxIntensity : 0;
+  const rotateOffset = enableParallax ? (scrollY / 1000) * 15 : 0;
 
     return (
     <motion.div
@@ -86,15 +86,7 @@ function AnimatedShape({
            width,
            height,
          }}
-         className="relative cursor-pointer"
-         whileHover={{
-           scale: 1.1,
-           transition: { duration: 0.3 }
-         }}
-         whileTap={{
-           scale: 0.95,
-           transition: { duration: 0.1 }
-         }}
+                   className="relative"
        >
         <div
           className={cn(
@@ -244,9 +236,9 @@ export function AnimatedBackgroundWrapper({
                gradient={isDark ? `from-primary/[0.${getShapeOpacity()}]` : `from-primary/[0.${getShapeOpacity()}]`}
                className="hidden lg:block left-[-5%] top-[20%]"
                variant={isDark ? "dark" : "light"}
-               enableParallax={true}
-               parallaxIntensity={0.8}
-               scrollY={scrollY}
+                               enableParallax={true}
+                parallaxIntensity={1.2}
+                scrollY={scrollY}
              />
 
             {/* Medium shape - desktop only */}
@@ -258,9 +250,9 @@ export function AnimatedBackgroundWrapper({
                gradient={isDark ? `from-secondary/[0.${getShapeOpacity()}]` : `from-secondary/[0.${getShapeOpacity()}]`}
                className="hidden lg:block right-[0%] top-[75%]"
                variant={isDark ? "dark" : "light"}
-               enableParallax={true}
-               parallaxIntensity={0.6}
-               scrollY={scrollY}
+                               enableParallax={true}
+                parallaxIntensity={1.0}
+                scrollY={scrollY}
              />
 
             {/* Medium shape - tablet and desktop */}
@@ -272,9 +264,9 @@ export function AnimatedBackgroundWrapper({
                gradient={isDark ? `from-primary/[0.${getShapeOpacity()}]` : `from-primary/[0.${getShapeOpacity()}]`}
                className="hidden md:block left-[5%] bottom-[15%]"
                variant={isDark ? "dark" : "light"}
-               enableParallax={true}
-               parallaxIntensity={0.4}
-               scrollY={scrollY}
+                               enableParallax={true}
+                parallaxIntensity={0.8}
+                scrollY={scrollY}
              />
 
             {/* Small shape - tablet and desktop */}
@@ -286,9 +278,9 @@ export function AnimatedBackgroundWrapper({
                gradient={isDark ? `from-secondary/[0.${getShapeOpacity()}]` : `from-secondary/[0.${getShapeOpacity()}]`}
                className="hidden md:block right-[15%] top-[20%]"
                variant={isDark ? "dark" : "light"}
-               enableParallax={true}
-               parallaxIntensity={0.3}
-               scrollY={scrollY}
+                               enableParallax={true}
+                parallaxIntensity={0.6}
+                scrollY={scrollY}
              />
 
            {/* Very small shape - mobile only (subtle) */}
