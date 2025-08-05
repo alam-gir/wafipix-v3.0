@@ -217,8 +217,8 @@ export function AnimatedBackgroundWrapper({
     }
   };
 
-  return (
-    <div className={cn("relative min-h-screen w-full overflow-hidden", className)}>
+     return (
+     <div className={cn("relative w-full overflow-hidden", className)}>
       {/* Base gradient background */}
              {enableGradient && (
          <div 
@@ -330,13 +330,9 @@ export function AnimatedBackgroundWrapper({
         </div>
       )}
 
-             {/* Content */}
+                    {/* Content */}
        <div className="relative z-10 w-full h-full">
          {children}
-                   {/* Debug scroll indicator - remove in production */}
-          <div className="fixed top-4 right-4 bg-black/80 text-white px-3 py-1 rounded text-sm z-50">
-            Scroll: {scrollY}px
-          </div>
        </div>
 
       {/* Overlay gradient for better text readability */}
@@ -345,4 +341,9 @@ export function AnimatedBackgroundWrapper({
           "absolute inset-0 pointer-events-none",
           isDark
             ? "bg-gradient-to-t from-background via-transparent to-background/80"
-            : "bg-gradient-to-t from-background via-transparent to-ba
+            : "bg-gradient-to-t from-background via-transparent to-background/60"
+        )} 
+      />
+    </div>
+  );
+} 

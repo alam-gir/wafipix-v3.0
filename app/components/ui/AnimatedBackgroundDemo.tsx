@@ -41,7 +41,7 @@ export function AnimatedBackgroundDemo({
       enableGradient={enableGradient}
       enableParticles={enableParticles}
     >
-      <div className="flex items-center justify-center min-h-screen w-full">
+      <div className="flex items-center justify-center h-screen w-full">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center">
                          <motion.div

@@ -2,8 +2,8 @@
 
 import { useActiveMenu } from '@/hooks/useActiveMenu';
 import { useSubmenuManagement } from '@/hooks/useSubmenuManagement';
-import { MobileNavbarContainer } from './MobileNavbarContainer';
-import { MobileSubmenuPanel } from './MobileSubmenuPanel';
+import { MobileNavbarContainer } from '@/components/navigation/mobile/MobileNavbarContainer';
+import { MobileSubmenuPanel } from '@/components/navigation/mobile/MobileSubmenuPanel';
 
 export default function MobileNavbar() {
   // Custom hooks for state management
@@ -36,8 +36,7 @@ export default function MobileNavbar() {
         )}
       </MobileNavbarContainer>
 
-      {/* Spacer to prevent content from hiding behind fixed navbar */}
-      <div className="h-24 md:hidden" />
+
     </>
   );
 } 

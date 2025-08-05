@@ -3,10 +3,10 @@
 import { useActiveMenu } from '@/hooks/useActiveMenu';
 import { useSubmenuManagement } from '@/hooks/useSubmenuManagement';
 import { useScrollDetection } from '@/hooks/useScrollDetection';
-import { DesktopNavbarWrapper } from './DesktopNavbarWrapper';
-import { DesktopNavbarContainer } from './DesktopNavbarContainer';
-import { DesktopNavbarContent } from './DesktopNavbarContent';
-import { DesktopSubmenuSection } from './DesktopSubmenuSection';
+import { DesktopNavbarWrapper } from '@/components/navigation/desktop/DesktopNavbarWrapper';
+import { DesktopNavbarContainer } from '@/components/navigation/desktop/DesktopNavbarContainer';
+import { DesktopNavbarContent } from '@/components/navigation/desktop/DesktopNavbarContent';
+import { DesktopSubmenuSection } from '@/components/navigation/desktop/DesktopSubmenuSection';
 
 export default function DesktopNavbar() {
   // Custom hooks for state management
@@ -47,8 +47,7 @@ export default function DesktopNavbar() {
         </DesktopNavbarContainer>
       </DesktopNavbarWrapper>
 
-      {/* Spacer to prevent content from hiding behind fixed navbar */}
-      <div className="h-20" />
+
     </>
   );
 } 
