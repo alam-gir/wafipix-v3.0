@@ -1,2 +1,2 @@
 export { AnimatedBackgroundWrapper } from "./AnimatedBackgroundWrapper";
-export { AnimatedBackgroundDemo } from "./AnimatedBackgroundDemo"; 
+export { GradualSpacing } from "./GradualSpacing"; 

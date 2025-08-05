@@ -1,16 +1,9 @@
-import { AnimatedBackgroundDemo } from "./components/ui/AnimatedBackgroundDemo";
+import { Hero } from "./components/sections/Hero";
 
 export default function HomePage() {
   return (
     <div className="min-h-screen">
-      <AnimatedBackgroundDemo
-        badge="Wafipix"
-        title1="Digital Magic"
-        title2="Creators"
-        description="We bring your creative vision to life with stunning designs and innovative digital solutions."
-        variant="geometric"
-        intensity="medium"
-      />
+      <Hero />
       
       {/* Add scrollable content to test parallax */}
       <div className="bg-background py-20">
