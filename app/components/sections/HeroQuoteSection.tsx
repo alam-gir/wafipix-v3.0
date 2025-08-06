@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Award } from "lucide-react";
+import { Badge } from "@/components/ui/Badge";
 
 interface HeroQuoteSectionProps {
   className?: string;
@@ -35,13 +36,13 @@ export function HeroQuoteSection({ className }: HeroQuoteSectionProps) {
           variants={staggerContainer}
           className="text-center"
         >
-          <motion.div
-            variants={fadeUpVariants}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-purple-500/10 border border-primary/20 mb-8"
-          >
-            <Award className="h-4 w-4 text-primary" />
-            <span className="text-sm font-semibold text-primary">Trusted by 500+ Brands</span>
-          </motion.div>
+          <Badge
+            icon={Award}
+            text="Trusted by 500+ Brands"
+            variant="gradient"
+            size="md"
+            className="mb-8"
+          />
 
           <motion.h2
             variants={fadeUpVariants}

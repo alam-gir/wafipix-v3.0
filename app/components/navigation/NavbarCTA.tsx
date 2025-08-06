@@ -10,17 +10,15 @@ interface NavbarCTAProps {
 
 export default function NavbarCTA({ isScrolled = false }: NavbarCTAProps) {
   return (
-    <MagneticWrapper strength={0.3} attractArea={100}>
-      <motion.button
+    <MagneticWrapper>
+      <button
         className={cn(
-          "bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-all duration-300",
+          "bg-gradient-to-r from-primary to-purple-500 text-white rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 font-semibold",
           isScrolled ? "px-4 py-2 text-sm" : "px-5 py-2 text-sm"
         )}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
       >
         Get Started
-      </motion.button>
+      </button>
     </MagneticWrapper>
   );
 } 
