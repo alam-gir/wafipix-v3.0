@@ -5,7 +5,6 @@ import { FeaturesGridSection } from "./components/sections/FeaturesGridSection";
 import { StatsSection } from "./components/sections/StatsSection";
 import { CTASection } from "./components/sections/CTASection";
 import { TrustedCustomersSection } from "./components/sections/TrustedCustomersSection";
-import { ValuePropositionSection } from "./components/sections/ValuePropositionSection";
 import { TestimonialSection } from "./components/sections/TestimonialSection";
 
 export default function HomePage() {
@@ -21,7 +20,6 @@ export default function HomePage() {
       <FeaturesGridSection />
       <StatsSection />
       <CTASection />
-      <ValuePropositionSection />
       <TestimonialSection />
     </div>
   );

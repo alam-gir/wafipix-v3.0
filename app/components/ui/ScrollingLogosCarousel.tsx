@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import AutoScroll from "embla-carousel-auto-scroll";
 import {
   Carousel,
@@ -30,14 +31,18 @@ export function ScrollingLogosCarousel({
                      key={index}
                      className="flex basis-1/3 justify-center pl-0 sm:basis-1/4 md:basis-1/5 lg:basis-1/6 xl:basis-1/8"
                    >
-                     <div className="mx-3 sm:mx-4 md:mx-6 flex shrink-0 items-center justify-center">
-                       <img
-                         src={logo.logo}
-                         alt="Company logo"
-                         className="h-10 sm:h-12 w-auto opacity-70"
-                         draggable={false}
-                       />
-                     </div>
+                                           <div className="mx-3 sm:mx-4 md:mx-6 flex shrink-0 items-center justify-center">
+                        <Image
+                          src={logo.logo}
+                          alt="Company logo"
+                          width={480}
+                          height={480}
+                          className="h-10 sm:h-12 w-auto opacity-70 object-contain"
+                          draggable={false}
+                          priority={false}
+                          unoptimized={false}
+                        />
+                      </div>
                    </CarouselItem>
                  ))}
                </CarouselContent>
