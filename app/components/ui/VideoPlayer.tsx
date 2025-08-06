@@ -13,7 +13,7 @@ interface VideoPlayerProps {
 }
 
 export default function VideoPlayer({
-  videoSrc = 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+  videoSrc,
   posterSrc,
   className = ''
 }: VideoPlayerProps) {
