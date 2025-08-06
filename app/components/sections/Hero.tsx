@@ -70,15 +70,15 @@ export function Hero({ className }: HeroProps) {
               initial="hidden"
               animate="visible"
               transition={{ duration: 1, delay: 1.1 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+              className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center w-full sm:w-auto"
             >
-              <MagneticWrapper>
-                <button className="px-8 py-4 bg-gradient-to-r from-primary to-purple-500 text-white rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 font-semibold">
-                  Get Started
+              <MagneticWrapper className="w-full sm:w-auto">
+                <button className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-primary to-purple-500 text-white rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 font-semibold">
+                  Let&apos;s Build Your Brand
                 </button>
               </MagneticWrapper>
-              <MagneticWrapper>
-                <button className="px-8 py-4 bg-transparent text-gray-700 dark:text-gray-300 border-2 border-gray-300 dark:border-gray-600 rounded-xl hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 font-semibold">
+              <MagneticWrapper className="w-full sm:w-auto">
+                <button className="w-full sm:w-auto px-8 py-4 bg-transparent text-gray-700 dark:text-gray-300 border-2 border-gray-300 dark:border-gray-600 rounded-xl hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 font-semibold">
                   View Portfolio
                 </button>
               </MagneticWrapper>
