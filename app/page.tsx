@@ -6,6 +6,7 @@ import { StatsSection } from "./components/sections/StatsSection";
 import { CTASection } from "./components/sections/CTASection";
 import { TrustedCustomersSection } from "./components/sections/TrustedCustomersSection";
 import { TestimonialSection } from "./components/sections/TestimonialSection";
+import { Footer } from "./components/sections/footer";
 
 export default function HomePage() {
   return (
@@ -21,6 +22,8 @@ export default function HomePage() {
       <StatsSection />
       <CTASection />
       <TestimonialSection />
+      <CTASection />
+      <Footer />
     </div>
   );
 }

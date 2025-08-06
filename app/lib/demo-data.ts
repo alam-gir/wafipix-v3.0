@@ -3,6 +3,12 @@ export interface TrustedCustomer {
   logo: string;
 }
 
+// Social media data interface
+export interface SocialMediaLink {
+  name: string;
+  url: string;
+}
+
 // Demo data for trusted customers - replace with API call in production
 export const trustedCustomersData: TrustedCustomer[] = [
   {
@@ -55,6 +61,30 @@ export const trustedCustomersData: TrustedCustomer[] = [
   },
 ];
 
+// Demo social media data - replace with actual data in production
+export const socialMediaData: SocialMediaLink[] = [
+  {
+    name: "Instagram",
+    url: "https://instagram.com/wafipix",
+  },
+  {
+    name: "LinkedIn",
+    url: "https://linkedin.com/company/wafipix",
+  },
+  {
+    name: "X (Twitter)",
+    url: "https://x.com/wafipix",
+  },
+  {
+    name: "YouTube",
+    url: "https://youtube.com/@wafipix",
+  },
+  {
+    name: "Behance",
+    url: "https://behance.net/wafipix",
+  },
+];
+
 // Function to fetch trusted customers from API (for future use)
 export async function fetchTrustedCustomers(): Promise<TrustedCustomer[]> {
   // TODO: Replace with actual API call
@@ -65,4 +95,16 @@ export async function fetchTrustedCustomers(): Promise<TrustedCustomer[]> {
   
   // For now, return demo data
   return trustedCustomersData;
+}
+
+// Function to fetch social media links from API (for future use)
+export async function fetchSocialMediaLinks(): Promise<SocialMediaLink[]> {
+  // TODO: Replace with actual API call
+  // Example API call:
+  // const response = await fetch('/api/social-media');
+  // const data = await response.json();
+  // return data;
+  
+  // For now, return demo data
+  return socialMediaData;
 } 
