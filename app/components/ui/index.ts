@@ -1,7 +1,13 @@
-export { AnimatedBackgroundWrapper } from "./AnimatedBackgroundWrapper";
-export { GradualSpacing } from "./GradualSpacing";
-export { Button, buttonVariants } from "./button";
-export { AnimatedCounter } from "./AnimatedCounter";
 export { Badge } from "./Badge";
+export { Button, buttonVariants } from "./button";
 export { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "./carousel";
-export { ScrollingLogosCarousel } from "./ScrollingLogosCarousel"; 
+export { AnimatedBackgroundWrapper } from "./AnimatedBackgroundWrapper";
+export { AnimatedCounter } from "./AnimatedCounter";
+export { default as AnimatedGradientBlur } from "./AnimatedGradientBlur";
+export { GradualSpacing } from "./GradualSpacing";
+export { default as MagneticWrapper } from "./MagneticWrapper";
+export { default as OptimizedImage } from "./OptimizedImage";
+export { ScrollingLogosCarousel } from "./ScrollingLogosCarousel";
+export { default as VideoControls } from "./VideoControls";
+export { default as VideoPlayer } from "./VideoPlayer";
+export { SectionHeader } from "./SectionHeader"; 
