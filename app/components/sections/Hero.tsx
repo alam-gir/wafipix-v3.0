@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { Circle } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { SITE_CONSTANTS } from "@/lib/constants";
 import { AnimatedBackgroundWrapper } from "@/components/ui/AnimatedBackgroundWrapper";
 import { GradualSpacing } from "@/components/ui/GradualSpacing";
