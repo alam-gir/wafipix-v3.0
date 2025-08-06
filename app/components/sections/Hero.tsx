@@ -73,14 +73,20 @@ export function Hero({ className }: HeroProps) {
               className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center w-full sm:w-auto"
             >
               <MagneticWrapper className="w-full sm:w-auto">
-                <button className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-primary to-purple-500 text-white rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 font-semibold">
+                <a 
+                  href="/start-project"
+                  className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-primary to-purple-500 text-white rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 font-semibold inline-block text-center"
+                >
                   Let&apos;s Build Your Brand
-                </button>
+                </a>
               </MagneticWrapper>
               <MagneticWrapper className="w-full sm:w-auto">
-                <button className="w-full sm:w-auto px-8 py-4 bg-transparent text-gray-700 dark:text-gray-300 border-2 border-gray-300 dark:border-gray-600 rounded-xl hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 font-semibold">
+                <a 
+                  href="/works"
+                  className="w-full sm:w-auto px-8 py-4 bg-transparent text-gray-700 dark:text-gray-300 border-2 border-gray-300 dark:border-gray-600 rounded-xl hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 font-semibold inline-block text-center"
+                >
                   View Portfolio
-                </button>
+                </a>
               </MagneticWrapper>
             </motion.div>
           </div>

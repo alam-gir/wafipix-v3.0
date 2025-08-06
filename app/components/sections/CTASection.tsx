@@ -51,14 +51,22 @@ export function CTASection({ className }: CTASectionProps) {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <MagneticWrapper>
-                <button className="px-8 py-4 bg-gradient-to-r from-primary to-purple-500 text-white rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 font-semibold">
+                <a 
+                  href="/start-project"
+                  className="px-8 py-4 bg-gradient-to-r from-primary to-purple-500 text-white rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 font-semibold inline-block text-center"
+                >
                   Start Your Project
-                </button>
+                </a>
               </MagneticWrapper>
               <MagneticWrapper>
-                <button className="px-8 py-4 bg-transparent text-gray-700 dark:text-gray-300 border-2 border-gray-300 dark:border-gray-600 rounded-xl hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 font-semibold">
+                <a 
+                  href="https://calendly.com/wafipix1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-8 py-4 bg-transparent text-gray-700 dark:text-gray-300 border-2 border-gray-300 dark:border-gray-600 rounded-xl hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 font-semibold inline-block text-center"
+                >
                   Schedule a Call
-                </button>
+                </a>
               </MagneticWrapper>
             </div>
           </motion.div>

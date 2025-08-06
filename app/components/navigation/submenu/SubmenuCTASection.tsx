@@ -65,8 +65,9 @@ export function SubmenuCTASection() {
 
             {/* Enhanced CTA Button with Magnetic Wrapper */}
             <MagneticWrapper strength={0.3} attractArea={100}>
-              <motion.button
-                className="px-10 py-4 bg-white/95 backdrop-blur-sm text-primary font-semibold rounded-xl hover:bg-white transition-all duration-300 shadow-xl hover:shadow-2xl border border-white/20"
+              <motion.a
+                href="/start-project"
+                className="px-10 py-4 bg-white/95 backdrop-blur-sm text-primary font-semibold rounded-xl hover:bg-white transition-all duration-300 shadow-xl hover:shadow-2xl border border-white/20 inline-block text-center"
                 whileHover={{ scale: 1.05, y: -3 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, y: 10 }}
@@ -74,7 +75,7 @@ export function SubmenuCTASection() {
                 transition={{ delay: 0.4 }}
               >
                 Start Project
-              </motion.button>
+              </motion.a>
             </MagneticWrapper>
           </motion.div>
         </div>
