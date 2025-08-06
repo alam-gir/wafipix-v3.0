@@ -65,7 +65,7 @@ export function SectionHeader({
         {subtitle && (
           <>
             <br />
-            <span className="bg-gradient-to-r from-gray-900 via-primary to-purple-500 dark:from-gray-100 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-gray-900 via-primary to-purple-500 dark:from-white dark:via-primary dark:to-purple-400 bg-clip-text text-transparent">
               {subtitle}
             </span>
           </>
