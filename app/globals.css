@@ -71,6 +71,124 @@
     text-wrap: balance;
   }
   
+  /* Rich Text Editor Styles */
+  .prose {
+    @apply text-gray-900;
+  }
+  
+  .prose p {
+    @apply mb-4 last:mb-0;
+  }
+  
+  .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+    @apply font-bold text-gray-900 mb-4 mt-6;
+  }
+  
+  .prose h1 {
+    @apply text-2xl;
+  }
+  
+  .prose h2 {
+    @apply text-xl;
+  }
+  
+  .prose h3 {
+    @apply text-lg;
+  }
+  
+  .prose ul, .prose ol {
+    @apply mb-4 pl-6;
+  }
+  
+  .prose li {
+    @apply mb-2;
+  }
+  
+  .prose ul {
+    @apply list-disc;
+  }
+  
+  .prose ol {
+    @apply list-decimal;
+  }
+  
+  .prose blockquote {
+    @apply border-l-4 border-purple-500 pl-4 italic text-gray-700 mb-4;
+  }
+  
+  .prose a {
+    @apply text-purple-600 underline hover:text-purple-800;
+  }
+  
+  .prose strong {
+    @apply font-bold;
+  }
+  
+  .prose em {
+    @apply italic;
+  }
+  
+  .prose code {
+    @apply bg-gray-100 px-1 py-0.5 rounded text-sm font-mono;
+  }
+  
+  .prose pre {
+    @apply bg-gray-100 p-4 rounded-lg overflow-x-auto mb-4;
+  }
+  
+  .prose pre code {
+    @apply bg-transparent p-0;
+  }
+  
+  /* TipTap Editor Full Height Styles */
+  .ProseMirror {
+    @apply h-full min-h-[200px] outline-none;
+  }
+  
+  /* Make the editor content area fill the full container */
+  .ProseMirror-focused {
+    @apply outline-none;
+  }
+  
+  /* Ensure the editor content takes full height and width */
+  .ProseMirror > * {
+    @apply min-h-[200px] w-full;
+  }
+  
+  /* Make the editor area fully clickable and expandable */
+  .ProseMirror p {
+    @apply min-h-[1.5em] w-full;
+  }
+  
+  /* Force the editor to take full container space */
+  .ProseMirror .is-editor-empty:first-child {
+    @apply min-h-[200px] w-full;
+  }
+  
+  /* Ensure paragraphs expand to fill space */
+  .ProseMirror p:first-child {
+    @apply min-h-[200px] w-full;
+  }
+  
+  .ProseMirror p.is-editor-empty:first-child::before {
+    @apply text-gray-400 float-left h-0 pointer-events-none;
+  }
+  
+  /* Additional styles to ensure full coverage */
+  .ProseMirror .ProseMirror-focused {
+    @apply outline-none;
+  }
+  
+  /* Make sure the editor content area is fully clickable */
+  .ProseMirror .ProseMirror-content {
+    @apply min-h-[200px] w-full;
+  }
+  
+  /* Ensure the editor root element takes full space */
+  .ProseMirror .ProseMirror-root {
+    @apply min-h-[200px] w-full;
+  }
+  
   /* Typography Utilities */
   .text-display {
     @apply font-display font-bold tracking-tight;
@@ -186,6 +304,15 @@
     to {
       opacity: 1;
     }
+  }
+  
+  /* Animation delays */
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  
+  .animation-delay-4000 {
+    animation-delay: 4s;
   }
   
            /* Custom scrollbar */
