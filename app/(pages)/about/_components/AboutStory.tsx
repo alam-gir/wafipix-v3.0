@@ -1,199 +1,243 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
-import { BookOpen, Target, Zap, Heart } from "lucide-react";
+import React from "react";
+import { Timeline } from "@/components/ui/timeline";
+import { 
+  Heart, 
+  Rocket, 
+  Sparkles, 
+  Award, 
+  Users, 
+  Globe, 
+  CheckCircle,
+  TrendingUp,
+  Star,
+  Palette,
+  PenTool,
+  Package,
+} from "lucide-react";
 
 interface AboutStoryProps {
   className?: string;
 }
 
 export function AboutStory({ className }: AboutStoryProps) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  const fadeUpVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 },
-  };
-
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-      },
+  const data = [
+    {
+      title: "2020",
+      content: (
+        <div>
+          <p className="text-body text-muted-foreground mb-8 leading-relaxed">
+            Founded Wafipix with a passion for creative excellence. We started as a small team of 
+            visionary designers and artists, determined to transform brands through innovative design solutions.
+          </p>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="bg-card/50 backdrop-blur-sm border border-border/20 rounded-lg p-4 flex items-center gap-3">
+              <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
+                <PenTool className="w-4 h-4 text-primary" />
+              </div>
+              <div>
+                <p className="text-subtitle font-semibold text-foreground">First Project</p>
+                <p className="text-caption text-muted-foreground">Restaurant Brand Identity</p>
+              </div>
+            </div>
+            <div className="bg-card/50 backdrop-blur-sm border border-border/20 rounded-lg p-4 flex items-center gap-3">
+              <div className="w-8 h-8 bg-green-500/10 rounded-lg flex items-center justify-center">
+                <Users className="w-4 h-4 text-green-500" />
+              </div>
+              <div>
+                <p className="text-subtitle font-semibold text-foreground">Team Size</p>
+                <p className="text-caption text-muted-foreground">3 Designers</p>
+              </div>
+            </div>
+            <div className="bg-card/50 backdrop-blur-sm border border-border/20 rounded-lg p-4 flex items-center gap-3">
+              <div className="w-8 h-8 bg-blue-500/10 rounded-lg flex items-center justify-center">
+                <Award className="w-4 h-4 text-blue-500" />
+              </div>
+              <div>
+                <p className="text-subtitle font-semibold text-foreground">Projects</p>
+                <p className="text-caption text-muted-foreground">12 Brand Identities</p>
+              </div>
+            </div>
+            <div className="bg-card/50 backdrop-blur-sm border border-border/20 rounded-lg p-4 flex items-center gap-3">
+              <div className="w-8 h-8 bg-purple-500/10 rounded-lg flex items-center justify-center">
+                <Heart className="w-4 h-4 text-purple-500" />
+              </div>
+              <div>
+                <p className="text-subtitle font-semibold text-foreground">Satisfaction</p>
+                <p className="text-caption text-muted-foreground">100% Rate</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
     },
-  };
-
-  const timelineVariants = {
-    hidden: { opacity: 0, x: -50 },
-    visible: { opacity: 1, x: 0 },
-  };
+    {
+      title: "2022",
+      content: (
+        <div>
+          <p className="text-body text-muted-foreground mb-8 leading-relaxed">
+            Our reputation for creative excellence and innovative design solutions spread quickly. 
+            We expanded our services to include packaging design, digital branding, and comprehensive brand strategies.
+          </p>
+          <div className="mb-8 space-y-3">
+            <div className="flex gap-3 items-center text-body text-muted-foreground">
+              <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+              <span>Expanded team to 8 creative professionals</span>
+            </div>
+            <div className="flex gap-3 items-center text-body text-muted-foreground">
+              <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+              <span>Launched 150+ successful brand projects</span>
+            </div>
+            <div className="flex gap-3 items-center text-body text-muted-foreground">
+              <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+              <span>Introduced packaging design services</span>
+            </div>
+            <div className="flex gap-3 items-center text-body text-muted-foreground">
+              <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+              <span>Developed signature design methodology</span>
+            </div>
+            <div className="flex gap-3 items-center text-body text-muted-foreground">
+              <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+              <span>Won 5 design industry awards</span>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="bg-card/50 backdrop-blur-sm border border-border/20 rounded-lg p-4 flex items-center gap-3">
+              <div className="w-8 h-8 bg-yellow-500/10 rounded-lg flex items-center justify-center">
+                <Globe className="w-4 h-4 text-yellow-500" />
+              </div>
+              <div>
+                <p className="text-subtitle font-semibold text-foreground">Global Reach</p>
+                <p className="text-caption text-muted-foreground">25 Countries</p>
+              </div>
+            </div>
+            <div className="bg-card/50 backdrop-blur-sm border border-border/20 rounded-lg p-4 flex items-center gap-3">
+              <div className="w-8 h-8 bg-red-500/10 rounded-lg flex items-center justify-center">
+                <Package className="w-4 h-4 text-red-500" />
+              </div>
+              <div>
+                <p className="text-subtitle font-semibold text-foreground">Packaging</p>
+                <p className="text-caption text-muted-foreground">50+ Designs</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: "2024",
+      content: (
+        <div>
+          <p className="text-body text-muted-foreground mb-8 leading-relaxed">
+            Today, we&apos;re a leading creative design agency trusted by brands worldwide. 
+            Our commitment to artistic excellence, innovative thinking, and brand transformation 
+            remains at the heart of everything we create.
+          </p>
+          <div className="mb-8 space-y-3">
+            <div className="flex gap-3 items-center text-body text-muted-foreground">
+              <Star className="w-4 h-4 text-yellow-500 flex-shrink-0" />
+              <span>500+ successful brand transformations</span>
+            </div>
+            <div className="flex gap-3 items-center text-body text-muted-foreground">
+              <Star className="w-4 h-4 text-yellow-500 flex-shrink-0" />
+              <span>15+ creative professionals across 2 studios</span>
+            </div>
+            <div className="flex gap-3 items-center text-body text-muted-foreground">
+              <Star className="w-4 h-4 text-yellow-500 flex-shrink-0" />
+              <span>Fortune 500 and startup clients</span>
+            </div>
+            <div className="flex gap-3 items-center text-body text-muted-foreground">
+              <Star className="w-4 h-4 text-yellow-500 flex-shrink-0" />
+              <span>Advanced 3D and motion design capabilities</span>
+            </div>
+            <div className="flex gap-3 items-center text-body text-muted-foreground">
+              <Star className="w-4 h-4 text-yellow-500 flex-shrink-0" />
+              <span>Industry-leading creative awards</span>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="bg-card/50 backdrop-blur-sm border border-border/20 rounded-lg p-4 flex items-center gap-3">
+              <div className="w-8 h-8 bg-emerald-500/10 rounded-lg flex items-center justify-center">
+                <Award className="w-4 h-4 text-emerald-500" />
+              </div>
+              <div>
+                <p className="text-subtitle font-semibold text-foreground">Awards</p>
+                <p className="text-caption text-muted-foreground">25+ Won</p>
+              </div>
+            </div>
+            <div className="bg-card/50 backdrop-blur-sm border border-border/20 rounded-lg p-4 flex items-center gap-3">
+              <div className="w-8 h-8 bg-indigo-500/10 rounded-lg flex items-center justify-center">
+                <Palette className="w-4 h-4 text-indigo-500" />
+              </div>
+              <div>
+                <p className="text-subtitle font-semibold text-foreground">Services</p>
+                <p className="text-caption text-muted-foreground">8+ Categories</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: "2025",
+      content: (
+        <div>
+          <p className="text-body text-muted-foreground mb-8 leading-relaxed">
+            Embracing AI-powered design tools and cutting-edge creative technologies to revolutionize 
+            brand experiences. We&apos;re pioneering the future of design that anticipates and exceeds 
+            brand expectations.
+          </p>
+          <div className="mb-8 space-y-3">
+            <div className="flex gap-3 items-center text-body text-muted-foreground">
+              <TrendingUp className="w-4 h-4 text-primary flex-shrink-0" />
+              <span>AI-powered design automation tools</span>
+            </div>
+            <div className="flex gap-3 items-center text-body text-muted-foreground">
+              <TrendingUp className="w-4 h-4 text-primary flex-shrink-0" />
+              <span>Advanced 3D and AR packaging experiences</span>
+            </div>
+            <div className="flex gap-3 items-center text-body text-muted-foreground">
+              <TrendingUp className="w-4 h-4 text-primary flex-shrink-0" />
+              <span>Sustainable design methodologies</span>
+            </div>
+            <div className="flex gap-3 items-center text-body text-muted-foreground">
+              <TrendingUp className="w-4 h-4 text-primary flex-shrink-0" />
+              <span>Interactive brand experiences</span>
+            </div>
+            <div className="flex gap-3 items-center text-body text-muted-foreground">
+              <TrendingUp className="w-4 h-4 text-primary flex-shrink-0" />
+              <span>Global creative studio expansion</span>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="bg-card/50 backdrop-blur-sm border border-border/20 rounded-lg p-4 flex items-center gap-3">
+              <div className="w-8 h-8 bg-orange-500/10 rounded-lg flex items-center justify-center">
+                <Rocket className="w-4 h-4 text-orange-500" />
+              </div>
+              <div>
+                <p className="text-subtitle font-semibold text-foreground">Innovation</p>
+                <p className="text-caption text-muted-foreground">Future Ready</p>
+              </div>
+            </div>
+            <div className="bg-card/50 backdrop-blur-sm border border-border/20 rounded-lg p-4 flex items-center gap-3">
+              <div className="w-8 h-8 bg-pink-500/10 rounded-lg flex items-center justify-center">
+                <Sparkles className="w-4 h-4 text-pink-500" />
+              </div>
+              <div>
+                <p className="text-subtitle font-semibold text-foreground">Vision</p>
+                <p className="text-caption text-muted-foreground">Creative Magic</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+  ];
 
   return (
-    <section className={`py-20 md:py-32 bg-gradient-to-b from-background via-muted/20 to-background ${className}`}>
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="max-w-6xl mx-auto">
-          {/* Section Header */}
-          <motion.div
-            ref={ref}
-            variants={fadeUpVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            className="text-center mb-16"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium border border-primary/20 mb-6">
-              <BookOpen className="w-4 h-4" />
-              Our Story
-            </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
-              From Vision to Reality
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Every great journey begins with a simple idea. Ours was to create digital experiences 
-              that not only look beautiful but also drive real business results.
-            </p>
-          </motion.div>
-
-          {/* Timeline */}
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            className="relative"
-          >
-            {/* Timeline Line */}
-            <div className="absolute left-1/2 transform -translate-x-px h-full w-px bg-gradient-to-b from-primary/20 via-primary to-primary/20 hidden md:block" />
-
-            {/* Timeline Items */}
-            <div className="space-y-12 md:space-y-16">
-              {/* 2020 - Founded */}
-              <motion.div
-                variants={timelineVariants}
-                className="relative flex flex-col md:flex-row items-center gap-8"
-              >
-                <div className="flex-1 md:text-right md:pr-12">
-                  <div className="bg-card/50 backdrop-blur-sm border border-border/20 rounded-2xl p-6 md:p-8 hover:bg-card/80 transition-all duration-300">
-                    <div className="flex items-center gap-3 mb-4 md:justify-end">
-                      <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center">
-                        <Zap className="w-5 h-5 text-primary" />
-                      </div>
-                      <span className="text-sm font-medium text-primary">2020</span>
-                    </div>
-                    <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3">
-                      The Beginning
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Founded with a vision to bridge the gap between creativity and technology. 
-                      We started as a small team of passionate designers and developers, 
-                      determined to create digital magic.
-                    </p>
-                  </div>
-                </div>
-                
-                {/* Timeline Dot */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-lg hidden md:block" />
-                
-                <div className="flex-1 md:pl-12 md:hidden">
-                  <div className="bg-card/50 backdrop-blur-sm border border-border/20 rounded-2xl p-6 md:p-8 hover:bg-card/80 transition-all duration-300">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center">
-                        <Zap className="w-5 h-5 text-primary" />
-                      </div>
-                      <span className="text-sm font-medium text-primary">2020</span>
-                    </div>
-                    <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3">
-                      The Beginning
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Founded with a vision to bridge the gap between creativity and technology. 
-                      We started as a small team of passionate designers and developers, 
-                      determined to create digital magic.
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* 2022 - Growth */}
-              <motion.div
-                variants={timelineVariants}
-                className="relative flex flex-col md:flex-row items-center gap-8"
-              >
-                <div className="flex-1 md:pl-12">
-                  <div className="bg-card/50 backdrop-blur-sm border border-border/20 rounded-2xl p-6 md:p-8 hover:bg-card/80 transition-all duration-300">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-10 h-10 bg-green-500/10 rounded-xl flex items-center justify-center">
-                        <Target className="w-5 h-5 text-green-500" />
-                      </div>
-                      <span className="text-sm font-medium text-green-500">2022</span>
-                    </div>
-                    <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3">
-                      Rapid Growth
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Our reputation for quality and innovation spread quickly. We expanded our team, 
-                      refined our processes, and began working with clients across multiple continents.
-                    </p>
-                  </div>
-                </div>
-                
-                {/* Timeline Dot */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-green-500 rounded-full border-4 border-background shadow-lg hidden md:block" />
-              </motion.div>
-
-              {/* 2024 - Today */}
-              <motion.div
-                variants={timelineVariants}
-                className="relative flex flex-col md:flex-row items-center gap-8"
-              >
-                <div className="flex-1 md:text-right md:pr-12">
-                  <div className="bg-card/50 backdrop-blur-sm border border-border/20 rounded-2xl p-6 md:p-8 hover:bg-card/80 transition-all duration-300">
-                    <div className="flex items-center gap-3 mb-4 md:justify-end">
-                      <div className="w-10 h-10 bg-purple-500/10 rounded-xl flex items-center justify-center">
-                        <Heart className="w-5 h-5 text-purple-500" />
-                      </div>
-                      <span className="text-sm font-medium text-purple-500">2024</span>
-                    </div>
-                    <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3">
-                      Global Impact
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Today, we&apos;re proud to be a trusted partner for businesses worldwide. 
-                      Our commitment to excellence, innovation, and client success remains 
-                      at the heart of everything we do.
-                    </p>
-                  </div>
-                </div>
-                
-                {/* Timeline Dot */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-purple-500 rounded-full border-4 border-background shadow-lg hidden md:block" />
-                
-                <div className="flex-1 md:pl-12 md:hidden">
-                  <div className="bg-card/50 backdrop-blur-sm border border-border/20 rounded-2xl p-6 md:p-8 hover:bg-card/80 transition-all duration-300">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-10 h-10 bg-purple-500/10 rounded-xl flex items-center justify-center">
-                        <Heart className="w-5 h-5 text-purple-500" />
-                      </div>
-                      <span className="text-sm font-medium text-purple-500">2024</span>
-                    </div>
-                    <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3">
-                      Global Impact
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Today, we&apos;re proud to be a trusted partner for businesses worldwide. 
-                      Our commitment to excellence, innovation, and client success remains 
-                      at the heart of everything we do.
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </div>
+    <section className={`${className}`}>
+      <Timeline data={data} />
     </section>
   );
 } 
