@@ -1,6 +1,7 @@
 import ComingSoonPage from "@/components/ui/ComingSoonPage";
 
 export default function ServicesPage() {
+  throw new Error("Something went wrong");
   return (
     <ComingSoonPage
       pageName="Our Services"

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
-import LenisProvider from "./components/LenisProvider";
-import Navbar from "./components/navigation/Navbar";
-import { Footer } from "./components/sections/footer";
+import LenisProvider from "@/components/LenisProvider";
+import Navbar from "@/components/navigation/Navbar";
+import { Footer } from "@/components/sections/footer";
 
 const manrope = Manrope({
   subsets: ["latin"],

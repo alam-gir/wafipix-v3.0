@@ -135,7 +135,7 @@ export function AboutValues({ className }: AboutValuesProps) {
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               These core values guide every decision we make and every project we undertake. 
-              They're not just words on a page—they're the foundation of our culture and success.
+              They&apos;re not just words on a page—they&apos;re the foundation of our culture and success.
             </p>
           </motion.div>
 
@@ -166,7 +166,7 @@ export function AboutValues({ className }: AboutValuesProps) {
                 Ready to Work with a Values-Driven Team?
               </h3>
               <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Let's create something extraordinary together. Our values aren't just promises—they're our commitment to your success.
+                Let&apos;s create something extraordinary together. Our values aren&apos;t just promises—they&apos;re our commitment to your success.
               </p>
               <MagneticWrapper>
                 <a 

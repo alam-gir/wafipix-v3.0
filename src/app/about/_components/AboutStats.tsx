@@ -44,16 +44,16 @@ const StatCard = ({ icon: Icon, value, suffix, label, color, delay }: StatCardPr
           <Icon className="w-8 h-8 text-white" />
         </div>
 
-        {/* Value */}
-        <div className="mb-4">
-          <div className="flex items-center justify-center gap-1">
-            <AnimatedCounter
-              value={value}
-              className="text-4xl md:text-5xl font-bold text-foreground"
-            />
-            <span className="text-2xl md:text-3xl font-bold text-primary">{suffix}</span>
-          </div>
-        </div>
+                 {/* Value */}
+         <div className="mb-4">
+           <div className="flex items-center justify-center gap-1">
+             <AnimatedCounter
+               end={value}
+               className="text-4xl md:text-5xl font-bold text-foreground"
+             />
+             <span className="text-2xl md:text-3xl font-bold text-primary">{suffix}</span>
+           </div>
+         </div>
 
         {/* Label */}
         <div className="text-muted-foreground font-medium">
@@ -141,7 +141,7 @@ export function AboutStats({ className }: AboutStatsProps) {
               Numbers That Tell Our Story
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              These aren't just statistics—they represent real relationships, 
+              These aren&apos;t just statistics—they represent real relationships, 
               successful projects, and the trust our clients place in us every day.
             </p>
           </motion.div>
@@ -174,7 +174,7 @@ export function AboutStats({ className }: AboutStatsProps) {
                 Trusted by Industry Leaders
               </h3>
               <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                From startups to Fortune 500 companies, we've helped businesses of all sizes 
+                From startups to Fortune 500 companies, we&apos;ve helped businesses of all sizes 
                 achieve their digital goals and exceed their expectations.
               </p>
               <div className="flex flex-wrap justify-center gap-8 text-sm text-muted-foreground">
