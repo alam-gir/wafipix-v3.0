@@ -10,4 +10,11 @@ export { default as OptimizedImage } from "./OptimizedImage";
 export { ScrollingLogosCarousel } from "./ScrollingLogosCarousel";
 export { default as VideoControls } from "./VideoControls";
 export { default as VideoPlayer } from "./VideoPlayer";
-export { SectionHeader } from "./SectionHeader"; 
+export { SectionHeader } from "./SectionHeader";
+
+// Error Page Components
+export { default as AnimatedBackground } from "./AnimatedBackground";
+export { default as AnimatedIcon } from "./AnimatedIcon";
+export { default as ErrorPageLayout } from "./ErrorPageLayout";
+export { default as ErrorPageActions } from "./ErrorPageActions";
+export { default as ComingSoonPage } from "./ComingSoonPage"; 
