@@ -10,12 +10,14 @@ interface VideoPlayerProps {
   posterSrc?: string;
   className?: string;
   containerRef?: React.RefObject<HTMLElement>;
+  showControlsOverlay?: boolean; // allow disabling overlay (e.g., works grid)
 }
 
 export default function VideoPlayer({
   videoSrc,
   posterSrc,
-  className = ''
+  className = '',
+  showControlsOverlay = true,
 }: VideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const playerRef = useRef<HTMLDivElement>(null);
@@ -45,10 +47,12 @@ export default function VideoPlayer({
 
   // Handle mouse events for controls visibility
   const handleMouseEnter = () => {
+    if (!showControlsOverlay) return;
     setShowControls(true);
   };
 
   const handleMouseLeave = () => {
+    if (!showControlsOverlay) return;
     setShowControls(false);
   };
 
@@ -81,24 +85,26 @@ export default function VideoPlayer({
       </video>
 
       {/* Controls Overlay */}
-      <AnimatePresence>
-        {showControls && (
-          <motion.div
-            className="absolute bottom-4 right-4 z-10"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
-          >
-            <VideoControls
-              isPlaying={isPlaying}
-              isMuted={isMuted}
-              onTogglePlay={togglePlay}
-              onToggleMute={toggleMute}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {showControlsOverlay && (
+        <AnimatePresence>
+          {showControls && (
+            <motion.div
+              className="absolute bottom-4 right-4 z-10"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+            >
+              <VideoControls
+                isPlaying={isPlaying}
+                isMuted={isMuted}
+                onTogglePlay={togglePlay}
+                onToggleMute={toggleMute}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      )}
 
 
 
