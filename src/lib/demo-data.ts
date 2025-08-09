@@ -9,6 +9,69 @@ export interface SocialMediaLink {
   url: string;
 }
 
+export interface WorkCategory {
+  category: string;
+}
+
+export interface WorkService {
+  service : string;
+}
+
+export type WorkFilter = WorkCategory | WorkService
+
+export interface WorkAsCard {
+  id: string;
+  slug: string;
+  name: string;
+  coverVideoUrl: string;
+  coverImageUrl: string;
+  profileVideoUrl: string;
+  profileImageUrl: string;
+}
+
+export interface Gallery {
+  id: string;
+  workId: string;
+  blocks: Array<GalleryBlock>
+}
+
+export interface GalleryMedia {
+  url: string;
+  type: 'image' | 'video'
+}
+export interface GalleryBlock {
+  id: string;
+  galleryId : string
+  order: number;
+  isMobileGrid: boolean;
+  medias: Array<GalleryMedia>
+}
+
+export interface Work {
+  id: string;
+  slug: string;
+  name: string;
+  service: string;
+  coverVideoUrl: string;
+  coverImageUrl: string;
+  profileVideoUrl: string;
+  profileImageUrl: string;
+  shortDescription: string;
+  description: string; // Html content with richtext editor.
+}
+
+// Demo data for Gallery
+export const Galleries : Array<Gallery> = []
+
+// Demo data for works
+export const works = []
+
+// Demo data for Works as card
+export const worksAsCard : Array<WorkAsCard> = []
+
+// Demo data for workFilters 
+export const workFilters : Array<WorkFilter> = [] 
+
 // Demo data for trusted customers - replace with API call in production
 export const trustedCustomersData: TrustedCustomer[] = [
   {

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { cn } from '@/lib/utils';
+import { cn, getLucideIcon } from '@/lib/utils';
 import { SubMenuItem } from '@/lib/navigation';
 
 interface SubmenuServiceItemProps {
@@ -17,6 +17,9 @@ export function SubmenuServiceItem({
   activeSubmenuItem,
 }: SubmenuServiceItemProps) {
   const isActive = activeSubmenuItem === subItem.id;
+  
+  // Get the Lucide icon component using the utility function
+  const IconComponent = getLucideIcon(subItem.icon);
   
   return (
     <Link
@@ -41,9 +44,15 @@ export function SubmenuServiceItem({
       >
         {/* Item Icon */}
         <div className="flex-shrink-0 w-9 h-9 bg-gradient-to-br from-primary/15 to-accent/15 rounded-lg flex items-center justify-center group-hover/item:from-primary/25 group-hover/item:to-accent/25 transition-all duration-200">
-          <span className="text-sm group-hover/item:scale-110 transition-transform duration-200">
-            {subItem.icon}
-          </span>
+          {IconComponent ? (
+            <IconComponent 
+              className="w-4 h-4 text-foreground group-hover/item:text-primary group-hover/item:scale-110 transition-all duration-200" 
+            />
+          ) : (
+            <span className="text-sm group-hover/item:scale-110 transition-transform duration-200">
+              {subItem.icon}
+            </span>
+          )}
         </div>
 
         {/* Item Content */}

@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { SubMenuItem } from '@/lib/navigation';
+import { getLucideIcon } from '@/lib/utils';
 
 interface MobileSubmenuItemProps {
   subItem: SubMenuItem;
@@ -9,6 +10,9 @@ interface MobileSubmenuItemProps {
 }
 
 export function MobileSubmenuItem({ subItem, onSubmenuItemClick }: MobileSubmenuItemProps) {
+  // Get the Lucide icon component using the utility function
+  const IconComponent = getLucideIcon(subItem.icon);
+
   return (
     <Link
       href={subItem.href}
@@ -20,9 +24,15 @@ export function MobileSubmenuItem({ subItem, onSubmenuItemClick }: MobileSubmenu
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
       >
-        <span className="text-xs group-hover:scale-110 transition-transform duration-200">
-          {subItem.icon}
-        </span>
+        {IconComponent ? (
+          <IconComponent 
+            className="w-3 h-3 text-foreground group-hover:text-primary group-hover:scale-110 transition-all duration-200" 
+          />
+        ) : (
+          <span className="text-xs group-hover:scale-110 transition-transform duration-200">
+            {subItem.icon}
+          </span>
+        )}
       </motion.div>
       <div className="flex-1 min-w-0">
         <div className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">

@@ -3,7 +3,7 @@ export interface SubMenuItem {
   title: string;
   description: string;
   href: string;
-  icon?: string;
+  icon?: string; // Lucide React icon name
 }
 
 export interface ServiceCategory {
@@ -34,142 +34,65 @@ export const navigation: NavItem[] = [
     hasSubmenu: true,
     submenu: [
       {
-        id: 'web-development',
-        title: 'Web Development',
-        description: 'Modern web solutions that drive results',
-        items: [
-          {
-            id: 'custom-websites',
-            title: 'Custom Websites',
-            description: 'Tailored websites built for your brand',
-            href: '/services/custom-websites',
-            icon: '🌐'
-          },
-          {
-            id: 'ecommerce',
-            title: 'E-commerce Solutions',
-            description: 'Online stores that convert visitors to customers',
-            href: '/services/ecommerce',
-            icon: '🛒'
-          },
-          {
-            id: 'web-apps',
-            title: 'Web Applications',
-            description: 'Complex web applications for your business',
-            href: '/services/web-apps',
-            icon: '⚡'
-          },
-          {
-            id: 'cms',
-            title: 'CMS Development',
-            description: 'Content management systems for easy updates',
-            href: '/services/cms',
-            icon: '📝'
-          }
-        ]
-      },
-      {
-        id: 'design',
+        id: 'design-creative',
         title: 'Design & Creative',
-        description: 'Visual experiences that captivate',
+        description: 'Visual experiences that captivate and inspire',
         items: [
           {
-            id: 'ui-ux-design',
-            title: 'UI/UX Design',
-            description: 'User-centered design that delights',
-            href: '/services/ui-ux-design',
-            icon: '🎨'
+            id: 'logo-design',
+            title: 'Logo Design',
+            description: 'Unique, memorable logos that represent your brand identity and values',
+            href: '/services/logo-design',
+            icon: 'Palette'
           },
           {
-            id: 'brand-identity',
-            title: 'Brand Identity',
-            description: 'Complete brand identity packages',
-            href: '/services/brand-identity',
-            icon: '🏷️'
+            id: 'branding',
+            title: 'Branding',
+            description: 'Complete brand identity packages including guidelines and visual assets',
+            href: '/services/branding',
+            icon: 'Brush'
           },
           {
-            id: 'graphic-design',
-            title: 'Graphic Design',
-            description: 'Print and digital graphic solutions',
-            href: '/services/graphic-design',
-            icon: '🖼️'
-          },
-          {
-            id: 'illustration',
-            title: 'Custom Illustrations',
-            description: 'Unique illustrations for your brand',
-            href: '/services/illustration',
-            icon: '✏️'
+            id: 'print-packaging',
+            title: 'Print & Packaging Design',
+            description: 'Professional print materials and packaging that enhance your product appeal',
+            href: '/services/print-packaging',
+            icon: 'Package'
           }
         ]
       },
       {
-        id: 'digital-marketing',
-        title: 'Digital Marketing',
-        description: 'Strategies that grow your business',
+        id: 'motion-animation',
+        title: 'Motion & Animation',
+        description: 'Dynamic content that brings your brand to life',
         items: [
           {
-            id: 'seo',
-            title: 'SEO Optimization',
-            description: 'Search engine optimization for visibility',
-            href: '/services/seo',
-            icon: '🔍'
+            id: 'motion-video',
+            title: 'Motion Video',
+            description: 'Engaging motion graphics and animated videos for marketing and storytelling',
+            href: '/services/motion-video',
+            icon: 'Video'
           },
           {
-            id: 'social-media',
-            title: 'Social Media Marketing',
-            description: 'Engaging social media campaigns',
-            href: '/services/social-media',
-            icon: '📱'
+            id: 'reels',
+            title: 'Reels',
+            description: 'Short-form video content optimized for social media platforms',
+            href: '/services/reels',
+            icon: 'Smartphone'
           },
           {
-            id: 'content-marketing',
-            title: 'Content Marketing',
-            description: 'Strategic content that converts',
-            href: '/services/content-marketing',
-            icon: '📄'
+            id: 'custom-logo-animation',
+            title: 'Custom Logo Animation',
+            description: 'Animated versions of your logo for digital platforms and presentations',
+            href: '/services/custom-logo-animation',
+            icon: 'Zap'
           },
           {
-            id: 'ppc',
-            title: 'PPC Advertising',
-            description: 'Paid advertising campaigns',
-            href: '/services/ppc',
-            icon: '💰'
-          }
-        ]
-      },
-      {
-        id: 'mobile',
-        title: 'Mobile Development',
-        description: 'Native and cross-platform mobile apps',
-        items: [
-          {
-            id: 'ios-apps',
-            title: 'iOS Development',
-            description: 'Native iPhone and iPad applications',
-            href: '/services/ios-apps',
-            icon: '📱'
-          },
-          {
-            id: 'android-apps',
-            title: 'Android Development',
-            description: 'Native Android applications',
-            href: '/services/android-apps',
-            icon: '🤖'
-          },
-          {
-            id: 'react-native',
-            title: 'React Native',
-            description: 'Cross-platform mobile development',
-            href: '/services/react-native',
-            icon: '⚛️'
-          },
-          {
-            id: 'flutter',
-            title: 'Flutter Apps',
-            description: 'Beautiful cross-platform apps',
-            href: '/services/flutter',
-            icon: '🦋'
+            id: 'intro-outro',
+            title: 'Intro & Outro',
+            description: 'Professional video intros and outros that establish brand recognition',
+            href: '/services/intro-outro',
+            icon: 'Play'
           }
         ]
       }

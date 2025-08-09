@@ -8,6 +8,7 @@ import { TestimonialSection } from "@/components/sections/TestimonialSection";
 import { VideoSection } from "@/components/sections/VideoSection";
 import WhyChooseUsSection from "@/components/sections/WhyChooseUsSection";
 import { CTASection } from "@/components/sections/CTASection";
+import { AboutCTA } from './about/_components';
 
 export default function HomePage() {
   return (
@@ -16,11 +17,12 @@ export default function HomePage() {
       <HeroQuoteSection />
       <FeaturesGridSection />
       <StatsSection />
-      <TrustedCustomersSection />
-      <TestimonialSection />
       <VideoSection />
-      <WhyChooseUsSection />
+      <TrustedCustomersSection />
       <CTASection />
+      <TestimonialSection />
+      <WhyChooseUsSection />
+      <AboutCTA />
     </main>
   );
 }
