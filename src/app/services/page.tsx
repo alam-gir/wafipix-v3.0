@@ -84,7 +84,7 @@ export default function ServicesPage() {
                       className="group"
                     >
                       <Link href={service.href}>
-                        <div className="bg-card/50 backdrop-blur-sm border border-border/20 rounded-2xl p-8 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 hover:scale-105 group-hover:border-primary/30">
+                        <div className="bg-card/50 backdrop-blur-sm border border-border/20 rounded-2xl p-8 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 hover:scale-105 group-hover:border-primary/30 relative">
                           {/* Service Icon */}
                           <div className="w-16 h-16 bg-gradient-to-r from-primary to-primary/80 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                             <IconComponent className="w-8 h-8 text-primary-foreground" />

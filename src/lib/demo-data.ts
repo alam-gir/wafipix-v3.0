@@ -601,3 +601,395 @@ export async function fetchSocialMediaLinks(): Promise<SocialMediaLink[]> {
   // For now, return demo data
   return socialMediaData;
 } 
+
+// ============================================================================
+// SERVICE PAGE DATA TYPES AND DEMO DATA
+// ============================================================================
+
+// Package pricing interface
+export interface PackagePricing {
+  usd: number;
+  bdt: number;
+}
+
+// Package feature interface
+export interface PackageFeature {
+  id: string;
+  text: string;
+  highlight?: boolean; // For premium features
+}
+
+// Service package interface
+export interface ServicePackage {
+  id: string;
+  name: string;
+  subtitle: string;
+  pricing: PackagePricing;
+  features: PackageFeature[];
+  status: 'active' | 'featured' | 'coming-soon';
+  deliveryTime: string;
+  paymentTerms: string;
+  popular?: boolean; // For featured packages
+}
+
+// Service page data interface
+export interface ServicePageData {
+  id: string;
+  slug: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  processSteps: Array<{
+    id: string;
+    title: string;
+    description: string;
+    icon: string;
+  }>;
+  packages: ServicePackage[];
+  features: Array<{
+    id: string;
+    title: string;
+    description: string;
+    icon: string;
+  }>;
+  faqs: Array<{
+    id: string;
+    question: string;
+    answer: string;
+  }>;
+}
+
+// Demo data for service packages
+export const servicePackages: Record<string, ServicePackage[]> = {
+  'logo-design': [
+    {
+      id: 'logo-starter',
+      name: 'STARTER',
+      subtitle: 'LOGO PACKAGE',
+      pricing: { usd: 15, bdt: 1490 },
+      features: [
+        { id: 'f1', text: '3 different logo concepts' },
+        { id: 'f2', text: 'Up to 5 modifications' },
+        { id: 'f3', text: 'Horizontal & Vertical versions' },
+        { id: 'f4', text: 'Color & Black-White versions' },
+        { id: 'f5', text: 'All necessary files (AI, PSD, PNG, JPG, SVG, PDF)' },
+        { id: 'f6', text: '3D mockup view' },
+        { id: 'f7', text: 'Easy-to-use guideline (PDF)' }
+      ],
+      status: 'active',
+      deliveryTime: '2-3 working days',
+      paymentTerms: '40% (non-refundable) advance payment required'
+    },
+    {
+      id: 'logo-premium',
+      name: 'PREMIUM',
+      subtitle: 'BRANDING LOGO PACKAGE',
+      pricing: { usd: 30, bdt: 2990 },
+      features: [
+        { id: 'f1', text: '5 premium logo concepts', highlight: true },
+        { id: 'f2', text: 'Unlimited revisions', highlight: true },
+        { id: 'f3', text: 'Horizontal, Vertical (Social Media Adapted Version)' },
+        { id: 'f4', text: 'Brand icon & extra favicon' },
+        { id: 'f5', text: 'All necessary files (AI, PSD, PNG, JPG, SVG, PDF)' },
+        { id: 'f6', text: '3D mockup view' },
+        { id: 'f7', text: 'Trademark-eligible logo & file', highlight: true },
+        { id: 'f8', text: '6 months brand support', highlight: true },
+        { id: 'f9', text: 'Designer meeting support (Zoom/Chat)' },
+        { id: 'f10', text: 'Brand guideline (PDF)' },
+        { id: 'f11', text: 'Professional custom cover design' }
+      ],
+      status: 'featured',
+      deliveryTime: '3-4 working days',
+      paymentTerms: '40% (non-refundable) advance payment required',
+      popular: true
+    }
+  ],
+  'branding': [
+    {
+      id: 'branding-essential',
+      name: 'ESSENTIAL',
+      subtitle: 'BRAND IDENTITY PACKAGE',
+      pricing: { usd: 45, bdt: 4490 },
+      features: [
+        { id: 'f1', text: 'Complete brand identity system' },
+        { id: 'f2', text: 'Logo design & variations' },
+        { id: 'f3', text: 'Color palette & typography' },
+        { id: 'f4', text: 'Business card & letterhead design' },
+        { id: 'f5', text: 'Brand guidelines document' },
+        { id: 'f6', text: 'Social media templates' },
+        { id: 'f7', text: 'All source files included' }
+      ],
+      status: 'active',
+      deliveryTime: '5-7 working days',
+      paymentTerms: '40% (non-refundable) advance payment required'
+    },
+    {
+      id: 'branding-complete',
+      name: 'COMPLETE',
+      subtitle: 'BRAND STRATEGY PACKAGE',
+      pricing: { usd: 75, bdt: 7490 },
+      features: [
+        { id: 'f1', text: 'Everything in Essential package', highlight: true },
+        { id: 'f2', text: 'Brand strategy & positioning', highlight: true },
+        { id: 'f3', text: 'Competitor analysis' },
+        { id: 'f4', text: 'Brand voice & messaging guide' },
+        { id: 'f5', text: 'Marketing collateral design' },
+        { id: 'f6', text: 'Website design consultation' },
+        { id: 'f7', text: '3 months brand support', highlight: true },
+        { id: 'f8', text: 'Brand launch strategy' }
+      ],
+      status: 'featured',
+      deliveryTime: '7-10 working days',
+      paymentTerms: '40% (non-refundable) advance payment required',
+      popular: true
+    }
+  ],
+  'motion-video': [
+    {
+      id: 'motion-basic',
+      name: 'BASIC',
+      subtitle: 'MOTION PACKAGE',
+      pricing: { usd: 25, bdt: 2490 },
+      features: [
+        { id: 'f1', text: '30-second motion video' },
+        { id: 'f2', text: '2 concept options' },
+        { id: 'f3', text: 'Up to 3 revisions' },
+        { id: 'f4', text: 'HD quality (1920x1080)' },
+        { id: 'f5', text: 'MP4 format delivery' },
+        { id: 'f6', text: 'Background music included' }
+      ],
+      status: 'active',
+      deliveryTime: '3-5 working days',
+      paymentTerms: '40% (non-refundable) advance payment required'
+    },
+    {
+      id: 'motion-premium',
+      name: 'PREMIUM',
+      subtitle: 'MOTION & ANIMATION PACKAGE',
+      pricing: { usd: 50, bdt: 4990 },
+      features: [
+        { id: 'f1', text: '60-second motion video', highlight: true },
+        { id: 'f2', text: '3 concept options' },
+        { id: 'f3', text: 'Unlimited revisions', highlight: true },
+        { id: 'f4', text: '4K quality (3840x2160)' },
+        { id: 'f5', text: 'Multiple format delivery' },
+        { id: 'f6', text: 'Custom music composition' },
+        { id: 'f7', text: 'Social media variations' },
+        { id: 'f8', text: 'Storyboard & script writing' }
+      ],
+      status: 'featured',
+      deliveryTime: '5-7 working days',
+      paymentTerms: '40% (non-refundable) advance payment required',
+      popular: true
+    }
+  ]
+};
+
+// Demo data for individual service pages
+export const servicePagesData: Record<string, ServicePageData> = {
+  'logo-design': {
+    id: 'logo-design',
+    slug: 'logo-design',
+    title: 'Logo Design',
+    subtitle: 'Create a lasting impression with a unique logo that represents your brand',
+    description: 'We craft distinctive logos that capture your brand\'s essence and leave a memorable impact on your audience. Our design process ensures your logo works perfectly across all platforms and applications.',
+    processSteps: [
+      {
+        id: 'step1',
+        title: 'Discovery & Research',
+        description: 'We dive deep into your brand, industry, and target audience to understand your unique positioning',
+        icon: 'Search'
+      },
+      {
+        id: 'step2',
+        title: 'Concept Development',
+        description: 'Our designers create multiple logo concepts that align with your brand vision and values',
+        icon: 'Palette'
+      },
+      {
+        id: 'step3',
+        title: 'Refinement & Delivery',
+        description: 'We refine the chosen concept and deliver all necessary files for immediate use',
+        icon: 'CheckCircle'
+      }
+    ],
+    packages: servicePackages['logo-design'],
+    features: [
+      {
+        id: 'f1',
+        title: 'Unique Design',
+        description: 'Every logo is custom-designed to reflect your brand\'s unique personality and values',
+        icon: 'Sparkles'
+      },
+      {
+        id: 'f2',
+        title: 'Scalable Solutions',
+        description: 'Logos designed to work perfectly across all sizes and applications',
+        icon: 'Maximize2'
+      },
+      {
+        id: 'f3',
+        title: 'Multiple Formats',
+        description: 'Receive your logo in all necessary formats for print and digital use',
+        icon: 'FileType'
+      }
+    ],
+    faqs: [
+      {
+        id: 'faq1',
+        question: 'How many logo concepts will I receive?',
+        answer: 'Our Starter package includes 3 different logo concepts, while the Premium package offers 5 premium concepts. Each concept is unique and tailored to your brand.'
+      },
+      {
+        id: 'faq2',
+        question: 'What file formats are included?',
+        answer: 'All packages include AI, PSD, PNG, JPG, SVG, and PDF formats. These cover all your needs for both digital and print applications.'
+      },
+      {
+        id: 'faq3',
+        question: 'Can I request changes to the logo?',
+        answer: 'Yes! The Starter package includes up to 5 modifications, while the Premium package offers unlimited revisions until you\'re completely satisfied.'
+      }
+    ]
+  },
+  'branding': {
+    id: 'branding',
+    slug: 'branding',
+    title: 'Brand Identity',
+    subtitle: 'Build a cohesive brand that connects with your audience and drives growth',
+    description: 'We develop comprehensive brand identities that go beyond logos to create meaningful connections with your audience. Our strategic approach ensures your brand stands out in today\'s competitive market.',
+    processSteps: [
+      {
+        id: 'step1',
+        title: 'Brand Strategy',
+        description: 'We analyze your market position and develop a strategic foundation for your brand',
+        icon: 'Target'
+      },
+      {
+        id: 'step2',
+        title: 'Visual Identity',
+        description: 'Our designers create a cohesive visual system that brings your brand to life',
+        icon: 'Eye'
+      },
+      {
+        id: 'step3',
+        title: 'Brand Guidelines',
+        description: 'We provide comprehensive guidelines to maintain consistency across all touchpoints',
+        icon: 'BookOpen'
+      }
+    ],
+    packages: servicePackages['branding'],
+    features: [
+      {
+        id: 'f1',
+        title: 'Strategic Foundation',
+        description: 'Every brand identity starts with a solid strategic foundation based on research and insights',
+        icon: 'Lightbulb'
+      },
+      {
+        id: 'f2',
+        title: 'Comprehensive System',
+        description: 'Complete visual identity system including logos, colors, typography, and guidelines',
+        icon: 'Layers'
+      },
+      {
+        id: 'f3',
+        title: 'Long-term Support',
+        description: 'Ongoing support to ensure your brand evolves and grows with your business',
+        icon: 'Headphones'
+      }
+    ],
+    faqs: [
+      {
+        id: 'faq1',
+        question: 'What\'s included in a brand identity package?',
+        answer: 'Our packages include logo design, color palette, typography system, business collateral, and comprehensive brand guidelines. The Complete package also includes brand strategy and positioning.'
+      },
+      {
+        id: 'faq2',
+        question: 'How long does the process take?',
+        answer: 'The Essential package takes 5-7 working days, while the Complete package takes 7-10 working days. We\'ll provide a detailed timeline at the start of your project.'
+      },
+      {
+        id: 'faq3',
+        question: 'Do you provide ongoing support?',
+        answer: 'Yes! The Complete package includes 3 months of brand support, and we\'re always available for questions and guidance.'
+      }
+    ]
+  },
+  'motion-video': {
+    id: 'motion-video',
+    slug: 'motion-video',
+    title: 'Motion Video',
+    subtitle: 'Bring your brand to life with engaging motion graphics and animations',
+    description: 'We create captivating motion videos that tell your story and engage your audience. From simple animations to complex visual effects, we bring your ideas to life with professional quality and creative flair.',
+    processSteps: [
+      {
+        id: 'step1',
+        title: 'Concept & Storyboard',
+        description: 'We develop the concept and create a detailed storyboard to visualize your video',
+        icon: 'Film'
+      },
+      {
+        id: 'step2',
+        title: 'Animation & Production',
+        description: 'Our animators bring the storyboard to life with smooth animations and visual effects',
+        icon: 'Play'
+      },
+      {
+        id: 'step3',
+        title: 'Review & Delivery',
+        description: 'We refine the video based on your feedback and deliver in multiple formats',
+        icon: 'Download'
+      }
+    ],
+    packages: servicePackages['motion-video'],
+    features: [
+      {
+        id: 'f1',
+        title: 'Creative Storytelling',
+        description: 'We craft compelling narratives that engage your audience and convey your message effectively',
+        icon: 'MessageSquare'
+      },
+      {
+        id: 'f2',
+        title: 'Professional Quality',
+        description: 'High-quality animations and effects that meet industry standards and exceed expectations',
+        icon: 'Award'
+      },
+      {
+        id: 'f3',
+        title: 'Multiple Formats',
+        description: 'Videos optimized for different platforms and delivered in various formats for maximum reach',
+        icon: 'Smartphone'
+      }
+    ],
+    faqs: [
+      {
+        id: 'faq1',
+        question: 'What video lengths do you offer?',
+        answer: 'Our Basic package includes 30-second videos, while the Premium package offers 60-second videos. We can also create custom lengths based on your specific needs.'
+      },
+      {
+        id: 'faq2',
+        question: 'What quality can I expect?',
+        answer: 'Basic packages deliver HD quality (1920x1080), while Premium packages include 4K quality (3840x2160). All videos are optimized for web and social media.'
+      },
+      {
+        id: 'faq3',
+        question: 'Do you provide music and sound effects?',
+        answer: 'Yes! All packages include background music. Premium packages also include custom music composition and sound effects to enhance your video.'
+      }
+    ]
+  }
+};
+
+// Function to get service page data by slug
+export function getServicePageData(slug: string): ServicePageData | undefined {
+  return servicePagesData[slug];
+}
+
+// Function to get all service slugs
+export function getAllServiceSlugs(): string[] {
+  return Object.keys(servicePagesData);
+} 
