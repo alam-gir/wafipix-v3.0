@@ -8,6 +8,7 @@ interface DesktopNavigationItemsProps {
   activeMenuItem: string | null;
   onMouseEnter: (itemId: string) => void;
   onMouseLeave: () => void;
+  onServiceClick?: (item: typeof navigation[0]) => void;
 }
 
 export function DesktopNavigationItems({ 
@@ -16,6 +17,7 @@ export function DesktopNavigationItems({
   activeMenuItem,
   onMouseEnter,
   onMouseLeave,
+  onServiceClick,
 }: DesktopNavigationItemsProps) {
   return (
     <div className={cn(
@@ -31,6 +33,7 @@ export function DesktopNavigationItems({
             isActive={activeMenuItem === item.id}
             onMouseEnter={() => onMouseEnter(item.id)}
             onMouseLeave={onMouseLeave}
+            onClick={() => onServiceClick && onServiceClick(item)}
           />
         </div>
       ))}

@@ -7,20 +7,21 @@ import {
 import { notFound } from 'next/navigation';
 
 interface ServicePageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
-export default function ServicePage({ params }: ServicePageProps) {
-  const service = getServicePageData(params.slug);
+export default async function ServicePage({ params }: ServicePageProps) {
+  const { slug } = await params;
+  const service = getServicePageData(slug);
 
   if (!service) {
     notFound();
   }
 
   return (
-    <div className="min-h-screen bg-background" key={params.slug}>
+    <div className="min-h-screen bg-background" key={slug}>
       <ServiceHero service={service} />
       <ServiceFeatures service={service} />
       <ServiceFAQ service={service} />

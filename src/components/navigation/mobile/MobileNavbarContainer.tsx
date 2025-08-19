@@ -45,8 +45,10 @@ export function MobileNavbarContainer({
         </div>
       </div>
 
-      {/* Submenu Panel */}
-      {children}
+      {/* Submenu Panel - Ensure proper positioning and visibility */}
+      <div className="relative z-10">
+        {children}
+      </div>
     </motion.nav>
   );
 } 

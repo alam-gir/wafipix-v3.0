@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { navigation } from '@/lib/navigation';
 
@@ -6,7 +6,7 @@ export function useSubmenuManagement() {
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
   const [isSubmenuHovered, setIsSubmenuHovered] = useState(false);
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const submenuRef = useRef<HTMLDivElement>(null);
+  const submenuRef = useRef<HTMLDivElement | null>(null);
   const router = useRouter();
 
   // Handle mouse enter for menu items (desktop)
@@ -50,16 +50,36 @@ export function useSubmenuManagement() {
 
   // Handle item click (mobile)
   const handleItemClick = (item: typeof navigation[0]) => {
+    console.log('Mobile item click:', item.id, 'hasSubmenu:', item.hasSubmenu, 'current activeSubmenu:', activeSubmenu);
+    
     if (item.hasSubmenu) {
       // Toggle submenu
       if (activeSubmenu === item.id) {
+        console.log('Closing submenu for:', item.id);
         setActiveSubmenu(null);
       } else {
-        setActiveSubmenu(item.id);
+        console.log('Opening submenu for:', item.id);
+        // Close any other open submenu first
+        setActiveSubmenu(null);
+        // Small delay to ensure smooth transition
+        setTimeout(() => {
+          setActiveSubmenu(item.id);
+          console.log('Set active submenu to:', item.id);
+        }, 50);
       }
     } else {
       // Navigate to page using Next.js router
+      console.log('Navigating to:', item.href);
       setActiveSubmenu(null);
+      router.push(item.href);
+    }
+  };
+
+  // Handle service button click (both mobile and desktop)
+  const handleServiceClick = (item: typeof navigation[0]) => {
+    if (item.hasSubmenu && item.href) {
+      // Navigate to the services page
+      console.log('Service click - navigating to:', item.href);
       router.push(item.href);
     }
   };
@@ -81,27 +101,44 @@ export function useSubmenuManagement() {
     }
   };
 
-  // Close submenu
-  const handleSubmenuClose = () => {
+  // Close submenu - memoized to prevent dependency issues
+  const handleSubmenuClose = useCallback(() => {
+    console.log('Closing submenu');
     setActiveSubmenu(null);
     setIsSubmenuHovered(false);
-  };
+  }, []);
 
-  // Close submenu when clicking outside (mobile)
+  // Close submenu when clicking outside (mobile) - simplified
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (submenuRef.current && !submenuRef.current.contains(event.target as Node)) {
-        handleSubmenuClose();
+      if (activeSubmenu && submenuRef.current) {
+        const target = event.target as Element;
+        const isInsideSubmenu = submenuRef.current.contains(target);
+        const isNavItem = target.closest('[data-nav-item]');
+        
+        if (!isInsideSubmenu && !isNavItem) {
+          console.log('Click outside detected, closing submenu');
+          handleSubmenuClose();
+        }
       }
     };
 
     if (activeSubmenu) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
+      // Add a small delay to prevent immediate closure
+      const timeoutId = setTimeout(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+      }, 100);
 
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
+      return () => {
+        clearTimeout(timeoutId);
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }
+  }, [activeSubmenu, handleSubmenuClose]);
+
+  // Debug effect
+  useEffect(() => {
+    console.log('Active submenu changed to:', activeSubmenu);
   }, [activeSubmenu]);
 
   // Get active submenu data
@@ -126,6 +163,9 @@ export function useSubmenuManagement() {
     handleItemClick,
     handleSubmenuItemClick,
     handleSubmenuClose,
+    
+    // Service click handler
+    handleServiceClick,
     
     // Computed values
     isSubmenuOpen: !!activeSubmenu,

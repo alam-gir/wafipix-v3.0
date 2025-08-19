@@ -2,6 +2,7 @@ import { cn } from '@/lib/utils';
 import { DesktopLogoSection } from './DesktopLogoSection';
 import { DesktopNavigationItems } from './DesktopNavigationItems';
 import { DesktopCTASection } from './DesktopCTASection';
+import { navigation } from '@/lib/navigation';
 
 interface DesktopNavbarContentProps {
   isScrolled: boolean;
@@ -9,6 +10,7 @@ interface DesktopNavbarContentProps {
   activeMenuItem: string | null;
   onMouseEnter: (itemId: string) => void;
   onMouseLeave: () => void;
+  onServiceClick?: (item: typeof navigation[0]) => void;
 }
 
 export function DesktopNavbarContent({ 
@@ -17,6 +19,7 @@ export function DesktopNavbarContent({
   activeMenuItem,
   onMouseEnter,
   onMouseLeave,
+  onServiceClick,
 }: DesktopNavbarContentProps) {
   return (
     <div className={cn(
@@ -31,6 +34,7 @@ export function DesktopNavbarContent({
         activeMenuItem={activeMenuItem}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
+        onServiceClick={onServiceClick}
       />
       
       <DesktopCTASection isScrolled={isScrolled} />

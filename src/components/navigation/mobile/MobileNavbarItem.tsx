@@ -31,6 +31,7 @@ export function MobileNavbarItem({ item, isActive, onClick }: MobileNavbarItemPr
       className="relative"
       whileTap={{ scale: 0.9 }}
       transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+      data-nav-item
     >
       <button
         onClick={onClick}
@@ -40,6 +41,7 @@ export function MobileNavbarItem({ item, isActive, onClick }: MobileNavbarItemPr
             ? 'text-primary bg-primary/10'
             : 'text-muted-foreground hover:text-foreground'
         )}
+        data-nav-item
       >
         <IconComponent className="w-5 h-5" />
         <span className="text-xs font-medium">{item.title}</span>

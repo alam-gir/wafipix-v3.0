@@ -19,6 +19,7 @@ export default function DesktopNavbar() {
     handleMouseLeave,
     handleSubmenuMouseEnter,
     handleSubmenuMouseLeave,
+    handleServiceClick,
     hasActiveSubmenu,
   } = useSubmenuManagement();
 
@@ -35,6 +36,7 @@ export default function DesktopNavbar() {
             activeMenuItem={activeMenuItem}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onServiceClick={handleServiceClick}
           />
 
           <DesktopSubmenuSection

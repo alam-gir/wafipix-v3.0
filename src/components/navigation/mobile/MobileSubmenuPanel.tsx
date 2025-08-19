@@ -24,8 +24,13 @@ export const MobileSubmenuPanel = forwardRef<HTMLDivElement, MobileSubmenuPanelP
           animate={{ height: 'auto', opacity: 1, y: 0 }}
           exit={{ height: 0, opacity: 0, y: 20 }}
           transition={{ duration: 0.4, ease: 'easeOut' }}
+          style={{ 
+            maxHeight: '80vh',
+            minHeight: '200px', // Ensure minimum height for visibility
+            zIndex: 60 // Higher than the navbar z-index
+          }}
         >
-          <div className="p-4">
+          <div className="p-4 overflow-y-auto">
             <MobileSubmenuHeader onClose={onClose} />
             
             <MobileSubmenuCategories
@@ -33,7 +38,7 @@ export const MobileSubmenuPanel = forwardRef<HTMLDivElement, MobileSubmenuPanelP
               onSubmenuItemClick={onSubmenuItemClick}
             />
             
-            <MobileSubmenuCTA />
+            <MobileSubmenuCTA onClose={onClose} />
           </div>
         </motion.div>
       </AnimatePresence>

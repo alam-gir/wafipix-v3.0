@@ -28,8 +28,8 @@ export default function NavbarItem({
   const router = useRouter();
 
   const handleClick = () => {
-    // If item doesn't have submenu, navigate using Next.js router
-    if (!item.hasSubmenu && item.href) {
+    // Always navigate to the href if it exists (for both submenu and non-submenu items)
+    if (item.href) {
       router.push(item.href);
     }
     // If onClick prop is provided, call it

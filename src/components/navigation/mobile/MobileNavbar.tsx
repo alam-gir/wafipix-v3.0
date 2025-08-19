@@ -18,6 +18,14 @@ export default function MobileNavbar() {
     hasActiveSubmenu,
   } = useSubmenuManagement();
 
+  // Debug logging
+  console.log('MobileNavbar render:', {
+    activeSubmenu,
+    activeSubmenuData: !!activeSubmenuData,
+    hasActiveSubmenu,
+    activeMenuItem
+  });
+
   return (
     <>
       <MobileNavbarContainer
