@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import Link from "next/link";
 import { 
   ArrowRight, 
   Sparkles, 
@@ -98,21 +99,21 @@ export function FooterCTASection({ className }: FooterCTASectionProps) {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center w-full sm:w-auto mb-12">
                 <MagneticWrapper className="w-full sm:w-auto">
-                  <a 
+                  <Link 
                     href="/contact"
                     className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 font-semibold inline-flex items-center justify-center gap-2 hover:from-primary/90 hover:to-primary/70"
                   >
                     Start Your Project
                     <ArrowRight className="w-4 h-4" />
-                  </a>
+                  </Link>
                 </MagneticWrapper>
                 <MagneticWrapper className="w-full sm:w-auto">
-                  <a 
-                    href="/portfolio"
+                  <Link 
+                    href="/works"
                     className="w-full sm:w-auto px-8 py-4 bg-transparent text-white border-2 border-primary/50 rounded-xl hover:border-primary hover:bg-primary/10 transition-all duration-300 font-semibold inline-block text-center"
                   >
                     View Our Work
-                  </a>
+                  </Link>
                 </MagneticWrapper>
               </div>
 
