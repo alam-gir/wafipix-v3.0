@@ -6,6 +6,7 @@ import { Suspense } from 'react';
 import { Metadata } from 'next';
 import { cn } from '@/lib/utils';
 import { workCategoryMap } from '@/lib/demo-data';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Works — Wafipix',
@@ -28,8 +29,8 @@ function filterCards(filter: string | null): Array<WorkAsCard> {
   return worksAsCard.filter((c) => byCategory.includes(c.id));
 }
 
-function WorksPageContent({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
-  const f = typeof searchParams.filter === 'string' ? searchParams.filter : null;
+function WorksPageContent({ filter }: { filter: string | null }) {
+  const f = filter;
   const items = filterCards(f);
 
   // Basic pagination for demo
@@ -39,9 +40,7 @@ function WorksPageContent({ searchParams }: { searchParams: { [key: string]: str
 
   return (
     <main className={cn('container mx-auto px-4 md:px-6 py-10 md:py-14 space-y-8')}>
-      <section className="flex flex-col gap-6">
-        <h1 className="text-2xl md:text-4xl font-semibold tracking-tight">Work</h1>
-        <p className="text-muted-foreground max-w-2xl">Explore selected projects across brand, product and motion.</p>
+      <section className="flex flex-col gap-6 md:mt-12">
         <WorksFilterBar filters={workFilters} />
       </section>
 
@@ -53,10 +52,12 @@ function WorksPageContent({ searchParams }: { searchParams: { [key: string]: str
   );
 }
 
-export default function Page({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
+export default async function Page({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
+  const sp = await searchParams;
+  const f = typeof sp.filter === 'string' ? sp.filter : null;
   return (
     <Suspense>
-      <WorksPageContent searchParams={searchParams} />
+      <WorksPageContent filter={f} />
     </Suspense>
   );
 }

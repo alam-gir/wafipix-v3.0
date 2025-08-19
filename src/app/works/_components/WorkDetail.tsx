@@ -1,0 +1,80 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
+import OptimizedImage from '@/components/ui/OptimizedImage';
+import VideoPlayer from '@/components/ui/VideoPlayer';
+import type { Work } from '@/lib/demo-data';
+import { useRouter } from 'next/navigation';
+import { X } from 'lucide-react';
+
+interface WorkDetailProps {
+  work: Work;
+  onClose?: () => void;
+  isModal?: boolean;
+}
+
+export default function WorkDetail({ work, onClose, isModal = false }: WorkDetailProps) {
+  const router = useRouter();
+
+  const handleClose = () => {
+    if (onClose) {
+      onClose();
+    } else if (isModal) {
+      router.back();
+    }
+  };
+
+  return (
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 20 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
+      className={cn(
+        "grid grid-cols-1 lg:grid-cols-2 gap-8 p-6 md:p-10",
+        isModal && "bg-background rounded-2xl shadow-2xl border border-border/50 relative"
+      )}
+    >
+      {/* Close button for modal */}
+      {isModal && (
+        <button 
+          aria-label="Close modal" 
+          onClick={handleClose} 
+          className="absolute top-4 right-4 z-10 rounded-full bg-foreground/10 hover:bg-foreground/20 p-2 transition-colors"
+        >
+          <X className="w-5 h-5" />
+        </button>
+      )}
+
+      {/* Left column: text */}
+      <div className="space-y-6">
+        <div className="space-y-4">
+          <h1 className="text-3xl md:text-5xl font-semibold tracking-tight">{work.name}</h1>
+          <div className="text-sm text-muted-foreground bg-muted/30 px-3 py-1 rounded-full inline-block">
+            {work.service}
+          </div>
+        </div>
+        
+        {work.shortDescription && (
+          <p className="text-lg text-foreground/80 leading-relaxed">{work.shortDescription}</p>
+        )}
+        
+        {/* Richtext description (trusted HTML for demo) */}
+        <div className="prose prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: work.description }} />
+      </div>
+
+      {/* Right column: hero media */}
+      <div className="rounded-3xl overflow-hidden">
+        {work.coverVideoUrl ? (
+          <VideoPlayer videoSrc={work.coverVideoUrl} showControlsOverlay={false} />
+        ) : work.coverImageUrl ? (
+          <OptimizedImage src={work.coverImageUrl} alt={work.name} width={1400} height={900} className="w-full h-auto" />
+        ) : null}
+      </div>
+    </motion.div>
+  );
+}
+
+
+

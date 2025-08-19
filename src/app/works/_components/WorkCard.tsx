@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import OptimizedImage from '@/components/ui/OptimizedImage';
 import VideoPlayer from '@/components/ui/VideoPlayer';
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
 import type { WorkAsCard } from '@/lib/demo-data';
 import { useRef } from 'react';
 
@@ -23,7 +24,8 @@ export default function WorkCard({ item, className }: WorkCardProps) {
   const hasProfileVideo = Boolean(item.profileVideoUrl);
 
   return (
-    <div ref={containerRef} className={cn('relative overflow-hidden rounded-3xl isolate', className)}>
+    <Link href={`/works/${item.slug}`} className="block" scroll={false}>
+      <div ref={containerRef} className={cn('relative overflow-hidden rounded-3xl isolate', className)}>
       {/* Background cover (parallax) */}
       <motion.div style={{ y: yBg }} className="absolute inset-0 -z-10 will-change-transform">
         {hasCoverVideo ? (
@@ -59,7 +61,8 @@ export default function WorkCard({ item, className }: WorkCardProps) {
       <div className="absolute left-6 bottom-6 md:left-8 md:bottom-8 text-white drop-shadow-xl">
         <h3 className="text-xl md:text-2xl font-semibold">{item.name}</h3>
       </div>
-    </div>
+      </div>
+    </Link>
   );
 }
 
