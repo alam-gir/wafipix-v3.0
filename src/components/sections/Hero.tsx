@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Circle } from "lucide-react";
 import { SITE_CONSTANTS } from "@/lib/constants";
-import { AnimatedBackgroundWrapper } from "@/components/ui/AnimatedBackgroundWrapper";
+import { MeteorBackgroundWrapper } from "@/components/ui/MeteorBackgroundWrapper";
 import { GradualSpacing } from "@/components/ui/GradualSpacing";
 import MagneticWrapper from "@/components/ui/MagneticWrapper";
 import { Badge } from "@/components/ui/Badge";
@@ -20,12 +20,10 @@ export function Hero({ className }: HeroProps) {
   };
 
   return (
-    <AnimatedBackgroundWrapper
-      variant="geometric"
-      intensity="medium"
-      enableShapes={true}
-      enableGradient={true}
-      enableParticles={false}
+    <MeteorBackgroundWrapper
+      meteorCount={25}
+      meteorIntensity="medium"
+      enableMeteors={true}
       className={className}
     >
       <div className="flex items-center justify-center h-screen w-full">
@@ -93,6 +91,6 @@ export function Hero({ className }: HeroProps) {
           </div>
         </div>
       </div>
-    </AnimatedBackgroundWrapper>
+    </MeteorBackgroundWrapper>
   );
 } 

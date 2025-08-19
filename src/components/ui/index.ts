@@ -12,6 +12,11 @@ export { default as VideoControls } from "./VideoControls";
 export { default as VideoPlayer } from "./VideoPlayer";
 export { SectionHeader } from "./SectionHeader";
 
+// Meteor Animation Components
+export { Meteors } from "./meteors";
+export { MeteorBackgroundWrapper } from "./MeteorBackgroundWrapper";
+export { MeteorsDemo } from "./MeteorsDemo";
+
 // Error Page Components
 export { default as AnimatedBackground } from "./AnimatedBackground";
 export { default as AnimatedIcon } from "./AnimatedIcon";
