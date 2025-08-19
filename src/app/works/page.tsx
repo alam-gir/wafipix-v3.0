@@ -6,7 +6,6 @@ import { Suspense } from 'react';
 import { Metadata } from 'next';
 import { cn } from '@/lib/utils';
 import { workCategoryMap } from '@/lib/demo-data';
-import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Works — Wafipix',
