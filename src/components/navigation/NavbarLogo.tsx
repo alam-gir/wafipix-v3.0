@@ -15,7 +15,7 @@ export default function NavbarLogo({ isScrolled = false }: NavbarLogoProps) {
       transition={{ type: 'spring', stiffness: 400, damping: 10 }}
     >
       <h1 className={cn(
-        "font-bold text-foreground transition-all duration-300",
+        "font-bold text-primary transition-all duration-300",
         isScrolled ? "text-xl" : "text-2xl"
       )}>
         Wafipix

@@ -7,14 +7,14 @@ export function SubmenuCTASection() {
     <div className="hidden lg:block col-span-3 relative overflow-hidden h-full">
       {/* BackgroundGradientAnimation */}
       <BackgroundGradientAnimation
-        gradientBackgroundStart="rgb(108, 0, 162)"
-        gradientBackgroundEnd="rgb(0, 17, 82)"
-        firstColor="18, 113, 255"
-        secondColor="221, 74, 255"
-        thirdColor="100, 220, 255"
-        fourthColor="200, 50, 50"
-        fifthColor="180, 180, 50"
-        pointerColor="140, 100, 255"
+        gradientBackgroundStart="rgb(20, 83, 45)"
+        gradientBackgroundEnd="rgb(6, 78, 59)"
+        firstColor="34, 197, 94"
+        secondColor="22, 163, 74"
+        thirdColor="16, 185, 129"
+        fourthColor="5, 150, 105"
+        fifthColor="4, 120, 87"
+        pointerColor="34, 197, 94"
         size="60%"
         blendingValue="hard-light"
         interactive={true}
@@ -38,7 +38,7 @@ export function SubmenuCTASection() {
               transition={{ delay: 0.3, type: 'spring', stiffness: 200 }}
             >
               <svg
-                className="w-10 h-10 text-white"
+                className="w-10 h-10 text-primary"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -54,10 +54,10 @@ export function SubmenuCTASection() {
 
             {/* Enhanced Text Content */}
             <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-white tracking-tight">
+              <h3 className="text-2xl font-bold text-foreground tracking-tight">
                 Ready to Start?
               </h3>
-              <p className="text-white/80 text-sm leading-relaxed max-w-xs mx-auto">
+              <p className="text-muted-foreground text-sm leading-relaxed max-w-xs mx-auto">
                 Let&apos;s create something amazing together with cutting-edge
                 design and technology
               </p>
@@ -67,7 +67,7 @@ export function SubmenuCTASection() {
             <MagneticWrapper strength={0.3} attractArea={100}>
               <motion.a
                 href="/start-project"
-                className="px-10 py-4 bg-white/95 backdrop-blur-sm text-primary font-semibold rounded-xl hover:bg-white transition-all duration-300 shadow-xl hover:shadow-2xl border border-white/20 inline-block text-center"
+                className="px-10 py-4 bg-primary text-primary-foreground font-semibold rounded-xl hover:bg-primary/90 transition-all duration-300 shadow-xl hover:shadow-2xl border border-primary/20 inline-block text-center"
                 whileHover={{ scale: 1.05, y: -3 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, y: 10 }}

@@ -49,10 +49,10 @@ export default function NavbarItem({
           className={cn(
             "relative px-3 py-2 rounded-lg cursor-pointer transition-colors",
             isActive 
-              ? "text-primary bg-primary/10" 
+              ? "text-primary bg-primary/10 border border-primary/20" 
               : isHovered 
-                ? "text-primary" 
-                : "text-foreground hover:text-primary/80"
+                ? "text-primary bg-primary/5" 
+                : "text-foreground hover:text-primary/80 hover:bg-primary/5"
           )}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
