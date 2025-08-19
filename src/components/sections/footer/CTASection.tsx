@@ -12,11 +12,11 @@ import {
 } from "lucide-react";
 import MagneticWrapper from "@/components/ui/MagneticWrapper";
 
-interface AboutCTAProps {
+interface CTASectionProps {
   className?: string;
 }
 
-export function AboutCTA({ className }: AboutCTAProps) {
+export function CTASection({ className }: CTASectionProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 

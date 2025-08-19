@@ -4,4 +4,4 @@ export { AboutValues } from './AboutValues';
 export { AboutProcess } from './AboutProcess';
 export { AboutStats } from './AboutStats';
 export { AboutTeam } from './AboutTeam';
-export { AboutCTA } from './AboutCTA'; 
+export { CTASection } from '../../../components/sections/footer/CTASection'; 

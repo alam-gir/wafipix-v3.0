@@ -1,4 +1,3 @@
-import { AboutCTA } from "../about/_components";
 import {
   ContactForm,
 
@@ -14,7 +13,6 @@ export default function ContactPage() {
   return (
     <main className="min-h-screen">
       <ContactForm />
-      <AboutCTA />
     </main>
   );
 } 
