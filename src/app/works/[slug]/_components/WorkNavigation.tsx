@@ -25,10 +25,10 @@ export default function WorkNavigation({ currentWork, previousWork, nextWork }: 
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-center mb-12"
           >
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
               Explore More Work
             </h2>
-            <p className="text-muted-foreground">
+            <p className="text-primary/80">
               Discover our other creative projects and solutions
             </p>
           </motion.div>
@@ -47,7 +47,7 @@ export default function WorkNavigation({ currentWork, previousWork, nextWork }: 
                 className="group"
               >
                 <Link href={`/works/${previousWork.slug}`} className="block">
-                  <div className="relative p-6 rounded-xl border border-border hover:border-primary/50 transition-colors duration-300 bg-muted/30 hover:bg-muted/50">
+                  <div className="relative p-6 rounded-xl border border-border hover:border-primary/50 transition-colors duration-300 bg-card/30 hover:bg-card/50">
                     <div className="flex items-center gap-4">
                       <div className="flex-shrink-0">
                         <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
@@ -55,11 +55,11 @@ export default function WorkNavigation({ currentWork, previousWork, nextWork }: 
                         </div>
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm text-muted-foreground mb-1">Previous Project</p>
-                        <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors duration-300 truncate">
+                        <p className="text-sm text-primary/80 mb-1">Previous Project</p>
+                        <h3 className="font-semibold text-white group-hover:text-primary transition-colors duration-300 truncate">
                           {previousWork.name}
                         </h3>
-                        <p className="text-sm text-muted-foreground truncate">
+                        <p className="text-sm text-primary/80 truncate">
                           {previousWork.service}
                         </p>
                       </div>
@@ -80,14 +80,14 @@ export default function WorkNavigation({ currentWork, previousWork, nextWork }: 
                 className="group"
               >
                 <Link href={`/works/${nextWork.slug}`} className="block">
-                  <div className="relative p-6 rounded-xl border border-border hover:border-primary/50 transition-colors duration-300 bg-muted/30 hover:bg-muted/50">
+                  <div className="relative p-6 rounded-xl border border-border hover:border-primary/50 transition-colors duration-300 bg-card/30 hover:bg-card/50">
                     <div className="flex items-center gap-4">
                       <div className="flex-1 min-w-0 text-right">
-                        <p className="text-sm text-muted-foreground mb-1">Next Project</p>
-                        <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors duration-300 truncate">
+                        <p className="text-sm text-primary/80 mb-1">Next Project</p>
+                        <h3 className="font-semibold text-white group-hover:text-primary transition-colors duration-300 truncate">
                           {nextWork.name}
                         </h3>
-                        <p className="text-sm text-muted-foreground truncate">
+                        <p className="text-sm text-primary/80 truncate">
                           {nextWork.service}
                         </p>
                       </div>
@@ -112,7 +112,7 @@ export default function WorkNavigation({ currentWork, previousWork, nextWork }: 
                 className="md:col-span-2"
               >
                 <Link href={`/works/${nextWork.slug}`} className="block">
-                  <div className="relative p-6 rounded-xl border border-border hover:border-primary/50 transition-colors duration-300 bg-muted/30 hover:bg-muted/50 text-center">
+                  <div className="relative p-6 rounded-xl border border-border hover:border-primary/50 transition-colors duration-300 bg-card/30 hover:bg-card/50 text-center">
                     <div className="flex items-center justify-center gap-4">
                       <div className="flex-shrink-0">
                         <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
@@ -120,11 +120,11 @@ export default function WorkNavigation({ currentWork, previousWork, nextWork }: 
                         </div>
                       </div>
                       <div>
-                        <p className="text-sm text-muted-foreground mb-1">Next Project</p>
-                        <h3 className="font-semibold text-foreground hover:text-primary transition-colors duration-300">
+                        <p className="text-sm text-primary/80 mb-1">Next Project</p>
+                        <h3 className="font-semibold text-white hover:text-primary transition-colors duration-300">
                           {nextWork.name}
                         </h3>
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-sm text-primary/80">
                           {nextWork.service}
                         </p>
                       </div>
@@ -143,14 +143,14 @@ export default function WorkNavigation({ currentWork, previousWork, nextWork }: 
                 className="md:col-span-2"
               >
                 <Link href={`/works/${previousWork.slug}`} className="block">
-                  <div className="relative p-6 rounded-xl border border-border hover:border-primary/50 transition-colors duration-300 bg-muted/30 hover:bg-muted/50 text-center">
+                  <div className="relative p-6 rounded-xl border border-border hover:border-primary/50 transition-colors duration-300 bg-card/30 hover:bg-card/50 text-center">
                     <div className="flex items-center justify-center gap-4">
                       <div>
-                        <p className="text-sm text-muted-foreground mb-1">Previous Project</p>
-                        <h3 className="font-semibold text-foreground hover:text-primary transition-colors duration-300">
+                        <p className="text-sm text-primary/80 mb-1">Previous Project</p>
+                        <h3 className="font-semibold text-white hover:text-primary transition-colors duration-300">
                           {previousWork.name}
                         </h3>
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-sm text-primary/80">
                           {previousWork.service}
                         </p>
                       </div>
@@ -176,7 +176,7 @@ export default function WorkNavigation({ currentWork, previousWork, nextWork }: 
           >
             <Link 
               href="/works" 
-              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300"
+              className="inline-flex items-center gap-2 text-primary/80 hover:text-white transition-colors duration-300"
             >
               <ChevronLeft className="w-4 h-4" />
               <span>Back to All Works</span>

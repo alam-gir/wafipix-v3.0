@@ -41,7 +41,7 @@ const StatCard = ({ icon: Icon, value, suffix, label, color, delay }: StatCardPr
       <div className="bg-card/50 backdrop-blur-sm border border-border/20 rounded-2xl p-8 text-center hover:bg-card/80 transition-all duration-500 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-2">
         {/* Icon */}
         <div className={`w-16 h-16 ${color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300`}>
-          <Icon className="w-8 h-8 text-white" />
+          <Icon className="w-8 h-8 text-primary-foreground" />
         </div>
 
                  {/* Value */}
@@ -49,14 +49,14 @@ const StatCard = ({ icon: Icon, value, suffix, label, color, delay }: StatCardPr
            <div className="flex items-center justify-center gap-1">
              <AnimatedCounter
                end={value}
-               className="text-4xl md:text-5xl font-bold text-foreground"
+               className="text-4xl md:text-5xl font-bold text-white"
              />
              <span className="text-2xl md:text-3xl font-bold text-primary">{suffix}</span>
            </div>
          </div>
 
         {/* Label */}
-        <div className="text-muted-foreground font-medium">
+        <div className="text-primary/80 font-medium">
           {label}
         </div>
 
@@ -89,35 +89,35 @@ export function AboutStats({ className }: AboutStatsProps) {
       value: 200,
       suffix: "+",
       label: "Happy Clients",
-      color: "bg-green-500/10",
+      color: "bg-primary/10",
     },
     {
       icon: Globe,
       value: 25,
       suffix: "+",
       label: "Countries Served",
-      color: "bg-blue-500/10",
+      color: "bg-primary/10",
     },
     {
       icon: Award,
       value: 15,
       suffix: "+",
       label: "Industry Awards",
-      color: "bg-yellow-500/10",
+      color: "bg-primary/10",
     },
     {
       icon: Coffee,
       value: 1000,
       suffix: "+",
       label: "Cups of Coffee",
-      color: "bg-orange-500/10",
+      color: "bg-primary/10",
     },
     {
       icon: Star,
       value: 98,
       suffix: "%",
       label: "Client Satisfaction",
-      color: "bg-purple-500/10",
+      color: "bg-primary/10",
     },
   ];
 
@@ -137,10 +137,10 @@ export function AboutStats({ className }: AboutStatsProps) {
               <TrendingUp className="w-4 h-4" />
               Our Impact
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
               Numbers That Tell Our Story
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-primary/80 max-w-3xl mx-auto leading-relaxed">
               These aren&apos;t just statistics—they represent real relationships, 
               successful projects, and the trust our clients place in us every day.
             </p>
@@ -169,25 +169,25 @@ export function AboutStats({ className }: AboutStatsProps) {
             transition={{ delay: 0.8 }}
             className="mt-16 text-center"
           >
-            <div className="bg-gradient-to-r from-primary/10 to-purple-500/10 rounded-2xl p-8 md:p-12 border border-primary/20">
-              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+            <div className="bg-gradient-to-r from-primary/10 to-primary/10 rounded-2xl p-8 md:p-12 border border-primary/20">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
                 Trusted by Industry Leaders
               </h3>
-              <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+              <p className="text-primary/80 mb-6 max-w-2xl mx-auto">
                 From startups to Fortune 500 companies, we&apos;ve helped businesses of all sizes 
                 achieve their digital goals and exceed their expectations.
               </p>
-              <div className="flex flex-wrap justify-center gap-8 text-sm text-muted-foreground">
+              <div className="flex flex-wrap justify-center gap-8 text-sm text-primary/80">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
                   <span>4+ Years of Excellence</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <div className="w-2 h-2 bg-primary/80 rounded-full"></div>
                   <span>100% Project Success Rate</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                  <div className="w-2 h-2 bg-primary/60 rounded-full"></div>
                   <span>24/7 Support Available</span>
                 </div>
               </div>

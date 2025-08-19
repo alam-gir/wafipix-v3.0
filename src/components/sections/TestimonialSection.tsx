@@ -40,7 +40,7 @@ export function TestimonialSection({ className }: TestimonialSectionProps) {
       company: "TechFlow",
       rating: 5,
       avatar: "SJ",
-      color: "from-blue-500 to-cyan-500",
+      color: "from-primary to-primary/80",
     },
     {
       quote: "Working with Wafipix was like having a creative partner who truly understood our business. They didn't just design a website – they crafted an experience that our customers love.",
@@ -49,7 +49,7 @@ export function TestimonialSection({ className }: TestimonialSectionProps) {
       company: "GreenEats",
       rating: 5,
       avatar: "MC",
-      color: "from-green-500 to-emerald-500",
+      color: "from-primary/80 to-primary/60",
     },
     {
       quote: "The team at Wafipix delivered beyond our wildest dreams. Their strategic approach to design and development resulted in a digital presence that perfectly represents our brand values.",
@@ -58,7 +58,7 @@ export function TestimonialSection({ className }: TestimonialSectionProps) {
       company: "LuxeStyle",
       rating: 5,
       avatar: "ER",
-      color: "from-purple-500 to-pink-500",
+      color: "from-primary/60 to-primary/40",
     },
     {
       quote: "Incredible attention to detail and innovative solutions. Wafipix didn't just meet our requirements – they anticipated our needs and delivered a solution that exceeded expectations.",
@@ -67,7 +67,7 @@ export function TestimonialSection({ className }: TestimonialSectionProps) {
       company: "InnovateTech",
       rating: 5,
       avatar: "DK",
-      color: "from-orange-500 to-red-500",
+      color: "from-primary/40 to-primary/20",
     },
     {
       quote: "The transformation was remarkable. From concept to launch, Wafipix guided us through every step with professionalism and creativity. Our customers can't stop raving about the new experience.",
@@ -76,7 +76,7 @@ export function TestimonialSection({ className }: TestimonialSectionProps) {
       company: "GrowthCo",
       rating: 5,
       avatar: "LT",
-      color: "from-indigo-500 to-purple-500",
+      color: "from-primary/20 to-primary/10",
     },
   ];
 
@@ -97,7 +97,7 @@ export function TestimonialSection({ className }: TestimonialSectionProps) {
         <div className="relative">
           {/* Background Elements */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-96 h-96 bg-gradient-to-r from-primary/5 to-purple-500/5 rounded-full blur-3xl" />
+            <div className="w-96 h-96 bg-gradient-to-r from-primary/5 to-primary/5 rounded-full blur-3xl" />
           </div>
 
           {/* Testimonials Stack */}
@@ -134,10 +134,10 @@ export function TestimonialSection({ className }: TestimonialSectionProps) {
                     className="group relative"
                   >
                     {/* Professional Card Design */}
-                    <div className="relative p-8 md:p-10 rounded-3xl bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 shadow-2xl shadow-black/10 dark:shadow-black/30 overflow-hidden">
+                    <div className="relative p-8 md:p-10 rounded-3xl bg-card/95 backdrop-blur-xl border border-border/50 shadow-2xl shadow-black/10 dark:shadow-black/30 overflow-hidden">
                       
                       {/* Subtle Background Pattern */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-gray-50/50 to-white/30 dark:from-gray-800/50 dark:to-gray-900/30" />
+                      <div className="absolute inset-0 bg-gradient-to-br from-card/50 to-card/30" />
                       
                       {/* Professional Border Accent */}
                       <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${testimonial.color} opacity-80`} />
@@ -158,14 +158,14 @@ export function TestimonialSection({ className }: TestimonialSectionProps) {
                           {[...Array(testimonial.rating)].map((_, i) => (
                             <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                           ))}
-                          <span className="ml-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                          <span className="ml-2 text-sm font-medium text-primary/80">
                             {testimonial.rating}.0 Rating
                           </span>
                         </motion.div>
 
                         {/* Professional Quote Styling */}
                         <motion.blockquote 
-                          className="text-lg md:text-xl text-gray-800 dark:text-gray-200 leading-relaxed mb-8 font-medium"
+                          className="text-lg md:text-xl text-white leading-relaxed mb-8 font-medium"
                           initial={{ opacity: 0, y: 20 }}
                           whileInView={{ opacity: 1, y: 0 }}
                           transition={{ delay: index * 0.1 + 0.2 }}
@@ -177,19 +177,19 @@ export function TestimonialSection({ className }: TestimonialSectionProps) {
 
                         {/* Professional Author Section */}
                         <motion.div 
-                          className="flex items-center gap-4 pt-6 border-t border-gray-200/50 dark:border-gray-700/50"
+                          className="flex items-center gap-4 pt-6 border-t border-border/50"
                           initial={{ opacity: 0, y: 20 }}
                           whileInView={{ opacity: 1, y: 0 }}
                           transition={{ delay: index * 0.1 + 0.4 }}
                         >
-                          <div className={`w-14 h-14 rounded-xl bg-gradient-to-r ${testimonial.color} flex items-center justify-center text-white font-bold text-lg shadow-lg ring-2 ring-white/20 dark:ring-gray-800/20`}>
+                          <div className={`w-14 h-14 rounded-xl bg-gradient-to-r ${testimonial.color} flex items-center justify-center text-primary-foreground font-bold text-lg shadow-lg ring-2 ring-white/20 dark:ring-gray-800/20`}>
                             {testimonial.avatar}
                           </div>
                           <div className="flex-1">
-                            <div className="font-bold text-gray-900 dark:text-gray-100 text-lg">
+                            <div className="font-bold text-white text-lg">
                               {testimonial.author}
                             </div>
-                            <div className="text-sm text-gray-600 dark:text-gray-400 font-medium">
+                            <div className="text-sm text-primary/80 font-medium">
                               {testimonial.position}
                             </div>
                             <div className="text-xs font-semibold text-primary uppercase tracking-wide">
@@ -197,8 +197,8 @@ export function TestimonialSection({ className }: TestimonialSectionProps) {
                             </div>
                           </div>
                           {/* Professional Verification Badge */}
-                          <div className="w-8 h-8 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center">
-                            <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                          <div className="w-8 h-8 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
+                            <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
                               <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                             </svg>
                           </div>

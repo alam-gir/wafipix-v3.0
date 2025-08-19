@@ -30,25 +30,25 @@ export function FeaturesGridSection({ className }: FeaturesGridSectionProps) {
       icon: Sparkles,
       title: "Creative Excellence",
       description: "Award-winning designs that captivate and convert",
-      color: "from-purple-500 to-pink-500",
+      color: "from-primary to-primary/80",
     },
     {
       icon: Zap,
       title: "Lightning Fast",
       description: "Rapid development without compromising quality",
-      color: "from-yellow-500 to-orange-500",
+      color: "from-primary/80 to-primary/60",
     },
     {
       icon: Target,
       title: "Results-Driven",
       description: "Every pixel optimized for maximum impact",
-      color: "from-blue-500 to-cyan-500",
+      color: "from-primary/60 to-primary/40",
     },
     {
       icon: Users,
       title: "Global Reach",
       description: "Serving clients across 50+ countries worldwide",
-      color: "from-green-500 to-emerald-500",
+      color: "from-primary/40 to-primary/20",
     },
   ];
 
@@ -77,12 +77,12 @@ export function FeaturesGridSection({ className }: FeaturesGridSectionProps) {
                   
                   <div className="relative z-10">
                     <div className={`w-14 h-14 rounded-2xl bg-gradient-to-r ${feature.color} p-3.5 mb-5 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center`}>
-                      <feature.icon className="w-7 h-7 text-white" />
+                      <feature.icon className="w-7 h-7 text-primary-foreground" />
                     </div>
-                    <h3 className="text-xl font-semibold mb-3 text-foreground">
+                    <h3 className="text-xl font-semibold mb-3 text-white">
                       {feature.title}
                     </h3>
-                    <p className="text-muted-foreground leading-relaxed text-sm">
+                    <p className="text-primary/80 leading-relaxed text-sm">
                       {feature.description}
                     </p>
                   </div>

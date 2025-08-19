@@ -42,14 +42,14 @@ const ValueCard = ({ icon: Icon, title, description, color, delay }: ValueCardPr
       <div className="bg-card/50 backdrop-blur-sm border border-border/20 rounded-2xl p-8 hover:bg-card/80 transition-all duration-500 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-2">
         {/* Icon */}
         <div className={`w-16 h-16 ${color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-          <Icon className="w-8 h-8 text-white" />
+          <Icon className="w-8 h-8 text-primary-foreground" />
         </div>
 
         {/* Content */}
-        <h3 className="text-xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
+        <h3 className="text-xl font-bold text-white mb-4 group-hover:text-primary transition-colors duration-300">
           {title}
         </h3>
-        <p className="text-muted-foreground leading-relaxed mb-6">
+        <p className="text-primary/80 leading-relaxed mb-6">
           {description}
         </p>
 
@@ -80,37 +80,37 @@ export function AboutValues({ className }: AboutValuesProps) {
       icon: Heart,
       title: "Passion-Driven",
       description: "We pour our hearts into every project, treating your vision as our own. Our passion for design and technology drives us to exceed expectations.",
-      color: "bg-red-500/10",
+      color: "bg-primary/10",
     },
     {
       icon: Zap,
       title: "Innovation First",
       description: "We stay ahead of the curve, embracing cutting-edge technologies and creative solutions that set your brand apart from the competition.",
-      color: "bg-yellow-500/10",
+      color: "bg-primary/10",
     },
     {
       icon: Target,
       title: "Results-Focused",
       description: "Every design decision is made with your business goals in mind. We create experiences that not only look great but drive measurable results.",
-      color: "bg-green-500/10",
+      color: "bg-primary/10",
     },
     {
       icon: Users,
       title: "Collaborative",
       description: "We believe the best results come from true partnership. We work closely with you throughout the entire process, ensuring your vision comes to life.",
-      color: "bg-blue-500/10",
+      color: "bg-primary/10",
     },
     {
       icon: Lightbulb,
       title: "Creative Excellence",
       description: "We push creative boundaries while maintaining strategic focus. Our designs are both beautiful and purposeful, delivering impact that lasts.",
-      color: "bg-purple-500/10",
+      color: "bg-primary/10",
     },
     {
       icon: Shield,
       title: "Trust & Reliability",
       description: "Your success is our success. We build lasting relationships based on trust, transparency, and consistent delivery of exceptional work.",
-      color: "bg-indigo-500/10",
+      color: "bg-primary/10",
     },
   ];
 
@@ -130,10 +130,10 @@ export function AboutValues({ className }: AboutValuesProps) {
               <Sparkles className="w-4 h-4" />
               Our Values
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
               What Drives Us Forward
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-primary/80 max-w-3xl mx-auto leading-relaxed">
               These core values guide every decision we make and every project we undertake. 
               They&apos;re not just words on a page—they&apos;re the foundation of our culture and success.
             </p>
@@ -161,17 +161,17 @@ export function AboutValues({ className }: AboutValuesProps) {
             transition={{ delay: 0.8 }}
             className="text-center mt-16"
           >
-            <div className="bg-gradient-to-r from-primary/10 to-purple-500/10 rounded-2xl p-8 md:p-12 border border-primary/20">
-              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+            <div className="bg-gradient-to-r from-primary/10 to-primary/10 rounded-2xl p-8 md:p-12 border border-primary/20">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
                 Ready to Work with a Values-Driven Team?
               </h3>
-              <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
+              <p className="text-primary/80 mb-8 max-w-2xl mx-auto">
                 Let&apos;s create something extraordinary together. Our values aren&apos;t just promises—they&apos;re our commitment to your success.
               </p>
               <MagneticWrapper>
                 <a 
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary to-purple-500 text-white rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 font-semibold"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 font-semibold hover:from-primary/90 hover:to-primary/70"
                 >
                   Start Your Project
                   <ArrowRight className="w-4 h-4" />

@@ -31,11 +31,10 @@ const FeatureCard = ({ icon: Icon, title, description, color, delay }: FeatureCa
   // Map colors to specific background colors
   const getIconBgColor = (color: string) => {
     if (color.includes('primary')) return 'bg-primary/60';
-    if (color.includes('green')) return 'bg-green-500/60';
-    if (color.includes('yellow')) return 'bg-yellow-500/60';
-    if (color.includes('blue')) return 'bg-blue-500/60';
-    if (color.includes('purple')) return 'bg-purple-500/60';
-    if (color.includes('red')) return 'bg-red-500/60';
+    if (color.includes('primary-80')) return 'bg-primary/80';
+    if (color.includes('primary-60')) return 'bg-primary/60';
+    if (color.includes('primary-40')) return 'bg-primary/40';
+    if (color.includes('primary-20')) return 'bg-primary/20';
     return 'bg-primary/60';
   };
 
@@ -50,14 +49,14 @@ const FeatureCard = ({ icon: Icon, title, description, color, delay }: FeatureCa
       <div className="bg-card/50 backdrop-blur-sm border border-border/20 rounded-2xl p-6 hover:bg-card/80 transition-all duration-500 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-2">
         {/* Icon */}
         <div className={`w-12 h-12 ${getIconBgColor(color)} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-          <Icon className="w-6 h-6 text-white" />
+          <Icon className="w-6 h-6 text-primary-foreground" />
         </div>
 
         {/* Content */}
-        <h3 className="text-lg font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
+        <h3 className="text-lg font-bold text-white mb-3 group-hover:text-primary transition-colors duration-300">
           {title}
         </h3>
-        <p className="text-muted-foreground leading-relaxed text-sm">
+        <p className="text-primary/80 leading-relaxed text-sm">
           {description}
         </p>
 
@@ -98,31 +97,31 @@ function WhyChooseUsSection({ className }: WhyChooseUsSectionProps) {
       icon: Users,
       title: "Expert Team",
       description: "Dedicated professionals with diverse skills in design, development, and strategy.",
-      color: "bg-green-500/20",
+      color: "bg-primary/20",
     },
     {
       icon: Zap,
       title: "Innovation First",
       description: "Cutting-edge technologies and creative solutions that set your brand apart.",
-      color: "bg-yellow-500/20",
+      color: "bg-primary/20",
     },
     {
       icon: Shield,
       title: "Trust & Reliability",
       description: "100% client satisfaction rate with transparent processes and ongoing support.",
-      color: "bg-blue-500/20",
+      color: "bg-primary/20",
     },
     {
       icon: Clock,
       title: "On-Time Delivery",
       description: "Consistent project delivery within agreed timelines and budget constraints.",
-      color: "bg-purple-500/20",
+      color: "bg-primary/20",
     },
     {
       icon: Heart,
       title: "Passion-Driven",
       description: "We treat every project with care and dedication, ensuring exceptional quality.",
-      color: "bg-red-500/20",
+      color: "bg-primary/20",
     },
   ];
 
@@ -142,10 +141,10 @@ function WhyChooseUsSection({ className }: WhyChooseUsSectionProps) {
               <Sparkles className="w-4 h-4" />
               Why Choose Us
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
               The Wafipix Difference
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-primary/80 max-w-3xl mx-auto leading-relaxed">
                              We don&apos;t just build websites—we create digital experiences that drive results. 
               Our unique approach combines creativity, technology, and strategy to deliver 
               exceptional outcomes for our clients.

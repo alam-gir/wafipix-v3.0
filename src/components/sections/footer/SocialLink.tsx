@@ -14,7 +14,7 @@ export function SocialLink({ social, index }: SocialLinkProps) {
       href={social.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="px-3 py-1.5 rounded-lg hover:bg-muted/50 transition-all duration-300 text-muted-foreground hover:text-foreground border border-transparent hover:border-muted-foreground/20"
+      className="px-3 py-1.5 rounded-lg hover:bg-primary/10 transition-all duration-300 text-primary/80 hover:text-white border border-transparent hover:border-primary/20"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{

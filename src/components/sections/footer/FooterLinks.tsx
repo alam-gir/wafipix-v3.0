@@ -13,7 +13,7 @@ export function FooterLinks() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-        className="hidden md:flex justify-between items-center gap-4 text-sm text-muted-foreground"
+        className="hidden md:flex justify-between items-center gap-4 text-sm text-primary/80"
       >
         {/* Left Section - Copyright & Legal */}
         <div className="flex items-center gap-4">
@@ -21,14 +21,14 @@ export function FooterLinks() {
           <span>•</span>
           <a 
             href="/privacy" 
-            className="hover:text-foreground transition-colors duration-200"
+            className="hover:text-white transition-colors duration-200"
           >
             Privacy Policy
           </a>
           <span>•</span>
           <a 
             href="/terms" 
-            className="hover:text-foreground transition-colors duration-200"
+            className="hover:text-white transition-colors duration-200"
           >
             Terms & Conditions
           </a>
@@ -57,19 +57,19 @@ export function FooterLinks() {
         </div>
 
         {/* Copyright & Legal - Mobile */}
-        <div className="flex flex-col items-center gap-2 text-sm text-muted-foreground">
+        <div className="flex flex-col items-center gap-2 text-sm text-primary/80">
           <span>© {new Date().getFullYear()} {SITE_CONSTANTS.COMPANY.NAME}</span>
           <div className="flex items-center gap-4">
             <a 
               href="/privacy" 
-              className="hover:text-foreground transition-colors duration-200"
+              className="hover:text-white transition-colors duration-200"
             >
               Privacy
             </a>
             <span>•</span>
             <a 
               href="/terms" 
-              className="hover:text-foreground transition-colors duration-200"
+              className="hover:text-white transition-colors duration-200"
             >
               Terms
             </a>

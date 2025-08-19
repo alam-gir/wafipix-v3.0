@@ -51,7 +51,7 @@ export function AboutHero({ className }: AboutHeroProps) {
                   text="Crafting Digital Excellence Since 2020"
                   duration={1.5}
                   delayMultiple={0.1}
-                  className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-b from-foreground to-muted-foreground"
+                  className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-tight text-white"
                 />
               </div>
 
@@ -63,7 +63,7 @@ export function AboutHero({ className }: AboutHeroProps) {
                 transition={{ duration: 1, delay: 0.8 }}
                 className="mb-12"
               >
-                <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground leading-relaxed font-light tracking-wide max-w-4xl mx-auto">
+                <p className="text-lg sm:text-xl md:text-2xl text-primary/80 leading-relaxed font-light tracking-wide max-w-4xl mx-auto">
                   We are a passionate team of designers, developers, and strategists 
                   dedicated to transforming ideas into extraordinary digital experiences 
                   that inspire, engage, and drive results.
@@ -81,7 +81,7 @@ export function AboutHero({ className }: AboutHeroProps) {
                 <MagneticWrapper className="w-full sm:w-auto">
                   <a 
                     href="/contact"
-                    className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-primary to-purple-500 text-white rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 font-semibold inline-block text-center"
+                    className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 font-semibold inline-block text-center hover:from-primary/90 hover:to-primary/70"
                   >
                     Start Your Project
                   </a>
@@ -89,7 +89,7 @@ export function AboutHero({ className }: AboutHeroProps) {
                 <MagneticWrapper className="w-full sm:w-auto">
                   <a 
                     href="/portfolio"
-                    className="w-full sm:w-auto px-8 py-4 bg-transparent text-foreground border-2 border-border rounded-xl hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 font-semibold inline-block text-center"
+                    className="w-full sm:w-auto px-8 py-4 bg-transparent text-white border-2 border-primary/50 rounded-xl hover:border-primary hover:bg-primary/10 transition-all duration-300 font-semibold inline-block text-center"
                   >
                     View Our Work
                   </a>

@@ -12,11 +12,11 @@ import {
 } from "lucide-react";
 import MagneticWrapper from "@/components/ui/MagneticWrapper";
 
-interface CTASectionProps {
+interface FooterCTASectionProps {
   className?: string;
 }
 
-export function CTASection({ className }: CTASectionProps) {
+export function FooterCTASection({ className }: FooterCTASectionProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -42,8 +42,8 @@ export function CTASection({ className }: CTASectionProps) {
       description: "Speak directly with our team",
       action: "+88 01705-097013",
       href: "tel:+8801705097013",
-      color: "bg-green-500/10",
-      iconColor: "text-green-500",
+      color: "bg-primary/10",
+      iconColor: "text-primary",
     },
     {
       icon: Mail,
@@ -51,8 +51,8 @@ export function CTASection({ className }: CTASectionProps) {
       description: "Send us a detailed message",
       action: "info@wafipix.com",
       href: "mailto:info@wafipix.com",
-      color: "bg-blue-500/10",
-      iconColor: "text-blue-500",
+      color: "bg-primary/10",
+      iconColor: "text-primary",
     },
     {
       icon: Calendar,
@@ -60,8 +60,8 @@ export function CTASection({ className }: CTASectionProps) {
       description: "Book a consultation meeting",
       action: "Book Now",
       href: "https://calendly.com/wafipix1",
-      color: "bg-purple-500/10",
-      iconColor: "text-purple-500",
+      color: "bg-primary/10",
+      iconColor: "text-primary",
     },
   ];
 
@@ -77,7 +77,7 @@ export function CTASection({ className }: CTASectionProps) {
             animate={isInView ? "visible" : "hidden"}
             className="text-center mb-16"
           >
-            <div className="bg-gradient-to-r from-primary/10 to-purple-500/10 rounded-3xl p-8 md:p-16 border border-primary/20">
+            <div className="bg-gradient-to-r from-primary/10 to-primary/10 rounded-3xl p-8 md:p-16 border border-primary/20">
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium border border-primary/20 mb-6">
                 <Sparkles className="w-4 h-4" />
@@ -85,13 +85,13 @@ export function CTASection({ className }: CTASectionProps) {
               </div>
 
               {/* Main Heading */}
-              <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
                 {"Let's Create Something"}
-                <span className="bg-gradient-to-r from-primary to-purple-500 bg-clip-text text-transparent"> Extraordinary</span>
+                <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent"> Extraordinary</span>
               </h2>
 
               {/* Description */}
-              <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-lg md:text-xl text-primary/80 mb-8 max-w-3xl mx-auto leading-relaxed">
                 {"Ready to transform your digital presence? We're here to help you bring your vision to life. Let's discuss your project and explore how we can create something amazing together."}
               </p>
 
@@ -100,7 +100,7 @@ export function CTASection({ className }: CTASectionProps) {
                 <MagneticWrapper className="w-full sm:w-auto">
                   <a 
                     href="/contact"
-                    className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-primary to-purple-500 text-white rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 font-semibold inline-flex items-center justify-center gap-2"
+                    className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 font-semibold inline-flex items-center justify-center gap-2 hover:from-primary/90 hover:to-primary/70"
                   >
                     Start Your Project
                     <ArrowRight className="w-4 h-4" />
@@ -109,7 +109,7 @@ export function CTASection({ className }: CTASectionProps) {
                 <MagneticWrapper className="w-full sm:w-auto">
                   <a 
                     href="/portfolio"
-                    className="w-full sm:w-auto px-8 py-4 bg-transparent text-foreground border-2 border-border rounded-xl hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 font-semibold inline-block text-center"
+                    className="w-full sm:w-auto px-8 py-4 bg-transparent text-white border-2 border-primary/50 rounded-xl hover:border-primary hover:bg-primary/10 transition-all duration-300 font-semibold inline-block text-center"
                   >
                     View Our Work
                   </a>
@@ -117,17 +117,17 @@ export function CTASection({ className }: CTASectionProps) {
               </div>
 
               {/* Trust Indicators */}
-              <div className="flex flex-wrap justify-center gap-8 text-sm text-muted-foreground">
+              <div className="flex flex-wrap justify-center gap-8 text-sm text-primary/80">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
                   <span>Free Consultation</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <div className="w-2 h-2 bg-primary/80 rounded-full"></div>
                   <span>No Commitment Required</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                  <div className="w-2 h-2 bg-primary/60 rounded-full"></div>
                   <span>Response within 24h</span>
                 </div>
               </div>
@@ -154,10 +154,10 @@ export function CTASection({ className }: CTASectionProps) {
                   </div>
 
                   {/* Content */}
-                  <h3 className="text-xl font-bold text-foreground mb-2">
+                  <h3 className="text-xl font-bold text-white mb-2">
                     {method.title}
                   </h3>
-                  <p className="text-muted-foreground mb-6">
+                  <p className="text-primary/80 mb-6">
                     {method.description}
                   </p>
 

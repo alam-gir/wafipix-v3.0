@@ -59,13 +59,13 @@ export function SectionHeader({
         variants={fadeUpVariants}
         className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight tracking-tight"
       >
-        <span className="bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent">
+        <span className="text-white">
           {title}
         </span>
         {subtitle && (
           <>
             <br />
-            <span className="bg-gradient-to-r from-gray-900 via-primary to-purple-500 dark:from-white dark:via-primary dark:to-purple-400 bg-clip-text text-transparent">
+            <span className="text-primary">
               {subtitle}
             </span>
           </>
@@ -75,7 +75,7 @@ export function SectionHeader({
       {description && (
         <motion.p
           variants={fadeUpVariants}
-          className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
+          className="text-lg md:text-xl text-primary/80 max-w-3xl mx-auto leading-relaxed"
         >
           {description}
         </motion.p>

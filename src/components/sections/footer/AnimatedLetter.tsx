@@ -62,7 +62,7 @@ export function AnimatedLetter({ letter, index }: AnimatedLetterProps) {
     >
       {/* Main Letter */}
       <motion.div
-        className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-[0.15em] text-muted-foreground/50 select-none uppercase"
+        className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-[0.15em] text-primary/50 select-none uppercase"
         style={{
           rotateX: springRotateX,
           rotateY: springRotateY,
@@ -71,9 +71,9 @@ export function AnimatedLetter({ letter, index }: AnimatedLetterProps) {
         }}
         animate={{
           textShadow: isHovered 
-            ? "0 0 40px rgba(139, 92, 246, 0.5), 0 0 80px rgba(139, 92, 246, 0.3), 0 0 120px rgba(139, 92, 246, 0.1)"
-            : "0 0 0px rgba(139, 92, 246, 0)",
-          color: isHovered ? "hsl(var(--foreground))" : "hsl(var(--muted-foreground) / 0.5)",
+            ? "0 0 40px rgba(74, 222, 128, 0.5), 0 0 80px rgba(74, 222, 128, 0.3), 0 0 120px rgba(74, 222, 128, 0.1)"
+            : "0 0 0px rgba(74, 222, 128, 0)",
+          color: isHovered ? "hsl(var(--primary))" : "hsl(var(--primary) / 0.5)",
         }}
         transition={{
           duration: 0.5,
@@ -85,7 +85,7 @@ export function AnimatedLetter({ letter, index }: AnimatedLetterProps) {
       
       {/* 3D Shadow Effect */}
       <motion.div
-        className="absolute inset-0 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-[0.15em] text-foreground/40 select-none pointer-events-none uppercase"
+        className="absolute inset-0 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-[0.15em] text-primary/40 select-none pointer-events-none uppercase"
         style={{
           rotateX: springRotateX,
           rotateY: springRotateY,
@@ -108,7 +108,7 @@ export function AnimatedLetter({ letter, index }: AnimatedLetterProps) {
 
       {/* Secondary Shadow for Depth */}
       <motion.div
-        className="absolute inset-0 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-[0.15em] text-foreground/25 select-none pointer-events-none uppercase"
+        className="absolute inset-0 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-[0.15em] text-primary/25 select-none pointer-events-none uppercase"
         style={{
           rotateX: springRotateX,
           rotateY: springRotateY,

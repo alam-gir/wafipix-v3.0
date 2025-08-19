@@ -41,27 +41,27 @@ export default function WorkDetail({ work, onClose, isModal = false }: WorkDetai
         <button 
           aria-label="Close modal" 
           onClick={handleClose} 
-          className="absolute top-4 right-4 z-10 rounded-full bg-foreground/10 hover:bg-foreground/20 p-2 transition-colors"
+          className="absolute top-4 right-4 z-10 rounded-full bg-primary/10 hover:bg-primary/20 p-2 transition-colors"
         >
-          <X className="w-5 h-5" />
+          <X className="w-5 h-5 text-primary" />
         </button>
       )}
 
       {/* Left column: text */}
       <div className="space-y-6">
         <div className="space-y-4">
-          <h1 className="text-3xl md:text-5xl font-semibold tracking-tight">{work.name}</h1>
-          <div className="text-sm text-muted-foreground bg-muted/30 px-3 py-1 rounded-full inline-block">
+          <h1 className="text-3xl md:text-5xl font-semibold tracking-tight text-white">{work.name}</h1>
+          <div className="text-sm text-primary/80 bg-primary/10 px-3 py-1 rounded-full inline-block border border-primary/20">
             {work.service}
           </div>
         </div>
         
         {work.shortDescription && (
-          <p className="text-lg text-foreground/80 leading-relaxed">{work.shortDescription}</p>
+          <p className="text-lg text-primary/80 leading-relaxed">{work.shortDescription}</p>
         )}
         
         {/* Richtext description (trusted HTML for demo) */}
-        <div className="prose prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: work.description }} />
+        <div className="prose prose-invert max-w-none prose-headings:text-white prose-p:text-primary/80 prose-strong:text-white prose-a:text-primary hover:prose-a:text-primary/80" dangerouslySetInnerHTML={{ __html: work.description }} />
       </div>
 
       {/* Right column: hero media */}

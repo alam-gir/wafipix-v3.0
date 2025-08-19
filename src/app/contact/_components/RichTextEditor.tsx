@@ -47,7 +47,7 @@ export default function RichTextEditor({
       Link.configure({
         openOnClick: false,
         HTMLAttributes: {
-          class: 'text-purple-600 underline cursor-pointer',
+          class: 'text-primary underline cursor-pointer',
         },
       }),
       TextAlign.configure({
@@ -67,16 +67,16 @@ export default function RichTextEditor({
 
   if (!editor || !isMounted) {
     return (
-      <div className={cn("border border-gray-200 rounded-lg overflow-hidden", className)}>
-        <div className="flex flex-wrap items-center gap-1 p-3 bg-gray-50 border-b border-gray-200">
-          <div className="h-8 w-8 bg-gray-200 rounded animate-pulse"></div>
-          <div className="h-8 w-8 bg-gray-200 rounded animate-pulse"></div>
-          <div className="h-8 w-8 bg-gray-200 rounded animate-pulse"></div>
+      <div className={cn("border border-border/20 rounded-lg overflow-hidden", className)}>
+        <div className="flex flex-wrap items-center gap-1 p-3 bg-card/50 border-b border-border/20">
+          <div className="h-8 w-8 bg-primary/20 rounded animate-pulse"></div>
+          <div className="h-8 w-8 bg-primary/20 rounded animate-pulse"></div>
+          <div className="h-8 w-8 bg-primary/20 rounded animate-pulse"></div>
         </div>
-        <div className="p-4 min-h-[200px] bg-gray-50">
-          <div className="h-4 bg-gray-200 rounded animate-pulse mb-2"></div>
-          <div className="h-4 bg-gray-200 rounded animate-pulse mb-2"></div>
-          <div className="h-4 bg-gray-200 rounded w-3/4 animate-pulse"></div>
+        <div className="p-4 min-h-[200px] bg-card/50">
+          <div className="h-4 bg-primary/20 rounded animate-pulse mb-2"></div>
+          <div className="h-4 bg-primary/20 rounded animate-pulse mb-2"></div>
+          <div className="h-4 bg-primary/20 rounded w-3/4 animate-pulse"></div>
         </div>
       </div>
     );
@@ -97,16 +97,16 @@ export default function RichTextEditor({
   };
 
      return (
-     <div className={cn("border border-gray-200 rounded-lg overflow-hidden flex flex-col", className)}>
+     <div className={cn("border border-border/20 rounded-lg overflow-hidden flex flex-col", className)}>
        {/* Toolbar */}
-       <div className="flex flex-wrap items-center gap-1 p-3 bg-gray-50 border-b border-gray-200">
+       <div className="flex flex-wrap items-center gap-1 p-3 bg-card/50 border-b border-border/20">
         <Button
           variant="ghost"
           size="sm"
           onClick={() => editor.chain().focus().toggleBold().run()}
           className={cn(
             "h-8 w-8 p-0",
-            editor.isActive('bold') && "bg-purple-100 text-purple-700"
+            editor.isActive('bold') && "bg-primary/20 text-primary"
           )}
         >
           <Bold className="w-4 h-4" />
@@ -118,7 +118,7 @@ export default function RichTextEditor({
           onClick={() => editor.chain().focus().toggleItalic().run()}
           className={cn(
             "h-8 w-8 p-0",
-            editor.isActive('italic') && "bg-purple-100 text-purple-700"
+            editor.isActive('italic') && "bg-primary/20 text-primary"
           )}
         >
           <Italic className="w-4 h-4" />
@@ -130,13 +130,13 @@ export default function RichTextEditor({
           onClick={() => editor.chain().focus().toggleUnderline().run()}
           className={cn(
             "h-8 w-8 p-0",
-            editor.isActive('underline') && "bg-purple-100 text-purple-700"
+            editor.isActive('underline') && "bg-primary/20 text-primary"
           )}
         >
           <UnderlineIcon className="w-4 h-4" />
         </Button>
 
-        <div className="w-px h-6 bg-gray-300 mx-1" />
+        <div className="w-px h-6 bg-border/30 mx-1" />
 
         <Button
           variant="ghost"
@@ -144,7 +144,7 @@ export default function RichTextEditor({
           onClick={() => editor.chain().focus().toggleBulletList().run()}
           className={cn(
             "h-8 w-8 p-0",
-            editor.isActive('bulletList') && "bg-purple-100 text-purple-700"
+            editor.isActive('bulletList') && "bg-primary/20 text-primary"
           )}
         >
           <List className="w-4 h-4" />
@@ -156,7 +156,7 @@ export default function RichTextEditor({
           onClick={() => editor.chain().focus().toggleOrderedList().run()}
           className={cn(
             "h-8 w-8 p-0",
-            editor.isActive('orderedList') && "bg-purple-100 text-purple-700"
+            editor.isActive('orderedList') && "bg-primary/20 text-primary"
           )}
         >
           <ListOrdered className="w-4 h-4" />
@@ -168,13 +168,13 @@ export default function RichTextEditor({
           onClick={() => editor.chain().focus().toggleBlockquote().run()}
           className={cn(
             "h-8 w-8 p-0",
-            editor.isActive('blockquote') && "bg-purple-100 text-purple-700"
+            editor.isActive('blockquote') && "bg-primary/20 text-primary"
           )}
         >
           <Quote className="w-4 h-4" />
         </Button>
 
-        <div className="w-px h-6 bg-gray-300 mx-1" />
+        <div className="w-px h-6 bg-border/30 mx-1" />
 
         <Button
           variant="ghost"
@@ -182,7 +182,7 @@ export default function RichTextEditor({
           onClick={() => editor.chain().focus().setTextAlign('left').run()}
           className={cn(
             "h-8 w-8 p-0",
-            editor.isActive({ textAlign: 'left' }) && "bg-purple-100 text-purple-700"
+            editor.isActive({ textAlign: 'left' }) && "bg-primary/20 text-primary"
           )}
         >
           <AlignLeft className="w-4 h-4" />
@@ -194,7 +194,7 @@ export default function RichTextEditor({
           onClick={() => editor.chain().focus().setTextAlign('center').run()}
           className={cn(
             "h-8 w-8 p-0",
-            editor.isActive({ textAlign: 'center' }) && "bg-purple-100 text-purple-700"
+            editor.isActive({ textAlign: 'center' }) && "bg-primary/20 text-primary"
           )}
         >
           <AlignCenter className="w-4 h-4" />
@@ -206,13 +206,13 @@ export default function RichTextEditor({
           onClick={() => editor.chain().focus().setTextAlign('right').run()}
           className={cn(
             "h-8 w-8 p-0",
-            editor.isActive({ textAlign: 'right' }) && "bg-purple-100 text-purple-700"
+            editor.isActive({ textAlign: 'right' }) && "bg-primary/20 text-primary"
           )}
         >
           <AlignRight className="w-4 h-4" />
         </Button>
 
-        <div className="w-px h-6 bg-gray-300 mx-1" />
+        <div className="w-px h-6 bg-border/30 mx-1" />
 
         <Button
           variant="ghost"
@@ -220,7 +220,7 @@ export default function RichTextEditor({
           onClick={editor.isActive('link') ? addLink : setLink}
           className={cn(
             "h-8 w-8 p-0",
-            editor.isActive('link') && "bg-purple-100 text-purple-700"
+            editor.isActive('link') && "bg-primary/20 text-primary"
           )}
         >
           <LinkIcon className="w-4 h-4" />
@@ -229,12 +229,12 @@ export default function RichTextEditor({
 
                                          {/* Editor Content */}
          <div 
-           className="p-4 min-h-[200px] max-h-[400px] overflow-y-auto cursor-text flex-1"
+           className="p-4 min-h-[200px] max-h-[400px] overflow-y-auto cursor-text flex-1 bg-card/30"
            onClick={() => editor.chain().focus().run()}
          >
            <EditorContent 
              editor={editor} 
-             className="prose prose-sm prose-purple max-w-none focus:outline-none h-full min-h-[200px] w-full"
+             className="prose prose-sm prose-neutral dark:prose-invert max-w-none focus:outline-none h-full min-h-[200px] w-full prose-headings:text-white prose-p:text-primary/80 prose-strong:text-white prose-a:text-primary hover:prose-a:text-primary/80"
              style={{ minHeight: '200px', height: '100%' }}
            />
          </div>

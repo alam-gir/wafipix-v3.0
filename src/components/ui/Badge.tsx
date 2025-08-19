@@ -46,7 +46,7 @@ export function Badge({
 
   const variantClasses = {
     default: "bg-card/50 backdrop-blur-sm border border-border/20 text-muted-foreground",
-    gradient: "bg-gradient-to-r from-primary/10 to-purple-500/10 border border-primary/20 text-primary",
+    gradient: "bg-gradient-to-r from-primary/10 to-primary/20 border border-primary/20 text-primary",
     outline: "bg-transparent border-2 border-primary/20 text-primary"
   };
 

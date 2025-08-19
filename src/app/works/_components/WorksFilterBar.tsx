@@ -55,8 +55,8 @@ export default function WorksFilterBar({ filters, className }: WorksFilterBarPro
                 'px-4 py-2 rounded-full text-sm font-semibold transition-colors border',
                 // outline style for clarity in both light/dark
                 isActive
-                  ? 'bg-primary text-white border-primary shadow-sm'
-                  : 'bg-transparent text-foreground border-foreground/20 hover:border-foreground/40'
+                  ? 'bg-primary text-primary-foreground border-primary shadow-sm shadow-primary/25'
+                  : 'bg-transparent text-white border-border/40 hover:border-primary/60 hover:text-primary/80 hover:bg-primary/5'
               )}
             >
               {label}

@@ -1,7 +1,7 @@
 "use client";
 
 import { CompanyNameSection } from "./CompanyNameSection";
-import { CTASection } from "./CTASection";
+import { FooterCTASection } from "./FooterCTASection";
 import { FooterLinks } from "./FooterLinks";
 
 interface FooterProps {
@@ -11,7 +11,7 @@ interface FooterProps {
 export function Footer({ className }: FooterProps) {
   return (
     <>
-      <CTASection />
+      <FooterCTASection />
       <footer
         className={`bg-background border-t border-border/50 ${className}`}
       >

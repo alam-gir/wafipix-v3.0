@@ -38,22 +38,22 @@ export function CTASection({ className }: CTASectionProps) {
         >
           <motion.div
             variants={fadeUpVariants}
-            className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-gray-200 dark:border-gray-700 shadow-lg"
+            className="bg-card/90 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-border shadow-lg"
           >
-            <div className="w-16 h-16 bg-gradient-to-r from-primary to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <TrendingUp className="w-8 h-8 text-white" />
+            <div className="w-16 h-16 bg-gradient-to-r from-primary to-primary/80 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <TrendingUp className="w-8 h-8 text-primary-foreground" />
             </div>
-            <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-black dark:text-white mb-4 tracking-tight">
+            <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-4 tracking-tight">
               Ready to Transform Your Brand?
             </h3>
-            <p className="text-gray-700 dark:text-gray-300 mb-8 max-w-2xl mx-auto text-base leading-relaxed">
+            <p className="text-primary/80 mb-8 max-w-2xl mx-auto text-base leading-relaxed">
               Join hundreds of successful businesses that have elevated their digital presence with our expertise.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <MagneticWrapper>
                 <a 
                   href="/start-project"
-                  className="px-8 py-4 bg-gradient-to-r from-primary to-purple-500 text-white rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 font-semibold inline-block text-center"
+                  className="px-8 py-4 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 font-semibold inline-block text-center hover:from-primary/90 hover:to-primary/70"
                 >
                   Start Your Project
                 </a>
@@ -63,7 +63,7 @@ export function CTASection({ className }: CTASectionProps) {
                   href="https://calendly.com/wafipix1"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-8 py-4 bg-transparent text-gray-700 dark:text-gray-300 border-2 border-gray-300 dark:border-gray-600 rounded-xl hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 font-semibold inline-block text-center"
+                  className="px-8 py-4 bg-transparent text-white border-2 border-primary/50 rounded-xl hover:border-primary hover:bg-primary/10 transition-all duration-300 font-semibold inline-block text-center"
                 >
                   Schedule a Call
                 </a>

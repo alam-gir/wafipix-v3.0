@@ -62,7 +62,7 @@ export default function ContactInfo() {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-card">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -71,10 +71,10 @@ export default function ContactInfo() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Get in Touch
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-primary/80 max-w-3xl mx-auto">
             We're here to help bring your digital vision to life. Choose the way that works best for you.
           </p>
         </motion.div>
@@ -87,26 +87,26 @@ export default function ContactInfo() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition-all duration-300 hover:scale-105 group"
+              className="bg-card/50 backdrop-blur-sm p-8 rounded-2xl border border-border/20 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 hover:scale-105 group"
             >
               <div className="flex items-center mb-4">
-                <div className="p-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl text-white group-hover:scale-110 transition-transform duration-300">
+                <div className="p-3 bg-gradient-to-r from-primary to-primary/80 rounded-xl text-primary-foreground group-hover:scale-110 transition-transform duration-300">
                   <info.icon className="w-6 h-6" />
                 </div>
-                <h3 className="ml-4 text-xl font-semibold text-gray-900">
+                <h3 className="ml-4 text-xl font-semibold text-white">
                   {info.title}
                 </h3>
               </div>
               
               <div className="space-y-2 mb-4">
                 {info.details.map((detail, detailIndex) => (
-                  <p key={detailIndex} className="text-gray-700 font-medium">
+                  <p key={detailIndex} className="text-primary/80 font-medium">
                     {detail}
                   </p>
                 ))}
               </div>
               
-              <p className="text-sm text-gray-500 italic">
+              <p className="text-sm text-primary/60 italic">
                 {info.description}
               </p>
             </motion.div>
@@ -119,29 +119,29 @@ export default function ContactInfo() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
           viewport={{ once: true }}
-          className="mt-16 bg-gradient-to-r from-purple-50 to-pink-50 rounded-3xl p-8 md:p-12"
+          className="mt-16 bg-gradient-to-r from-primary/10 to-primary/10 rounded-3xl p-8 md:p-12 border border-primary/20"
         >
           <div className="text-center">
-            <h3 className="text-3xl font-bold text-gray-900 mb-4">
+            <h3 className="text-3xl font-bold text-white mb-4">
               Why Choose Wafipix?
             </h3>
-            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+            <p className="text-lg text-primary/80 mb-8 max-w-2xl mx-auto">
               We're not just another digital agency. We're your creative partners, 
               committed to delivering exceptional results that exceed expectations.
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center">
-                <div className="text-3xl font-bold text-purple-600 mb-2">500+</div>
-                <p className="text-gray-600">Projects Completed</p>
+                <div className="text-3xl font-bold text-primary mb-2">500+</div>
+                <p className="text-primary/80">Projects Completed</p>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-purple-600 mb-2">98%</div>
-                <p className="text-gray-600">Client Satisfaction</p>
+                <div className="text-3xl font-bold text-primary mb-2">98%</div>
+                <p className="text-primary/80">Client Satisfaction</p>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-purple-600 mb-2">24h</div>
-                <p className="text-gray-600">Response Time</p>
+                <div className="text-3xl font-bold text-primary mb-2">24h</div>
+                <p className="text-primary/80">Response Time</p>
               </div>
             </div>
           </div>

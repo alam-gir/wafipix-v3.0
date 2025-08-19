@@ -44,9 +44,9 @@ const TeamMember = ({ name, role, bio, image, social, delay }: TeamMemberProps) 
     >
       <div className="bg-card/50 backdrop-blur-sm border border-border/20 rounded-2xl p-8 hover:bg-card/80 transition-all duration-500 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-2">
         {/* Image Placeholder */}
-        <div className="w-32 h-32 bg-gradient-to-br from-primary/20 to-purple-500/20 rounded-2xl mx-auto mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-          <div className="w-24 h-24 bg-gradient-to-br from-primary to-purple-500 rounded-xl flex items-center justify-center">
-            <span className="text-2xl font-bold text-white">
+        <div className="w-32 h-32 bg-gradient-to-br from-primary/20 to-primary/20 rounded-2xl mx-auto mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+          <div className="w-24 h-24 bg-gradient-to-br from-primary to-primary/80 rounded-xl flex items-center justify-center">
+            <span className="text-2xl font-bold text-primary-foreground">
               {name.split(' ').map(n => n[0]).join('')}
             </span>
           </div>
@@ -54,13 +54,13 @@ const TeamMember = ({ name, role, bio, image, social, delay }: TeamMemberProps) 
 
         {/* Content */}
         <div className="text-center">
-          <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+          <h3 className="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors duration-300">
             {name}
           </h3>
           <p className="text-primary font-medium mb-4">
             {role}
           </p>
-          <p className="text-muted-foreground leading-relaxed mb-6">
+          <p className="text-primary/80 leading-relaxed mb-6">
             {bio}
           </p>
 
@@ -71,7 +71,7 @@ const TeamMember = ({ name, role, bio, image, social, delay }: TeamMemberProps) 
                 href={social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300"
+                className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
               >
                 <Linkedin className="w-4 h-4" />
               </a>
@@ -81,7 +81,7 @@ const TeamMember = ({ name, role, bio, image, social, delay }: TeamMemberProps) 
                 href={social.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-500 hover:bg-blue-500 hover:text-white transition-all duration-300"
+                className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
               >
                 <Twitter className="w-4 h-4" />
               </a>
@@ -91,7 +91,7 @@ const TeamMember = ({ name, role, bio, image, social, delay }: TeamMemberProps) 
                 href={social.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-gray-500/10 rounded-xl flex items-center justify-center text-gray-500 hover:bg-gray-500 hover:text-white transition-all duration-300"
+                className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
               >
                 <Github className="w-4 h-4" />
               </a>
@@ -99,7 +99,7 @@ const TeamMember = ({ name, role, bio, image, social, delay }: TeamMemberProps) 
             {social.email && (
               <a
                 href={`mailto:${social.email}`}
-                className="w-10 h-10 bg-green-500/10 rounded-xl flex items-center justify-center text-green-500 hover:bg-green-500 hover:text-white transition-all duration-300"
+                className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
               >
                 <Mail className="w-4 h-4" />
               </a>
@@ -207,10 +207,10 @@ export function AboutTeam({ className }: AboutTeamProps) {
               <Users className="w-4 h-4" />
               Meet Our Team
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
               The Minds Behind the Magic
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-primary/80 max-w-3xl mx-auto leading-relaxed">
               Our diverse team of creative professionals brings together expertise in design, 
               development, strategy, and innovation to deliver exceptional results for our clients.
             </p>
@@ -239,14 +239,14 @@ export function AboutTeam({ className }: AboutTeamProps) {
             transition={{ delay: 0.8 }}
             className="text-center"
           >
-            <div className="bg-gradient-to-r from-primary/10 to-purple-500/10 rounded-2xl p-8 md:p-12 border border-primary/20">
+            <div className="bg-gradient-to-r from-primary/10 to-primary/10 rounded-2xl p-8 md:p-12 border border-primary/20">
               <div className="flex items-center justify-center mb-6">
                 <Sparkles className="w-8 h-8 text-primary mr-3" />
-                <h3 className="text-2xl md:text-3xl font-bold text-foreground">
+                <h3 className="text-2xl md:text-3xl font-bold text-white">
                   Our Culture
                 </h3>
               </div>
-              <p className="text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-primary/80 mb-8 max-w-3xl mx-auto leading-relaxed">
                 We foster a culture of creativity, collaboration, and continuous learning. 
                 Every team member brings unique perspectives and skills, creating a dynamic 
                 environment where innovation thrives and excellence is the standard.
@@ -254,15 +254,15 @@ export function AboutTeam({ className }: AboutTeamProps) {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
                 <div className="flex items-center gap-3">
                   <div className="w-3 h-3 bg-primary rounded-full"></div>
-                  <span className="text-muted-foreground">Remote-first culture</span>
+                  <span className="text-primary/80">Remote-first culture</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                  <span className="text-muted-foreground">Continuous learning</span>
+                  <div className="w-3 h-3 bg-primary/80 rounded-full"></div>
+                  <span className="text-primary/80">Continuous learning</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                  <span className="text-muted-foreground">Work-life balance</span>
+                  <div className="w-3 h-3 bg-primary/60 rounded-full"></div>
+                  <span className="text-primary/80">Work-life balance</span>
                 </div>
               </div>
             </div>

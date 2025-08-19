@@ -83,7 +83,7 @@ export default function WorkDetailGallery({ gallery }: WorkDetailGalleryProps) {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="text-center py-32"
         >
-          <div className="w-24 h-24 bg-muted rounded-full flex items-center justify-center mx-auto mb-6">
+          <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 border border-primary/20">
             <svg
               width="32"
               height="32"
@@ -93,15 +93,15 @@ export default function WorkDetailGallery({ gallery }: WorkDetailGalleryProps) {
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="text-muted-foreground"
+              className="text-primary"
             >
               <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
               <circle cx="9" cy="9" r="2" />
               <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
             </svg>
           </div>
-          <h3 className="text-xl font-semibold text-foreground mb-2">No Gallery Available</h3>
-          <p className="text-muted-foreground">Gallery content will be added soon.</p>
+          <h3 className="text-xl font-semibold text-white mb-2">No Gallery Available</h3>
+          <p className="text-primary/80">Gallery content will be added soon.</p>
         </motion.div>
       )}
     </section>

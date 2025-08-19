@@ -40,20 +40,20 @@ const ProcessStep = ({ step, icon: Icon, title, description, color, delay }: Pro
     >
       <div className="bg-card/50 backdrop-blur-sm border border-border/20 rounded-2xl p-8 hover:bg-card/80 transition-all duration-500 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-2">
         {/* Step Number */}
-        <div className="absolute -top-4 -left-4 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold shadow-lg">
+        <div className="absolute -top-4 -left-4 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold shadow-lg">
           {step}
         </div>
 
         {/* Icon */}
         <div className={`w-16 h-16 ${color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-          <Icon className="w-8 h-8 text-white" />
+          <Icon className="w-8 h-8 text-primary-foreground" />
         </div>
 
         {/* Content */}
-        <h3 className="text-xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
+        <h3 className="text-xl font-bold text-white mb-4 group-hover:text-primary transition-colors duration-300">
           {title}
         </h3>
-        <p className="text-muted-foreground leading-relaxed">
+        <p className="text-primary/80 leading-relaxed">
           {description}
         </p>
 
@@ -79,35 +79,35 @@ export function AboutProcess({ className }: AboutProcessProps) {
       icon: Search,
       title: "Discovery & Research",
       description: "We dive deep into understanding your business, goals, target audience, and competitive landscape to create a solid foundation.",
-      color: "bg-blue-500/10",
+      color: "bg-primary/10",
     },
     {
       step: 2,
       icon: Palette,
       title: "Design & Strategy",
       description: "Our creative team crafts stunning visual concepts and user experiences that align with your brand and business objectives.",
-      color: "bg-purple-500/10",
+      color: "bg-primary/10",
     },
     {
       step: 3,
       icon: Code,
       title: "Development & Build",
       description: "We bring designs to life with clean, efficient code using the latest technologies and best practices for optimal performance.",
-      color: "bg-green-500/10",
+      color: "bg-primary/10",
     },
     {
       step: 4,
       icon: TestTube,
       title: "Testing & Quality",
       description: "Rigorous testing ensures your digital product works flawlessly across all devices and meets the highest quality standards.",
-      color: "bg-yellow-500/10",
+      color: "bg-primary/10",
     },
     {
       step: 5,
       icon: Rocket,
       title: "Launch & Optimize",
       description: "We launch your project with confidence and continue to monitor, optimize, and improve based on real user data and feedback.",
-      color: "bg-red-500/10",
+      color: "bg-primary/10",
     },
   ];
 
@@ -127,10 +127,10 @@ export function AboutProcess({ className }: AboutProcessProps) {
               <Sparkles className="w-4 h-4" />
               Our Process
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
               How We Bring Ideas to Life
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-primary/80 max-w-3xl mx-auto leading-relaxed">
               Our proven 5-step process ensures every project is delivered on time, 
               within budget, and exceeds expectations. We believe in transparency 
               and collaboration at every stage.
@@ -188,19 +188,19 @@ export function AboutProcess({ className }: AboutProcessProps) {
             transition={{ delay: 1 }}
             className="mt-16"
           >
-            <div className="bg-gradient-to-r from-primary/10 to-purple-500/10 rounded-2xl p-8 md:p-12 border border-primary/20">
+            <div className="bg-gradient-to-r from-primary/10 to-primary/10 rounded-2xl p-8 md:p-12 border border-primary/20">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                 <div>
                   <div className="text-3xl font-bold text-primary mb-2">100%</div>
-                  <div className="text-muted-foreground">Client Satisfaction</div>
+                  <div className="text-primary/80">Client Satisfaction</div>
                 </div>
                 <div>
                   <div className="text-3xl font-bold text-primary mb-2">On Time</div>
-                  <div className="text-muted-foreground">Project Delivery</div>
+                  <div className="text-primary/80">Project Delivery</div>
                 </div>
                 <div>
                   <div className="text-3xl font-bold text-primary mb-2">24/7</div>
-                  <div className="text-muted-foreground">Support Available</div>
+                  <div className="text-primary/80">Support Available</div>
                 </div>
               </div>
             </div>

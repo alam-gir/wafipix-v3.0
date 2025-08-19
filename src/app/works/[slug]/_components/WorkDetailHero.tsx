@@ -35,7 +35,7 @@ export default function WorkDetailHero({ work }: WorkDetailHeroProps) {
           }}
         />
         <motion.div
-          className="absolute -bottom-40 -left-40 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"
+          className="absolute -bottom-40 -left-40 w-96 h-96 bg-primary/10 rounded-full blur-3xl"
           animate={{
             scale: [1.2, 1, 1.2],
             opacity: [0.5, 0.3, 0.5],
@@ -76,7 +76,7 @@ export default function WorkDetailHero({ work }: WorkDetailHeroProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground"
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white"
             >
               {work.name}
             </motion.h1>
@@ -86,7 +86,7 @@ export default function WorkDetailHero({ work }: WorkDetailHeroProps) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-                className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0"
+                className="text-lg sm:text-xl text-primary/80 max-w-2xl mx-auto lg:mx-0"
               >
                 {work.shortDescription}
               </motion.p>
@@ -133,7 +133,7 @@ export default function WorkDetailHero({ work }: WorkDetailHeroProps) {
               </div>
             ) : (
               <div className="aspect-video rounded-2xl bg-muted flex items-center justify-center ring-1 ring-border/20">
-                <p className="text-muted-foreground">No media available</p>
+                <p className="text-primary/80">No media available</p>
               </div>
             )}
           </motion.div>
@@ -150,12 +150,12 @@ export default function WorkDetailHero({ work }: WorkDetailHeroProps) {
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="w-6 h-10 border-2 border-foreground/30 rounded-full flex justify-center"
+          className="w-6 h-10 border-2 border-primary/30 rounded-full flex justify-center"
         >
           <motion.div
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="w-1 h-3 bg-foreground/60 rounded-full mt-2"
+            className="w-1 h-3 bg-primary/60 rounded-full mt-2"
           />
         </motion.div>
       </motion.div>

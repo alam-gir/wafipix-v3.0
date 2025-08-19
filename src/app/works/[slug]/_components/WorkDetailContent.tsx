@@ -36,7 +36,7 @@ export default function WorkDetailContent({ work }: WorkDetailContentProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-foreground mb-8"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-white mb-8"
           >
             {work.name}
           </motion.h2>
@@ -50,7 +50,7 @@ export default function WorkDetailContent({ work }: WorkDetailContentProps) {
               transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
               className="mb-12"
             >
-              <p className="text-xl sm:text-2xl text-muted-foreground text-center leading-relaxed max-w-3xl mx-auto">
+              <p className="text-xl sm:text-2xl text-primary/80 text-center leading-relaxed max-w-3xl mx-auto">
                 {work.shortDescription}
               </p>
             </motion.div>
@@ -65,9 +65,9 @@ export default function WorkDetailContent({ work }: WorkDetailContentProps) {
               transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
               className="hidden md:block"
             >
-              <div className="prose prose-lg prose-neutral dark:prose-invert max-w-none">
+              <div className="prose prose-lg prose-neutral dark:prose-invert max-w-none prose-headings:text-white prose-p:text-primary/80 prose-strong:text-white prose-a:text-primary hover:prose-a:text-primary/80">
                 <div 
-                  className="text-muted-foreground leading-relaxed"
+                  className="text-primary/80 leading-relaxed"
                   dangerouslySetInnerHTML={{ __html: work.description }}
                 />
               </div>
@@ -109,9 +109,9 @@ export default function WorkDetailContent({ work }: WorkDetailContentProps) {
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                   className="mt-4 overflow-hidden"
                 >
-                  <div className="prose prose-sm prose-neutral dark:prose-invert max-w-none">
+                  <div className="prose prose-sm prose-neutral dark:prose-invert max-w-none prose-headings:text-white prose-p:text-primary/80 prose-strong:text-white prose-a:text-primary hover:prose-a:text-primary/80">
                     <div 
-                      className="text-muted-foreground leading-relaxed text-sm"
+                      className="text-primary/80 leading-relaxed text-sm"
                       dangerouslySetInnerHTML={{ __html: work.description }}
                     />
                   </div>
