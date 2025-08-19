@@ -1,7 +1,5 @@
 import { forwardRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Link from 'next/link';
-import { X, ArrowRight } from 'lucide-react';
 import { ServiceCategory } from '@/lib/navigation';
 import { MobileSubmenuHeader } from './MobileSubmenuHeader';
 import { MobileSubmenuCategories } from './MobileSubmenuCategories';
