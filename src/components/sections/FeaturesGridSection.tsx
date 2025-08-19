@@ -68,23 +68,26 @@ export function FeaturesGridSection({ className }: FeaturesGridSectionProps) {
               key={index}
               variants={fadeUpVariants}
               whileHover={{ y: -8, scale: 1.02 }}
-              className="group relative"
+              className="group relative h-full"
             >
-              <MagneticWrapper>
-                <div className="p-6 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/20 hover:border-primary/30 transition-all duration-500 h-full relative overflow-hidden group-hover:shadow-2xl group-hover:shadow-primary/10">
+              <MagneticWrapper className="h-full">
+                <div className="p-6 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/20 hover:border-primary/30 transition-all duration-500 h-full relative overflow-hidden group-hover:shadow-2xl group-hover:shadow-primary/10 flex flex-col">
                   {/* Hover background gradient */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
                   
-                  <div className="relative z-10">
-                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-r ${feature.color} p-3.5 mb-5 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center`}>
+                  <div className="relative z-10 flex flex-col h-full">
+                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-r ${feature.color} p-3.5 mb-5 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center flex-shrink-0`}>
                       <feature.icon className="w-7 h-7 text-primary-foreground" />
                     </div>
-                    <h3 className="text-xl font-semibold mb-3 text-white">
-                      {feature.title}
-                    </h3>
-                    <p className="text-primary/80 leading-relaxed text-sm">
-                      {feature.description}
-                    </p>
+                    
+                    <div className="flex flex-col flex-grow">
+                      <h3 className="text-xl font-semibold mb-3 text-white flex-shrink-0">
+                        {feature.title}
+                      </h3>
+                      <p className="text-primary/80 leading-relaxed text-sm flex-grow">
+                        {feature.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </MagneticWrapper>
