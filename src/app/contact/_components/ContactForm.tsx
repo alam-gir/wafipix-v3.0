@@ -86,7 +86,7 @@ export default function ContactForm() {
 
   if (isSubmitted) {
     return (
-      <section id="contact-form" className="py-20 bg-card/50">
+      <section id="contact-form" className="h-screen w-screen flex items-center justify-center bg-card/50">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -158,7 +158,7 @@ export default function ContactForm() {
   }
 
   return (
-    <section id="contact-form" className="py-28 bg-card/50">
+    <section id="contact-form" className="py-12 md:py-28 bg-card/50">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
