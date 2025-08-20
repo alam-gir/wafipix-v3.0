@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import PackageCard from '@/components/ui/PackageCard';
-import { ServicePageData } from '@/lib/demo-data';
+import type { ServicePageData } from '@/types';
 import { MagneticWrapper } from '@/components/ui';
 
 interface ServiceHeroProps {

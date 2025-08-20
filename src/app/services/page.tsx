@@ -14,13 +14,14 @@ import {
   CheckCircle,
   Sparkles
 } from 'lucide-react';
-import { navigation } from '@/lib/navigation';
+import { useNavigation } from '@/hooks/useNavigation';
 
 export default function ServicesPage() {
+  const { navigation } = useNavigation();
   const services = navigation.find(item => item.id === 'services')?.submenu || [];
 
   const getIconComponent = (iconName: string) => {
-    const iconMap: { [key: string]: any } = {
+    const iconMap: { [key: string]: React.ComponentType<React.SVGProps<SVGSVGElement>> } = {
       Palette,
       Brush,
       Package,
@@ -191,7 +192,7 @@ export default function ServicesPage() {
               Ready to Bring Your Vision to Life?
             </h2>
             <p className="text-xl text-primary/80 mb-8 leading-relaxed">
-              Let's discuss your project and create something amazing together.
+              Let&apos;s discuss your project and create something amazing together.
             </p>
             <Link
               href="/contact"

@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 import { useState } from 'react';
-import { ServicePageData } from '@/lib/demo-data';
+import type { ServicePageData } from '@/types';
 import { MagneticWrapper } from '@/components/ui';
 
 interface ServiceFAQProps {

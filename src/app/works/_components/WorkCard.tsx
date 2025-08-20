@@ -5,7 +5,7 @@ import OptimizedImage from '@/components/ui/OptimizedImage';
 import VideoPlayer from '@/components/ui/VideoPlayer';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
-import type { WorkAsCard } from '@/lib/demo-data';
+import type { WorkAsCard } from '@/types';
 import { useRef } from 'react';
 
 interface WorkCardProps {

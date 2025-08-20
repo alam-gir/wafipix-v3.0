@@ -4,7 +4,11 @@ import { useMemo } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import MagneticWrapper from '@/components/ui/MagneticWrapper';
-import type { WorkFilter } from '@/lib/demo-data';
+
+interface WorkFilter {
+  category?: string;
+  service?: string;
+}
 
 interface WorksFilterBarProps {
   filters: Array<WorkFilter>;

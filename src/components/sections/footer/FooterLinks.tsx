@@ -2,10 +2,32 @@
 
 import { motion } from "framer-motion";
 import { SITE_CONSTANTS } from "@/lib/constants";
-import { socialMediaData } from "@/lib/demo-data";
+import { useSocialMedia } from "@/hooks/api/useCommon";
 import { SocialLink } from "./SocialLink";
 
 export function FooterLinks() {
+  const { data: socialMediaData, isLoading, error } = useSocialMedia();
+  
+  // Show loading state
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center py-8">
+        <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
+
+  // Show error state
+  if (error || !socialMediaData?.data) {
+    return (
+      <div className="text-center py-8">
+        <p className="text-muted-foreground">Failed to load social media links</p>
+      </div>
+    );
+  }
+
+  const socialMedia = socialMediaData.data;
+
   return (
     <>
       {/* Desktop Layout */}
@@ -36,7 +58,7 @@ export function FooterLinks() {
 
         {/* Right Section - Social Media */}
         <div className="flex items-center gap-2">
-          {socialMediaData.map((social, index) => (
+          {socialMedia.map((social, index) => (
             <SocialLink key={social.name} social={social} index={index} />
           ))}
         </div>
@@ -51,7 +73,7 @@ export function FooterLinks() {
       >
         {/* Social Media Links - Mobile */}
         <div className="flex flex-wrap justify-center gap-2">
-          {socialMediaData.map((social, index) => (
+          {socialMedia.map((social, index) => (
             <SocialLink key={social.name} social={social} index={index} />
           ))}
         </div>

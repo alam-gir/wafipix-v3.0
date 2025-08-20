@@ -12,7 +12,7 @@ import {
   Award,
   Smartphone
 } from 'lucide-react';
-import { ServicePageData } from '@/lib/demo-data';
+import { ServicePageData } from '@/types';
 
 interface ServiceFeaturesProps {
   service: ServicePageData;

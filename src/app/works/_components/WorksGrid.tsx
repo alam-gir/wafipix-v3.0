@@ -1,4 +1,4 @@
-import type { WorkAsCard } from '@/lib/demo-data';
+import type { WorkAsCard } from '@/types';
 import WorkCard from './WorkCard';
 import { cn } from '@/lib/utils';
 

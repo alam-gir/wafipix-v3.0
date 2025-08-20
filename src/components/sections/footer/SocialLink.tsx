@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { SocialMediaLink } from "@/lib/demo-data";
+import type { SocialMediaLink } from "@/types/common";
 
 interface SocialLinkProps {
   social: SocialMediaLink;

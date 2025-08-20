@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Work } from '@/lib/demo-data';
+import type { Work } from '@/types';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface WorkNavigationProps {

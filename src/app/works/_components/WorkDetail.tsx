@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import OptimizedImage from '@/components/ui/OptimizedImage';
 import VideoPlayer from '@/components/ui/VideoPlayer';
-import type { Work } from '@/lib/demo-data';
+import type { Work } from '@/types';
 import { useRouter } from 'next/navigation';
 import { X } from 'lucide-react';
 

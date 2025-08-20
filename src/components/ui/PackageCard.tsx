@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Check, Star, Clock, CreditCard } from 'lucide-react';
-import { ServicePackage } from '@/lib/demo-data';
+import type { ServicePackage } from '@/types';
 import { Meteors } from './meteors';
 import { useEffect, useState } from 'react';
 import MagneticWrapper from './MagneticWrapper';

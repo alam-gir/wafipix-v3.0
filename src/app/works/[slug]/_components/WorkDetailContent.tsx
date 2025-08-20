@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Work } from '@/lib/demo-data';
+import type { Work } from '@/types';
 import { Badge } from '@/components/ui/Badge';
 
 interface WorkDetailContentProps {
