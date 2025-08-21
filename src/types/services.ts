@@ -31,17 +31,21 @@ export interface ServicePageData {
   title: string;
   subtitle: string;
   packages: ServicePackage[];
-  features: Array<{
-    id: string;
-    title: string;
-    description: string;
-    icon: string;
-  }>;
-  faqs: Array<{
-    id: string;
-    question: string;
-    answer: string;
-  }>;
+  features: Array<ServiceFeature>;
+  faqs: Array<ServiceFaqs>;
+}
+
+export interface ServiceFeature {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+}
+
+export interface ServiceFaqs {
+  id: string;
+  question: string;
+  answer: string;
 }
 
 // API Response Types

@@ -14,12 +14,19 @@ export default function NavbarLogo({ isScrolled = false }: NavbarLogoProps) {
       whileHover={{ scale: 1.05 }}
       transition={{ type: 'spring', stiffness: 400, damping: 10 }}
     >
-      <h1 className={cn(
-        "font-bold text-primary transition-all duration-300",
-        isScrolled ? "text-xl" : "text-2xl"
-      )}>
+      <motion.h1 
+        className={cn(
+          "font-bold text-primary transition-all duration-500",
+          isScrolled ? "text-lg" : "text-2xl"
+        )}
+        animate={{
+          scale: isScrolled ? 0.9 : 1,
+          opacity: isScrolled ? 0.8 : 1,
+        }}
+        transition={{ duration: 0.3, ease: 'easeOut' }}
+      >
         Wafipix
-      </h1>
+      </motion.h1>
     </motion.div>
   );
 } 

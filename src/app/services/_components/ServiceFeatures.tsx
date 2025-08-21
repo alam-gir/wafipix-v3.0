@@ -12,13 +12,13 @@ import {
   Award,
   Smartphone
 } from 'lucide-react';
-import { ServicePageData } from '@/types';
+import { ServiceFeature } from '@/types';
 
 interface ServiceFeaturesProps {
-  service: ServicePageData;
+  features: ServiceFeature[]
 }
 
-export default function ServiceFeatures({ service }: ServiceFeaturesProps) {
+export default function ServiceFeatures({ features }: ServiceFeaturesProps) {
   const getIconComponent = (iconName: string) => {
     const iconMap: { [key: string]: React.ComponentType<{ className?: string }> } = {
       Sparkles,
@@ -55,7 +55,7 @@ export default function ServiceFeatures({ service }: ServiceFeaturesProps) {
 
         {/* Features Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {service.features.map((feature, index) => {
+          {features.map((feature, index) => {
             const IconComponent = getIconComponent(feature.icon);
             
             return (

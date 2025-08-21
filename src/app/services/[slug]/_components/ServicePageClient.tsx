@@ -7,6 +7,7 @@ import {
   ServiceFeatures,
   ServiceFAQ
 } from '../../_components';
+import Loading from '@/components/ui/Loading';
 
 interface ServicePageClientProps {
   slug: string;
@@ -17,8 +18,8 @@ export function ServicePageClient({ slug }: ServicePageClientProps) {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+      <div className="h-screen w-screen">
+        <Loading />
       </div>
     );
   }
@@ -32,8 +33,8 @@ export function ServicePageClient({ slug }: ServicePageClientProps) {
   return (
     <div className="min-h-screen bg-background" key={slug}>
       <ServiceHero service={service} />
-      <ServiceFeatures service={service} />
-      <ServiceFAQ service={service} />
+      <ServiceFeatures features={service.features} />
+      <ServiceFAQ serviceTitle={service.title} faqs={service.faqs} />
     </div>
   );
 }

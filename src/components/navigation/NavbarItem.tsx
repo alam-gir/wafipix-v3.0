@@ -47,13 +47,17 @@ export default function NavbarItem({
       <MagneticWrapper strength={0.2} attractArea={80}>
         <motion.div
           className={cn(
-            "relative px-3 py-2 rounded-lg cursor-pointer transition-colors",
+            "relative rounded-lg cursor-pointer transition-colors",
+            isScrolled ? "px-2 py-1.5" : "px-3 py-2",
             isActive 
               ? "text-primary bg-primary/10 border border-primary/20" 
               : isHovered 
                 ? "text-primary bg-primary/5" 
                 : "text-foreground hover:text-primary/80 hover:bg-primary/5"
           )}
+          animate={{
+            scale: isScrolled ? 0.95 : 1,
+          }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           transition={{ type: 'spring', stiffness: 400, damping: 10 }}
@@ -61,7 +65,7 @@ export default function NavbarItem({
         >
           <span className={cn(
             "font-medium transition-all duration-300",
-            isScrolled ? "text-sm" : "text-sm"
+            isScrolled ? "text-base" : "text-lg"
           )}>
             {item.title}
           </span>

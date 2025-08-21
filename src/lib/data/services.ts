@@ -296,6 +296,142 @@ export const getServicePageData = (slug: string): ServicePageData => {
         },
       ],
     },
+    'print-packaging': {
+      title: 'Print & Packaging Design',
+      subtitle: 'Professional print materials and packaging that enhance your product appeal',
+      features: [
+        { id: 'f1', title: 'Strategic Design', description: 'Designs that align with your brand strategy and business goals', icon: 'Target' },
+        { id: 'f2', title: 'Print-Ready Files', description: 'High-resolution files optimized for professional printing', icon: 'Printer' },
+        { id: 'f3', title: 'Material Selection', description: 'Expert guidance on paper types, finishes, and printing techniques', icon: 'Package' },
+        { id: 'f4', title: 'Brand Consistency', description: 'Maintains your brand identity across all print materials', icon: 'Layers' },
+        { id: 'f5', title: 'Production Support', description: 'Ongoing support throughout the printing process', icon: 'Headphones' },
+        { id: 'f6', title: 'Quality Assurance', description: 'Rigorous quality checks before final delivery', icon: 'CheckCircle' },
+      ],
+      faqs: [
+        {
+          id: 'faq1',
+          question: 'What print materials do you design?',
+          answer: 'We design business cards, brochures, flyers, posters, packaging, labels, and any other print materials your business needs.',
+        },
+        {
+          id: 'faq2',
+          question: 'Do you handle the printing process?',
+          answer: 'We design and prepare print-ready files, and can recommend trusted printing partners or work with your existing printer.',
+        },
+        {
+          id: 'faq3',
+          question: 'What file formats do you provide?',
+          answer: 'We deliver high-resolution PDF files optimized for professional printing, along with source files for future modifications.',
+        },
+        {
+          id: 'faq4',
+          question: 'How do you ensure print quality?',
+          answer: 'We use industry-standard color profiles, provide detailed printing specifications, and conduct thorough quality checks.',
+        },
+      ],
+    },
+    'reels': {
+      title: 'Reels',
+      subtitle: 'Short-form video content optimized for social media platforms',
+      features: [
+        { id: 'f1', title: 'Platform Optimization', description: 'Content specifically designed for Instagram, TikTok, and other platforms', icon: 'Smartphone' },
+        { id: 'f2', title: 'Trending Content', description: 'Stay relevant with current social media trends and formats', icon: 'TrendingUp' },
+        { id: 'f3', title: 'Engaging Hooks', description: 'Captivating openings that grab attention in the first 3 seconds', icon: 'Zap' },
+        { id: 'f4', title: 'Brand Integration', description: 'Seamlessly incorporate your brand elements and messaging', icon: 'Palette' },
+        { id: 'f5', title: 'Multiple Formats', description: 'Create content for various social media platforms', icon: 'Grid' },
+        { id: 'f6', title: 'Analytics Insights', description: 'Performance tracking and optimization recommendations', icon: 'BarChart' },
+      ],
+      faqs: [
+        {
+          id: 'faq1',
+          question: 'What platforms do you create reels for?',
+          answer: 'We create content for Instagram Reels, TikTok, YouTube Shorts, and other short-form video platforms.',
+        },
+        {
+          id: 'faq2',
+          question: 'How long are the reels you produce?',
+          answer: 'We create reels ranging from 15 seconds to 60 seconds, optimized for each platform\'s best practices.',
+        },
+        {
+          id: 'faq3',
+          question: 'Do you include trending music and effects?',
+          answer: 'Yes, we incorporate trending music, effects, and transitions to maximize engagement and reach.',
+        },
+        {
+          id: 'faq4',
+          question: 'Can you help with content strategy?',
+          answer: 'Absolutely! We provide content strategy recommendations and help plan your social media content calendar.',
+        },
+      ],
+    },
+    'custom-logo-animation': {
+      title: 'Custom Logo Animation',
+      subtitle: 'Animated versions of your logo for digital platforms and presentations',
+      features: [
+        { id: 'f1', title: 'Logo Analysis', description: 'Deep understanding of your logo\'s design elements and brand personality', icon: 'Search' },
+        { id: 'f2', title: 'Creative Concepts', description: 'Multiple animation concepts that enhance your logo\'s impact', icon: 'Lightbulb' },
+        { id: 'f3', title: 'Smooth Motion', description: 'Professional-grade animations with smooth, polished movements', icon: 'Zap' },
+        { id: 'f4', title: 'Multiple Formats', description: 'Delivered in various formats for different use cases', icon: 'FileType' },
+        { id: 'f5', title: 'Brand Consistency', description: 'Animations that maintain your brand\'s visual identity', icon: 'Layers' },
+        { id: 'f6', title: 'Usage Guidelines', description: 'Clear guidelines for implementing logo animations', icon: 'BookOpen' },
+      ],
+      faqs: [
+        {
+          id: 'faq1',
+          question: 'What types of logo animations do you create?',
+          answer: 'We create various styles including reveal animations, morphing effects, particle systems, and kinetic typography.',
+        },
+        {
+          id: 'faq2',
+          question: 'How long are the logo animations?',
+          answer: 'Logo animations typically range from 3-10 seconds, optimized for different platforms and use cases.',
+        },
+        {
+          id: 'faq3',
+          question: 'Can you animate existing logos?',
+          answer: 'Yes! We can animate any existing logo design, whether it\'s vector-based or raster-based.',
+        },
+        {
+          id: 'faq4',
+          question: 'What file formats do you provide?',
+          answer: 'We deliver MP4, MOV, GIF, and other formats suitable for websites, presentations, and social media.',
+        },
+      ],
+    },
+    'intro-outro': {
+      title: 'Intro & Outro',
+      subtitle: 'Professional video intros and outros that establish brand recognition',
+      features: [
+        { id: 'f1', title: 'Brand Integration', description: 'Seamlessly incorporate your logo, colors, and brand elements', icon: 'Palette' },
+        { id: 'f2', title: 'Professional Quality', description: 'Broadcast-quality animations suitable for any platform', icon: 'Award' },
+        { id: 'f3', title: 'Custom Music', description: 'Original music and sound design that matches your brand', icon: 'Headphones' },
+        { id: 'f4', title: 'Multiple Lengths', description: 'Versions in different lengths for various content types', icon: 'Clock' },
+        { id: 'f5', title: 'Easy Integration', description: 'Simple to add to your videos and presentations', icon: 'Link' },
+        { id: 'f6', title: 'Consistent Branding', description: 'Maintains your brand identity across all content', icon: 'Layers' },
+      ],
+      faqs: [
+        {
+          id: 'faq1',
+          question: 'What\'s the difference between intro and outro?',
+          answer: 'Intros appear at the beginning of videos to establish brand recognition, while outros appear at the end with calls-to-action.',
+        },
+        {
+          id: 'faq2',
+          question: 'How long are the intro/outro animations?',
+          answer: 'Intros typically range from 3-8 seconds, while outros are usually 5-10 seconds with room for additional content.',
+        },
+        {
+          id: 'faq3',
+          question: 'Can you create variations for different content types?',
+          answer: 'Yes! We create variations optimized for YouTube, social media, presentations, and other content formats.',
+        },
+        {
+          id: 'faq4',
+          question: 'Do you provide editable templates?',
+          answer: 'We provide both final video files and editable project files for future modifications.',
+        },
+      ],
+    },
   };
 
   const service = serviceData[slug as keyof typeof serviceData];
@@ -341,10 +477,34 @@ export const getAllServices = () => [
     subtitle: 'Build a cohesive brand that connects with your audience',
   },
   {
+    id: 'print-packaging',
+    slug: 'print-packaging',
+    title: 'Print & Packaging Design',
+    subtitle: 'Professional print materials and packaging that enhance your product appeal',
+  },
+  {
     id: 'motion-video',
     slug: 'motion-video',
     title: 'Motion Video',
     subtitle: 'Bring your brand to life with engaging motion graphics',
+  },
+  {
+    id: 'reels',
+    slug: 'reels',
+    title: 'Reels',
+    subtitle: 'Short-form video content optimized for social media platforms',
+  },
+  {
+    id: 'custom-logo-animation',
+    slug: 'custom-logo-animation',
+    title: 'Custom Logo Animation',
+    subtitle: 'Animated versions of your logo for digital platforms and presentations',
+  },
+  {
+    id: 'intro-outro',
+    slug: 'intro-outro',
+    title: 'Intro & Outro',
+    subtitle: 'Professional video intros and outros that establish brand recognition',
   },
 ];
 

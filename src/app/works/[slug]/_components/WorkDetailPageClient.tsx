@@ -3,7 +3,7 @@
 import { useWork } from '@/hooks/api/useWorks';
 import { useWorksScrollRestoration } from '@/hooks';
 import { notFound } from 'next/navigation';
-import { WorkDetailHero, WorkDetailContent, WorkDetailGallery, WorkNavigation } from './index';
+import { WorkDetailHero, WorkDetailContent, WorkDetailGallery } from './index';
 import Loading from '@/components/ui/Loading';
 
 interface WorkDetailPageClientProps {

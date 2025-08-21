@@ -3,14 +3,15 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 import { useState } from 'react';
-import type { ServicePageData } from '@/types';
+import type { ServiceFaqs } from '@/types';
 import { MagneticWrapper } from '@/components/ui';
 
 interface ServiceFAQProps {
-  service: ServicePageData;
+  serviceTitle: string
+  faqs: ServiceFaqs[];
 }
 
-export default function ServiceFAQ({ service }: ServiceFAQProps) {
+export default function ServiceFAQ({ serviceTitle, faqs }: ServiceFAQProps) {
   const [openFAQ, setOpenFAQ] = useState<string | null>(null);
 
   const toggleFAQ = (faqId: string) => {
@@ -35,13 +36,13 @@ export default function ServiceFAQ({ service }: ServiceFAQProps) {
             Frequently Asked Questions
           </h2>
           <p className="text-xl text-primary/90 max-w-4xl mx-auto leading-relaxed">
-            Find answers to common questions about our {service.title.toLowerCase()} services
+            Find answers to common questions about our {serviceTitle.toLowerCase()} services
           </p>
         </motion.div>
 
         {/* FAQ Items */}
         <div className="space-y-6">
-          {service.faqs.map((faq, index) => (
+          {faqs.map((faq, index) => (
             <motion.div
               key={faq.id}
               initial={{ opacity: 0, y: 20 }}

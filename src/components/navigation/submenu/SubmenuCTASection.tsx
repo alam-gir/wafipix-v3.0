@@ -2,7 +2,11 @@ import { motion } from 'framer-motion';
 import MagneticWrapper from '@/components/ui/MagneticWrapper';
 import { BackgroundGradientAnimation } from '@/components/ui/background-gradient-animation';
 
-export function SubmenuCTASection() {
+interface SubmenuCTASectionProps {
+  onClose?: () => void;
+}
+
+export function SubmenuCTASection({ onClose }: SubmenuCTASectionProps) {
   return (
     <div className="hidden lg:block col-span-3 relative overflow-hidden h-full">
       {/* BackgroundGradientAnimation */}

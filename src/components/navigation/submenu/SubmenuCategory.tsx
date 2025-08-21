@@ -7,12 +7,14 @@ interface SubmenuCategoryProps {
   category: ServiceCategory;
   categoryIndex: number;
   activeSubmenuItem?: string | null;
+  onSubmenuItemClick?: (submenuItemId: string) => void;
 }
 
 export function SubmenuCategory({
   category,
   categoryIndex,
   activeSubmenuItem,
+  onSubmenuItemClick,
 }: SubmenuCategoryProps) {
   return (
     <motion.div
@@ -31,6 +33,7 @@ export function SubmenuCategory({
             categoryIndex={categoryIndex}
             itemIndex={itemIndex}
             activeSubmenuItem={activeSubmenuItem}
+            onSubmenuItemClick={onSubmenuItemClick}
           />
         ))}
       </div>

@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation';
+import { navigation } from '@/lib/navigation';
 import { ServicePageClient } from './_components/ServicePageClient';
 
 interface ServicePageProps {
@@ -15,7 +15,16 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
 // Generate static params for all services
 export function generateStaticParams() {
-  const slugs = ['logo-design', 'branding', 'motion-video'];
+  const slugs : Array<string> = [];
+  
+  navigation.forEach(nav => {
+    if(nav.hasSubmenu){
+      nav.submenu?.forEach(sub => {
+        slugs.push(sub.id)
+      })
+    }
+  });
+
   return slugs.map((slug) => ({
     slug,
   }));

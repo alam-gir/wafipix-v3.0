@@ -1,22 +1,20 @@
-import { RefObject } from 'react';
 import { ServiceCategory } from '@/lib/navigation';
 import { SubmenuCategory } from './SubmenuCategory';
 
 interface SubmenuCategoriesSectionProps {
   categories: ServiceCategory[];
   activeSubmenuItem?: string | null;
-  scrollContainerRef: RefObject<HTMLDivElement | null>;
+  onSubmenuItemClick?: (submenuItemId: string) => void;
 }
 
 export function SubmenuCategoriesSection({
   categories,
   activeSubmenuItem,
-  scrollContainerRef,
+  onSubmenuItemClick,
 }: SubmenuCategoriesSectionProps) {
   return (
     <div className="col-span-12 lg:col-span-9 p-6 lg:p-8">
       <div
-        ref={scrollContainerRef}
         className="max-h-96 overflow-y-auto pr-4 custom-scrollbar"
         onWheel={(e) => {
           e.stopPropagation();
@@ -29,6 +27,7 @@ export function SubmenuCategoriesSection({
               category={category}
               categoryIndex={categoryIndex}
               activeSubmenuItem={activeSubmenuItem}
+              onSubmenuItemClick={onSubmenuItemClick}
             />
           ))}
         </div>
