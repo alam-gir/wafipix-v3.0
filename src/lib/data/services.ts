@@ -90,75 +90,498 @@ export const servicesNavigation = [
 // SERVICE PACKAGES DATA
 // ============================================================================
 
-export const servicePackages: ServicePackage[] = [
+// Logo Design Packages
+export const logoDesignPackages: ServicePackage[] = [
   {
-    id: 'basic',
-    name: 'Basic',
-    subtitle: 'Perfect for startups and small businesses',
+    id: 'starter',
+    name: 'Starter',
+    subtitle: 'Perfect for small businesses and startups',
     pricing: {
-      usd: 299,
-      bdt: 29900,
+      usd: 18,
+      bdt: 1200,
     },
     features: [
-      { id: 'f1', text: 'Professional logo in multiple formats', highlight: false },
-      { id: 'f2', text: 'Basic brand usage guidelines', highlight: false },
-      { id: 'f3', text: 'All editable source files included', highlight: true },
-      { id: 'f4', text: 'Up to 2 rounds of revisions', highlight: false },
+      { id: 'f1', text: '1 unique logo concept', highlight: false },
+      { id: 'f2', text: '3 color variations', highlight: false },
+      { id: 'f3', text: 'PNG & JPG formats', highlight: false },
+      { id: 'f4', text: '2 rounds of revisions', highlight: false },
+      { id: 'f5', text: 'Basic usage guidelines', highlight: false },
+      { id: 'f6', text: '5-day delivery', highlight: true },
     ],
     status: 'active',
-    deliveryTime: '5-7 business days',
-    paymentTerms: '50% upfront, 50% on delivery',
+    deliveryTime: '5 business days',
+    paymentTerms: '100% upfront',
     popular: false,
   },
   {
     id: 'professional',
     name: 'Professional',
-    subtitle: 'Ideal for growing businesses and teams',
+    subtitle: 'Ideal for growing businesses',
     pricing: {
-      usd: 599,
-      bdt: 59900,
+      usd: 28,
+      bdt: 1900,
     },
     features: [
-      { id: 'f1', text: 'Professional logo in multiple formats', highlight: false },
-      { id: 'f2', text: 'Comprehensive brand guidelines', highlight: false },
-      { id: 'f3', text: 'Business card design included', highlight: true },
-      { id: 'f4', text: 'Social media profile templates', highlight: true },
-      { id: 'f5', text: 'All editable source files included', highlight: false },
-      { id: 'f6', text: 'Unlimited revisions until satisfaction', highlight: true },
-      { id: 'f7', text: 'Priority customer support', highlight: false },
+      { id: 'f1', text: '3 unique logo concepts', highlight: false },
+      { id: 'f2', text: '5 color variations', highlight: false },
+      { id: 'f3', text: 'PNG, JPG, SVG formats', highlight: true },
+      { id: 'f4', text: 'Unlimited revisions', highlight: true },
+      { id: 'f5', text: 'Comprehensive brand guidelines', highlight: true },
+      { id: 'f6', text: 'Business card design included', highlight: true },
+      { id: 'f7', text: '7-day delivery', highlight: false },
+      { id: 'f8', text: 'Source files included', highlight: false },
     ],
     status: 'featured',
-    deliveryTime: '7-10 business days',
+    deliveryTime: '7 business days',
+    paymentTerms: '50% upfront, 50% on delivery',
+    popular: true,
+  },
+  {
+    id: 'premium',
+    name: 'Premium',
+    subtitle: 'Complete branding solution for established businesses',
+    pricing: {
+      usd: 75,
+      bdt: 5000,
+    },
+    features: [
+      { id: 'f1', text: '5 unique logo concepts', highlight: false },
+      { id: 'f2', text: 'Unlimited color variations', highlight: false },
+      { id: 'f3', text: 'All formats (PNG, JPG, SVG, AI, EPS)', highlight: true },
+      { id: 'f4', text: 'Unlimited revisions', highlight: false },
+      { id: 'f5', text: 'Complete brand identity system', highlight: true },
+      { id: 'f6', text: 'Business card, letterhead, envelope design', highlight: true },
+      { id: 'f7', text: 'Social media templates (10 platforms)', highlight: true },
+      { id: 'f8', text: 'Brand strategy consultation', highlight: true },
+      { id: 'f9', text: '10-day delivery', highlight: false },
+      { id: 'f10', text: '3 months support', highlight: true },
+    ],
+    status: 'active',
+    deliveryTime: '10 business days',
+    paymentTerms: '30% upfront, 40% at milestone, 30% on delivery',
+    popular: false,
+  },
+];
+
+// Branding Packages
+export const brandingPackages: ServicePackage[] = [
+  {
+    id: 'essentials',
+    name: 'Essentials',
+    subtitle: 'Basic brand identity for small businesses',
+    pricing: {
+      usd: 25,
+      bdt: 1700,
+    },
+    features: [
+      { id: 'f1', text: 'Logo design (3 concepts)', highlight: false },
+      { id: 'f2', text: 'Color palette (5 colors)', highlight: false },
+      { id: 'f3', text: 'Typography selection', highlight: false },
+      { id: 'f4', text: 'Basic brand guidelines', highlight: false },
+      { id: 'f5', text: 'Business card design', highlight: true },
+      { id: 'f6', text: '7-day delivery', highlight: true },
+    ],
+    status: 'active',
+    deliveryTime: '7 business days',
+    paymentTerms: '100% upfront',
+    popular: false,
+  },
+  {
+    id: 'complete',
+    name: 'Complete',
+    subtitle: 'Full brand identity system',
+    pricing: {
+      usd: 38,
+      bdt: 2500,
+    },
+    features: [
+      { id: 'f1', text: 'Logo design (5 concepts)', highlight: false },
+      { id: 'f2', text: 'Comprehensive color system', highlight: true },
+      { id: 'f3', text: 'Typography hierarchy', highlight: true },
+      { id: 'f4', text: 'Brand guidelines document', highlight: true },
+      { id: 'f5', text: 'Business card, letterhead, envelope', highlight: true },
+      { id: 'f6', text: 'Social media templates (5 platforms)', highlight: true },
+      { id: 'f7', text: '10-day delivery', highlight: false },
+      { id: 'f8', text: 'Unlimited revisions', highlight: false },
+    ],
+    status: 'featured',
+    deliveryTime: '10 business days',
     paymentTerms: '50% upfront, 50% on delivery',
     popular: true,
   },
   {
     id: 'enterprise',
     name: 'Enterprise',
-    subtitle: 'Complete branding solution for large organizations',
+    subtitle: 'Comprehensive branding for large organizations',
     pricing: {
-      usd: 1299,
-      bdt: 129900,
+      usd: 90,
+      bdt: 6000,
     },
     features: [
-      { id: 'f1', text: 'Professional logo in multiple formats', highlight: false },
-      { id: 'f2', text: 'Comprehensive brand guidelines', highlight: false },
-      { id: 'f3', text: 'Business card design included', highlight: false },
-      { id: 'f4', text: 'Social media profile templates', highlight: false },
-      { id: 'f5', text: 'Custom website design and development', highlight: true },
-      { id: 'f6', text: 'Brochures, flyers, and presentations', highlight: true },
-      { id: 'f7', text: 'All editable source files included', highlight: false },
-      { id: 'f8', text: 'Unlimited revisions until satisfaction', highlight: false },
-      { id: 'f9', text: 'Priority customer support', highlight: false },
-      { id: 'f10', text: 'Comprehensive brand strategy consultation', highlight: true },
-      { id: 'f11', text: '3 months of ongoing support', highlight: true },
+      { id: 'f1', text: 'Logo design (unlimited concepts)', highlight: false },
+      { id: 'f2', text: 'Full brand identity system', highlight: true },
+      { id: 'f3', text: 'Brand strategy consultation', highlight: true },
+      { id: 'f4', text: 'Complete marketing collateral', highlight: true },
+      { id: 'f5', text: 'Website design consultation', highlight: true },
+      { id: 'f6', text: 'Brand voice and messaging', highlight: true },
+      { id: 'f7', text: '15-day delivery', highlight: false },
+      { id: 'f8', text: '6 months ongoing support', highlight: true },
     ],
     status: 'active',
-    deliveryTime: '10-15 business days',
+    deliveryTime: '15 business days',
     paymentTerms: '30% upfront, 40% at milestone, 30% on delivery',
     popular: false,
   },
 ];
+
+// Motion Video Packages
+export const motionVideoPackages: ServicePackage[] = [
+  {
+    id: 'basic',
+    name: 'Basic',
+    subtitle: 'Simple motion graphics for social media',
+    pricing: {
+      usd: 22,
+      bdt: 1500,
+    },
+    features: [
+      { id: 'f1', text: '15-30 second video', highlight: false },
+      { id: 'f2', text: '2 motion concepts', highlight: false },
+      { id: 'f3', text: 'Basic animations', highlight: false },
+      { id: 'f4', text: 'Stock music included', highlight: false },
+      { id: 'f5', text: 'MP4 format', highlight: false },
+      { id: 'f6', text: '5-day delivery', highlight: true },
+    ],
+    status: 'active',
+    deliveryTime: '5 business days',
+    paymentTerms: '100% upfront',
+    popular: false,
+  },
+  {
+    id: 'standard',
+    name: 'Standard',
+    subtitle: 'Professional motion graphics with custom elements',
+    pricing: {
+      usd: 35,
+      bdt: 2300,
+    },
+    features: [
+      { id: 'f1', text: '30-60 second video', highlight: false },
+      { id: 'f2', text: '3 motion concepts', highlight: true },
+      { id: 'f3', text: 'Advanced animations', highlight: true },
+      { id: 'f4', text: 'Custom music/sound design', highlight: true },
+      { id: 'f5', text: 'Multiple formats (MP4, MOV)', highlight: true },
+      { id: 'f6', text: 'Unlimited revisions', highlight: true },
+      { id: 'f7', text: '7-day delivery', highlight: false },
+    ],
+    status: 'featured',
+    deliveryTime: '7 business days',
+    paymentTerms: '50% upfront, 50% on delivery',
+    popular: true,
+  },
+  {
+    id: 'premium',
+    name: 'Premium',
+    subtitle: 'High-end motion graphics with full production',
+    pricing: {
+      usd: 75,
+      bdt: 5000,
+    },
+    features: [
+      { id: 'f1', text: '60-120 second video', highlight: false },
+      { id: 'f2', text: 'Unlimited motion concepts', highlight: true },
+      { id: 'f3', text: 'Cinematic quality animations', highlight: true },
+      { id: 'f4', text: 'Original music composition', highlight: true },
+      { id: 'f5', text: 'All formats + source files', highlight: true },
+      { id: 'f6', text: 'Storyboard and script included', highlight: true },
+      { id: 'f7', text: '10-day delivery', highlight: false },
+      { id: 'f8', text: '3 months support', highlight: true },
+    ],
+    status: 'active',
+    deliveryTime: '10 business days',
+    paymentTerms: '30% upfront, 40% at milestone, 30% on delivery',
+    popular: false,
+  },
+];
+
+// Print & Packaging Packages
+export const printPackagingPackages: ServicePackage[] = [
+  {
+    id: 'basic',
+    name: 'Basic',
+    subtitle: 'Essential print materials for small businesses',
+    pricing: {
+      usd: 20,
+      bdt: 1300,
+    },
+    features: [
+      { id: 'f1', text: 'Business card design', highlight: false },
+      { id: 'f2', text: 'Letterhead design', highlight: false },
+      { id: 'f3', text: 'Basic flyer design', highlight: false },
+      { id: 'f4', text: 'Print-ready files', highlight: true },
+      { id: 'f5', text: '2 rounds of revisions', highlight: false },
+      { id: 'f6', text: '5-day delivery', highlight: true },
+    ],
+    status: 'active',
+    deliveryTime: '5 business days',
+    paymentTerms: '100% upfront',
+    popular: false,
+  },
+  {
+    id: 'comprehensive',
+    name: 'Comprehensive',
+    subtitle: 'Complete print package for growing businesses',
+    pricing: {
+      usd: 32,
+      bdt: 2100,
+    },
+    features: [
+      { id: 'f1', text: 'Business card, letterhead, envelope', highlight: false },
+      { id: 'f2', text: 'Brochure design (2-4 pages)', highlight: true },
+      { id: 'f3', text: 'Flyer and poster designs', highlight: true },
+      { id: 'f4', text: 'Print specifications guide', highlight: true },
+      { id: 'f5', text: 'Unlimited revisions', highlight: true },
+      { id: 'f6', text: '7-day delivery', highlight: false },
+      { id: 'f7', text: 'Print consultation included', highlight: false },
+    ],
+    status: 'featured',
+    deliveryTime: '7 business days',
+    paymentTerms: '50% upfront, 50% on delivery',
+    popular: true,
+  },
+  {
+    id: 'enterprise',
+    name: 'Enterprise',
+    subtitle: 'Full print and packaging solution',
+    pricing: {
+      usd: 68,
+      bdt: 4500,
+    },
+    features: [
+      { id: 'f1', text: 'Complete print collateral', highlight: false },
+      { id: 'f2', text: 'Product packaging design', highlight: true },
+      { id: 'f3', text: 'Catalog design (up to 20 pages)', highlight: true },
+      { id: 'f4', text: 'Print production management', highlight: true },
+      { id: 'f5', text: 'Material and finish consultation', highlight: true },
+      { id: 'f6', text: '10-day delivery', highlight: false },
+      { id: 'f7', text: 'Print quality assurance', highlight: true },
+    ],
+    status: 'active',
+    deliveryTime: '10 business days',
+    paymentTerms: '30% upfront, 40% at milestone, 30% on delivery',
+    popular: false,
+  },
+];
+
+// Reels Packages
+export const reelsPackages: ServicePackage[] = [
+  {
+    id: 'starter',
+    name: 'Starter',
+    subtitle: 'Basic reels for social media presence',
+    pricing: {
+      usd: 15,
+      bdt: 1000,
+    },
+    features: [
+      { id: 'f1', text: '1 reel (15-30 seconds)', highlight: false },
+      { id: 'f2', text: 'Basic motion graphics', highlight: false },
+      { id: 'f3', text: 'Trending music included', highlight: false },
+      { id: 'f4', text: 'MP4 format', highlight: false },
+      { id: 'f5', text: '2 rounds of revisions', highlight: false },
+      { id: 'f6', text: '3-day delivery', highlight: true },
+    ],
+    status: 'active',
+    deliveryTime: '3 business days',
+    paymentTerms: '100% upfront',
+    popular: false,
+  },
+  {
+    id: 'pro',
+    name: 'Pro',
+    subtitle: 'Professional reels with custom elements',
+    pricing: {
+      usd: 25,
+      bdt: 1700,
+    },
+    features: [
+      { id: 'f1', text: '3 reels (15-60 seconds each)', highlight: false },
+      { id: 'f2', text: 'Advanced motion graphics', highlight: true },
+      { id: 'f3', text: 'Custom music/sound effects', highlight: true },
+      { id: 'f4', text: 'Multiple formats', highlight: true },
+      { id: 'f5', text: 'Unlimited revisions', highlight: true },
+      { id: 'f6', text: '5-day delivery', highlight: false },
+      { id: 'f7', text: 'Content strategy tips', highlight: false },
+    ],
+    status: 'featured',
+    deliveryTime: '5 business days',
+    paymentTerms: '50% upfront, 50% on delivery',
+    popular: true,
+  },
+  {
+    id: 'premium',
+    name: 'Premium',
+    subtitle: 'Complete reels package with strategy',
+    pricing: {
+      usd: 45,
+      bdt: 3000,
+    },
+    features: [
+      { id: 'f1', text: '5 reels (15-60 seconds each)', highlight: false },
+      { id: 'f2', text: 'Cinematic quality animations', highlight: true },
+      { id: 'f3', text: 'Original music composition', highlight: true },
+      { id: 'f4', text: 'All formats + source files', highlight: true },
+      { id: 'f5', text: 'Content calendar planning', highlight: true },
+      { id: 'f6', text: '7-day delivery', highlight: false },
+      { id: 'f7', text: '1 month content strategy support', highlight: true },
+    ],
+    status: 'active',
+    deliveryTime: '7 business days',
+    paymentTerms: '30% upfront, 40% at milestone, 30% on delivery',
+    popular: false,
+  },
+];
+
+// Custom Logo Animation Packages
+export const logoAnimationPackages: ServicePackage[] = [
+  {
+    id: 'basic',
+    name: 'Basic',
+    subtitle: 'Simple logo animation for digital use',
+    pricing: {
+      usd: 18,
+      bdt: 1200,
+    },
+    features: [
+      { id: 'f1', text: '1 animation style', highlight: false },
+      { id: 'f2', text: '3-5 second duration', highlight: false },
+      { id: 'f3', text: 'Basic motion effects', highlight: false },
+      { id: 'f4', text: 'MP4 format', highlight: false },
+      { id: 'f5', text: '2 rounds of revisions', highlight: false },
+      { id: 'f6', text: '4-day delivery', highlight: true },
+    ],
+    status: 'active',
+    deliveryTime: '4 business days',
+    paymentTerms: '100% upfront',
+    popular: false,
+  },
+  {
+    id: 'advanced',
+    name: 'Advanced',
+    subtitle: 'Professional logo animation with effects',
+    pricing: {
+      usd: 32,
+      bdt: 2100,
+    },
+    features: [
+      { id: 'f1', text: '3 animation styles', highlight: false },
+      { id: 'f2', text: '5-8 second duration', highlight: true },
+      { id: 'f3', text: 'Advanced motion effects', highlight: true },
+      { id: 'f4', text: 'Multiple formats (MP4, MOV, GIF)', highlight: true },
+      { id: 'f5', text: 'Unlimited revisions', highlight: true },
+      { id: 'f6', text: '6-day delivery', highlight: false },
+      { id: 'f7', text: 'Source files included', highlight: false },
+    ],
+    status: 'featured',
+    deliveryTime: '6 business days',
+    paymentTerms: '50% upfront, 50% on delivery',
+    popular: true,
+  },
+  {
+    id: 'premium',
+    name: 'Premium',
+    subtitle: 'Cinematic logo animation with full production',
+    pricing: {
+      usd: 52,
+      bdt: 3500,
+    },
+    features: [
+      { id: 'f1', text: '5 animation styles', highlight: false },
+      { id: 'f2', text: '8-15 second duration', highlight: true },
+      { id: 'f3', text: 'Cinematic quality effects', highlight: true },
+      { id: 'f4', text: 'All formats + source files', highlight: true },
+      { id: 'f5', text: 'Custom sound effects', highlight: true },
+      { id: 'f6', text: '8-day delivery', highlight: false },
+      { id: 'f7', text: 'Usage guidelines included', highlight: true },
+    ],
+    status: 'active',
+    deliveryTime: '8 business days',
+    paymentTerms: '30% upfront, 40% at milestone, 30% on delivery',
+    popular: false,
+  },
+];
+
+// Intro & Outro Packages
+export const introOutroPackages: ServicePackage[] = [
+  {
+    id: 'basic',
+    name: 'Basic',
+    subtitle: 'Simple intro/outro for content creators',
+    pricing: {
+      usd: 20,
+      bdt: 1300,
+    },
+    features: [
+      { id: 'f1', text: '1 intro OR outro (3-5 seconds)', highlight: false },
+      { id: 'f2', text: 'Basic motion graphics', highlight: false },
+      { id: 'f3', text: 'Stock music included', highlight: false },
+      { id: 'f4', text: 'MP4 format', highlight: false },
+      { id: 'f5', text: '2 rounds of revisions', highlight: false },
+      { id: 'f6', text: '4-day delivery', highlight: true },
+    ],
+    status: 'active',
+    deliveryTime: '4 business days',
+    paymentTerms: '100% upfront',
+    popular: false,
+  },
+  {
+    id: 'standard',
+    name: 'Standard',
+    subtitle: 'Professional intro/outro package',
+    pricing: {
+      usd: 32,
+      bdt: 2100,
+    },
+    features: [
+      { id: 'f1', text: '1 intro AND 1 outro (5-8 seconds each)', highlight: false },
+      { id: 'f2', text: 'Advanced motion graphics', highlight: true },
+      { id: 'f3', text: 'Custom music/sound design', highlight: true },
+      { id: 'f4', text: 'Multiple formats (MP4, MOV)', highlight: true },
+      { id: 'f5', text: 'Unlimited revisions', highlight: true },
+      { id: 'f6', text: '6-day delivery', highlight: false },
+      { id: 'f7', text: 'Source files included', highlight: false },
+    ],
+    status: 'featured',
+    deliveryTime: '6 business days',
+    paymentTerms: '50% upfront, 50% on delivery',
+    popular: true,
+  },
+  {
+    id: 'premium',
+    name: 'Premium',
+    subtitle: 'Complete intro/outro solution with variations',
+    pricing: {
+      usd: 60,
+      bdt: 4000,
+    },
+    features: [
+      { id: 'f1', text: '3 intro AND 3 outro variations', highlight: false },
+      { id: 'f2', text: 'Cinematic quality animations', highlight: true },
+      { id: 'f3', text: 'Original music composition', highlight: true },
+      { id: 'f4', text: 'All formats + source files', highlight: true },
+      { id: 'f5', text: 'Multiple length versions', highlight: true },
+      { id: 'f6', text: '8-day delivery', highlight: false },
+      { id: 'f7', text: 'Implementation guide', highlight: true },
+    ],
+    status: 'active',
+    deliveryTime: '8 business days',
+    paymentTerms: '30% upfront, 40% at milestone, 30% on delivery',
+    popular: false,
+  },
+];
+
+// Legacy packages for backward compatibility
+export const servicePackages: ServicePackage[] = logoDesignPackages;
 
 // ============================================================================
 // SERVICE CATEGORIES DATA
@@ -173,18 +596,25 @@ export const serviceCategories: ServiceCategory[] = [
     icon: 'Palette',
   },
   {
-    id: 'development',
-    name: 'Development',
-    slug: 'development',
-    description: 'Web and mobile development services',
-    icon: 'Code',
+    id: 'motion',
+    name: 'Motion & Animation',
+    slug: 'motion',
+    description: 'Dynamic content and video production',
+    icon: 'Video',
   },
   {
-    id: 'marketing',
-    name: 'Marketing',
-    slug: 'marketing',
-    description: 'Digital marketing and growth services',
-    icon: 'TrendingUp',
+    id: 'print',
+    name: 'Print & Packaging',
+    slug: 'print',
+    description: 'Professional print materials and packaging',
+    icon: 'Package',
+  },
+  {
+    id: 'social',
+    name: 'Social Media',
+    slug: 'social',
+    description: 'Content creation for social platforms',
+    icon: 'Share2',
   },
 ];
 
@@ -453,7 +883,7 @@ export const getServicePageData = (slug: string): ServicePageData => {
     slug: slug,
     title: service.title,
     subtitle: service.subtitle,
-    packages: servicePackages,
+    packages: getPackagesByService(slug),
     features: service.features,
     faqs: service.faqs,
   };
@@ -513,7 +943,22 @@ export const getServiceBySlug = (slug: string) => {
 };
 
 export const getPackagesByService = (serviceSlug: string) => {
-  // For now, all services use the same packages
-  // In the future, you might want different packages per service
-  return servicePackages;
+  switch (serviceSlug) {
+    case 'logo-design':
+      return logoDesignPackages;
+    case 'branding':
+      return brandingPackages;
+    case 'motion-video':
+      return motionVideoPackages;
+    case 'print-packaging':
+      return printPackagingPackages;
+    case 'reels':
+      return reelsPackages;
+    case 'custom-logo-animation':
+      return logoAnimationPackages;
+    case 'intro-outro':
+      return introOutroPackages;
+    default:
+      return [];
+  }
 };
