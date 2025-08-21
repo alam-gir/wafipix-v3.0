@@ -11,12 +11,67 @@ export interface TrustedCustomer {
 }
 
 export const trustedCustomers: TrustedCustomer[] = [
-  { logo: 'https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=200&auto=format&fit=crop' },
-  { logo: 'https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=200&auto=format&fit=crop' },
-  { logo: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=200&auto=format&fit=crop' },
-  { logo: 'https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=200&auto=format&fit=crop' },
-  { logo: 'https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=200&auto=format&fit=crop' },
-  { logo: 'https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=200&auto=format&fit=crop' },
+  // Tech Companies
+  { logo: 'https://cdn.worldvectorlogo.com/logos/google-2015.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/facebook-2019.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/netflix-2015.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/samsung-2015.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/apple-black.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/microsoft-2012.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/tesla-motors.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/wikipedia.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/steam.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/discord.svg' },
+  
+  // E-commerce & Retail
+  { logo: 'https://cdn.worldvectorlogo.com/logos/amazon-2.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/walmart.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/shopify.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/nike-6.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/adidas-9.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/starbucks.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/mcdonalds-15.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/burger-king-5.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/coca-cola-2016.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/pepsi-2014.svg' },
+  
+  // Finance & Banking
+  { logo: 'https://cdn.worldvectorlogo.com/logos/google-pay.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/paypal-3.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/visa-5.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/mastercard-2.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/stripe-2.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/square-2.svg' },
+  
+  // Media & Entertainment
+  { logo: 'https://cdn.worldvectorlogo.com/logos/youtube-2017.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/spotify-2015.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/twitch-6.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/telegram-2019.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/whatsapp-3.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/instagram-2016.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/twitter-6.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg' },
+  
+  // Automotive & Transportation
+  { logo: 'https://cdn.worldvectorlogo.com/logos/uber-14.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/lyft-2.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/bmw-5.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/volkswagen-5.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/toyota-6.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/honda-4.svg' },
+  
+  // Software & Development
+  { logo: 'https://cdn.worldvectorlogo.com/logos/laravel-2.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/react-2.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/vue-9.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/tensorflow-2.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/html5-2.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/javascript.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/linux-tux.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/git-icon.svg' },
+  { logo: 'https://cdn.worldvectorlogo.com/logos/github-icon.svg' },
 ];
 
 export const getTrustedCustomerByIndex = (index: number) => {
