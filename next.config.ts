@@ -1,6 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Enable experimental scroll restoration
+  experimental: {
+    scrollRestoration: true,
+  },
+  // Configure scroll behavior
+  compiler: {
+    // Ensure proper scroll handling
+  },
   images: {
     remotePatterns: [
       {

@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import { Metadata } from 'next';
 import { WorksPageClient } from './_components/WorksPageClient';
 
@@ -11,8 +10,6 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ [
   const sp = await searchParams;
   const f = typeof sp.filter === 'string' ? sp.filter : null;
   return (
-    <Suspense>
       <WorksPageClient filter={f} />
-    </Suspense>
   );
 }

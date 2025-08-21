@@ -2,6 +2,7 @@
 
 import { cn } from '@/lib/utils';
 import { useWorksAsCards } from '@/hooks/api/useWorks';
+import { useWorksScrollRestoration } from '@/hooks';
 import WorksFilterBar from './WorksFilterBar';
 import WorksGrid from './WorksGrid';
 import ShowMoreButton from './ShowMoreButton';
@@ -14,6 +15,9 @@ interface WorksPageClientProps {
 }
 
 export function WorksPageClient({ filter }: WorksPageClientProps) {
+  // Initialize scroll restoration
+  useWorksScrollRestoration();
+  
   const { data: worksData, isLoading, error } = useWorksAsCards();
   if (isLoading) {
     return (

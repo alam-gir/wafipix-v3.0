@@ -12,3 +12,4 @@ export { useScrollToTop } from './useScrollToTop';
 export { useSubmenuManagement } from './useSubmenuManagement';
 export { useVideoControls } from './useVideoControls';
 export { useVideoScrollAnimation } from './useVideoScrollAnimation';
+export { useWorksScrollRestoration } from './useWorksScrollRestoration';

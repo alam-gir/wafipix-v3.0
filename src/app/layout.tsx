@@ -17,6 +17,10 @@ export const metadata: Metadata = {
   keywords: ["web development", "mobile apps", "UI/UX design", "digital marketing", "creative agency"],
   authors: [{ name: "Wafipix Team" }],
   viewport: "width=device-width, initial-scale=1",
+  // Add scroll restoration meta tags
+  other: {
+    "scroll-behavior": "auto",
+  },
 };
 
 export default function RootLayout({
@@ -26,8 +30,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        {/* Ensure proper scroll restoration behavior */}
+        <meta name="scroll-behavior" content="auto" />
+      </head>
       <body
         className={`${manrope.variable} antialiased overflow-x-hidden font-sans`}
+        style={{ scrollBehavior: 'auto' }}
       >
         <LenisProvider>
           <Navbar />
