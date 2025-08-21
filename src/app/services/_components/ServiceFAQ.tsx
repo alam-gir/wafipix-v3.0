@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import type { ServiceFaqs } from '@/types';
 import { MagneticWrapper } from '@/components/ui';
 
@@ -13,9 +14,14 @@ interface ServiceFAQProps {
 
 export default function ServiceFAQ({ serviceTitle, faqs }: ServiceFAQProps) {
   const [openFAQ, setOpenFAQ] = useState<string | null>(null);
+  const router = useRouter();
 
   const toggleFAQ = (faqId: string) => {
     setOpenFAQ(openFAQ === faqId ? null : faqId);
+  };
+
+  const handleContactClick = () => {
+    router.push('/contact');
   };
 
   return (
@@ -109,7 +115,8 @@ export default function ServiceFAQ({ serviceTitle, faqs }: ServiceFAQProps) {
             </p>
             <MagneticWrapper strength={0.2} attractArea={80}>
               <button
-                className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300"
+                onClick={handleContactClick}
+                className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:from-primary/90 hover:to-primary/70 hover:scale-105"
               >
                 Contact Us
               </button>
