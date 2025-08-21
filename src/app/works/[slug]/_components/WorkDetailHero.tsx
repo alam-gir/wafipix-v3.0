@@ -11,12 +11,12 @@ interface WorkDetailHeroProps {
 
 export default function WorkDetailHero({ work }: WorkDetailHeroProps) {
   // Prioritize video over image, with better fallback logic
-  const hasVideo = Boolean(work.coverVideoUrl || work.profileVideoUrl);
-  const hasImage = Boolean(work.coverImageUrl || work.profileImageUrl);
+  const hasVideo = Boolean(work.profileVideoUrl);
+  const hasImage = Boolean(work.profileImageUrl);
   
   // Get the best available media
-  const videoUrl = work.coverVideoUrl || work.profileVideoUrl;
-  const imageUrl = work.coverImageUrl || work.profileImageUrl;
+  const videoUrl =work.profileVideoUrl;
+  const imageUrl = work.profileImageUrl;
   
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-background/95 to-background/90">
@@ -80,17 +80,6 @@ export default function WorkDetailHero({ work }: WorkDetailHeroProps) {
             >
               {work.name}
             </motion.h1>
-            
-            {work.shortDescription && (
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-                className="text-lg sm:text-xl text-primary/80 max-w-2xl mx-auto lg:mx-0"
-              >
-                {work.shortDescription}
-              </motion.p>
-            )}
           </motion.div>
 
           {/* Media Content */}

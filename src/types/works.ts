@@ -12,15 +12,8 @@ export interface Work {
   coverImageUrl: string;
   profileVideoUrl: string;
   profileImageUrl: string;
-  gallery: WorkImage[];
+  gallery: GalleryBlock[];
   tags: string[];
-  client: string;
-  projectDate: string;
-  duration: string;
-  tools: string[];
-  challenge: string;
-  solution: string;
-  result: string;
 }
 
 export interface WorkAsCard {
@@ -34,20 +27,13 @@ export interface WorkAsCard {
   profileImageUrl: string;
 }
 
-export interface WorkImage {
-  id: string;
-  url: string;
-  alt: string;
-  caption?: string;
-  type: 'image' | 'video';
-  thumbnail?: string;
-}
-
-export interface WorkGallery {
+export type GalleryBlock = {
   workId: string;
-  images: WorkImage[];
-  totalImages: number;
-  categories: string[];
+  isMobileGrid: boolean;
+  items: {
+    url: string;
+    type: 'image' | 'video'
+  }[]
 }
 
 export interface WorksFilters {
@@ -81,8 +67,4 @@ export interface WorkCardsResponse {
 
 export interface SingleWorkResponse {
   data: Work;
-}
-
-export interface WorkGalleryResponse {
-  data: WorkGallery;
 }

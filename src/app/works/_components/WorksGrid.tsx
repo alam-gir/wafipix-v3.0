@@ -8,17 +8,23 @@ interface WorksGridProps {
 }
 
 export default function WorksGrid({ items, className }: WorksGridProps) {
-  // Layout: odd rows -> 1 card, even rows -> 2 cards (desktop), mobile -> 1
-  // We build rows manually for deterministic layout
+  // Create rows: odd rows (0, 2, 4...) have 1 item, even rows (1, 3, 5...) have 2 items
   const rows: Array<Array<WorkAsCard>> = [];
-  for (let i = 0; i < items.length; ) {
-    const isOddRow = rows.length % 2 === 0; // 0-indexed
+  let currentIndex = 0;
+  
+  while (currentIndex < items.length) {
+    const rowIndex = rows.length;
+    const isOddRow = rowIndex % 2 === 0;
+    
     if (isOddRow) {
-      rows.push([items[i]]);
-      i += 1;
+      // Odd row: 1 item spanning full width
+      rows.push([items[currentIndex]]);
+      currentIndex += 1;
     } else {
-      rows.push(items.slice(i, i + 2));
-      i += 2;
+      // Even row: 2 items side by side
+      const rowItems = items.slice(currentIndex, currentIndex + 2);
+      rows.push(rowItems);
+      currentIndex += 2;
     }
   }
 
@@ -26,16 +32,27 @@ export default function WorksGrid({ items, className }: WorksGridProps) {
     <div className={cn('space-y-6 md:space-y-8', className)}>
       {rows.map((row, rowIndex) => {
         const isOddRow = rowIndex % 2 === 0;
+        
         return (
           <div
             key={rowIndex}
             className={cn(
-              'grid grid-cols-1 gap-6 md:gap-8',
-              !isOddRow && 'md:grid-cols-2'
+              'flex flex-col md:flex-row gap-6 md:gap-8',
+              // Odd rows: 1 item full width, Even rows: 2 items side by side
+              isOddRow ? 'md:justify-start' : 'md:justify-between'
             )}
           >
             {row.map((item) => (
-              <WorkCard key={item.id} item={item} />
+              <div 
+                key={item.id} 
+                className={cn(
+                  // Mobile: full width, Desktop: odd rows get full width, even rows get 1/2 width
+                  'w-full overflow-hidden rounded-xl',
+                  isOddRow ? 'md:w-full' : 'md:w-[calc(50%-0.75rem)]'
+                )}
+              >
+                <WorkCard item={item} />
+              </div>
             ))}
           </div>
         );
@@ -43,5 +60,3 @@ export default function WorksGrid({ items, className }: WorksGridProps) {
     </div>
   );
 }
-
-

@@ -41,21 +41,6 @@ export default function WorkDetailContent({ work }: WorkDetailContentProps) {
             {work.name}
           </motion.h2>
 
-          {/* Short Description - Always Visible */}
-          {work.shortDescription && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-              className="mb-12"
-            >
-              <p className="text-xl sm:text-2xl text-primary/80 text-center leading-relaxed max-w-3xl mx-auto">
-                {work.shortDescription}
-              </p>
-            </motion.div>
-          )}
-
           {/* Full Description - Hidden on Mobile */}
           {work.description && (
             <motion.div

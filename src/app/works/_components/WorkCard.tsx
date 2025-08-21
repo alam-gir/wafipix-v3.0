@@ -25,7 +25,7 @@ export default function WorkCard({ item, className }: WorkCardProps) {
 
   return (
     <Link href={`/works/${item.slug}`} className="block" scroll={false}>
-      <div ref={containerRef} className={cn('relative overflow-hidden rounded-3xl isolate', className)}>
+      <div ref={containerRef} className={cn('relative rounded-3xl isolate', className)}>
       {/* Background cover (parallax) */}
       <motion.div style={{ y: yBg }} className="absolute inset-0 -z-10 will-change-transform">
         {hasCoverVideo ? (
