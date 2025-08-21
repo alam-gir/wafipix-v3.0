@@ -15,9 +15,11 @@ import {
   Sparkles
 } from 'lucide-react';
 import { useNavigation } from '@/hooks/useNavigation';
+import { navigation, ServiceCategory, SubMenuItem } from '@/lib/navigation';
 
 export default function ServicesPage() {
-  const { navigation } = useNavigation();
+  const { activeSubmenuData } = useNavigation();
+  // Use the navigation data directly since we need all services, not just active ones
   const services = navigation.find(item => item.id === 'services')?.submenu || [];
 
   const getIconComponent = (iconName: string) => {
@@ -41,7 +43,7 @@ export default function ServicesPage() {
       {/* Services Grid */}
       <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          {services.map((category, categoryIndex) => (
+          {services.map((category: ServiceCategory, categoryIndex: number) => (
             <motion.div
               key={category.id}
               initial={{ opacity: 0, y: 30 }}
@@ -72,7 +74,7 @@ export default function ServicesPage() {
 
               {/* Services Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {category.items.map((service, serviceIndex) => {
+                {category.items.map((service: SubMenuItem, serviceIndex: number) => {
                   const IconComponent = getIconComponent(service.icon || 'Sparkles');
                   
                   return (
