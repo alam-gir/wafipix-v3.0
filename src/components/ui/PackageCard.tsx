@@ -6,6 +6,7 @@ import type { ServicePackage } from '@/types';
 import { Meteors } from './meteors';
 import { useEffect, useState } from 'react';
 import MagneticWrapper from './MagneticWrapper';
+import { useRouter } from 'next/navigation';
 
 interface PackageCardProps {
   package: ServicePackage;
@@ -14,6 +15,7 @@ interface PackageCardProps {
 
 export default function PackageCard({ package: pkg, index }: PackageCardProps) {
   const [isVisible, setIsVisible] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     // Ensure visibility after component mount
@@ -127,6 +129,7 @@ export default function PackageCard({ package: pkg, index }: PackageCardProps) {
                  {/* CTA Button */}
          <MagneticWrapper strength={0.2} attractArea={80} className="w-full">
            <button
+             onClick={() => router.push('/start-project')}
              className={`w-full py-4 px-8 rounded-2xl font-bold text-lg transition-all duration-300 ${
                pkg.popular
                  ? 'bg-gradient-to-r from-primary to-primary/80 text-primary-foreground'
