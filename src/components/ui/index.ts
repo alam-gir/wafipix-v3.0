@@ -22,5 +22,6 @@ export { default as AnimatedBackground } from "./AnimatedBackground";
 export { default as AnimatedIcon } from "./AnimatedIcon";
 export { default as ErrorPageLayout } from "./ErrorPageLayout";
 export { default as ErrorPageActions } from "./ErrorPageActions";
+export { default as ErrorMessage } from "./ErrorMessage";
 export { default as ComingSoonPage } from "./ComingSoonPage";
 export { default as PackageCard } from "./PackageCard"; 

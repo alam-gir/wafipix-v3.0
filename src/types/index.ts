@@ -13,4 +13,5 @@ export interface ApiResponse<T> {
 // Re-export domain-specific types
 export * from './services';
 export * from './works';
+export * from './meta-pixel';
 

@@ -7,6 +7,7 @@ import { Meteors } from './meteors';
 import { useEffect, useState } from 'react';
 import MagneticWrapper from './MagneticWrapper';
 import { useRouter } from 'next/navigation';
+import { useMetaPixelTracking } from '@/hooks/useMetaPixelTracking';
 
 interface PackageCardProps {
   package: ServicePackage;
@@ -16,6 +17,7 @@ interface PackageCardProps {
 export default function PackageCard({ package: pkg, index }: PackageCardProps) {
   const [isVisible, setIsVisible] = useState(false);
   const router = useRouter();
+  const { trackPackageSelection } = useMetaPixelTracking();
 
   useEffect(() => {
     // Ensure visibility after component mount
@@ -129,7 +131,17 @@ export default function PackageCard({ package: pkg, index }: PackageCardProps) {
                  {/* CTA Button */}
          <MagneticWrapper strength={0.2} attractArea={80} className="w-full">
            <button
-             onClick={() => router.push('/start-project')}
+             onClick={() => {
+               // Track package selection before navigation
+               trackPackageSelection({
+                 id: pkg.id,
+                 name: pkg.name,
+                 price: pkg.pricing.usd,
+                 features: pkg.features.map(feature => feature.text),
+                 serviceType: 'web_development'
+               });
+               router.push('/start-project');
+             }}
              className={`w-full py-4 px-8 rounded-2xl font-bold text-lg transition-all duration-300 ${
                pkg.popular
                  ? 'bg-gradient-to-r from-primary to-primary/80 text-primary-foreground'

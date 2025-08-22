@@ -4,6 +4,9 @@ import "./globals.css";
 import LenisProvider from "@/components/LenisProvider";
 import Navbar from "@/components/navigation/Navbar";
 import { Footer } from "@/components/sections/footer";
+import MetaPixelProvider from "@/components/providers/MetaPixelProvider";
+import { getMetaPixelConfig } from "@/lib/analytics/config";
+import { createBaseMetadata } from "@/lib/meta";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -11,23 +14,15 @@ const manrope = Manrope({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Wafipix - Digital Magic Creators",
-  description: "Transform your ideas into stunning digital experiences. We craft websites, apps, and digital solutions that captivate and convert.",
-  keywords: ["web development", "mobile apps", "UI/UX design", "digital marketing", "creative agency"],
-  authors: [{ name: "Wafipix Team" }],
-  viewport: "width=device-width, initial-scale=1",
-  // Add scroll restoration meta tags
-  other: {
-    "scroll-behavior": "auto",
-  },
-};
+export const metadata: Metadata = createBaseMetadata();
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const metaPixelConfig = getMetaPixelConfig();
+  
   return (
     <html lang="en" className="scroll-smooth">
       <head>
@@ -38,11 +33,13 @@ export default function RootLayout({
         className={`${manrope.variable} antialiased overflow-x-hidden font-sans`}
         style={{ scrollBehavior: 'auto' }}
       >
-        <LenisProvider>
-          <Navbar />
-          {children}
-          <Footer />
-        </LenisProvider>
+        <MetaPixelProvider config={metaPixelConfig}>
+          <LenisProvider>
+            <Navbar />
+            {children}
+            <Footer />
+          </LenisProvider>
+        </MetaPixelProvider>
       </body>
     </html>
   );

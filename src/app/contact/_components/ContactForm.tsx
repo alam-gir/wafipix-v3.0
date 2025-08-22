@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { contactFormSchema, type ContactFormData } from "./contactSchema";
+import { useMetaPixelTracking } from "@/hooks/useMetaPixelTracking";
 
 // Dynamically import RichTextEditor to prevent SSR issues
 const RichTextEditor = dynamic(() => import("./RichTextEditor"), {
@@ -32,6 +33,7 @@ const RichTextEditor = dynamic(() => import("./RichTextEditor"), {
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const { trackContactSubmission, trackFormInteraction } = useMetaPixelTracking();
 
   const {
     register,
@@ -62,6 +64,15 @@ export default function ContactForm() {
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     
+    // Track form interaction start
+    trackFormInteraction({
+      id: 'contact_form',
+      name: 'Contact Form',
+      type: 'contact',
+      completed: false,
+      fields: ['name', 'email', 'phone', 'message']
+    });
+    
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -72,6 +83,18 @@ export default function ContactForm() {
       const result = await response.json();
       
       if (result.success) {
+        // Track successful contact submission
+        trackContactSubmission(data);
+        
+        // Track form completion
+        trackFormInteraction({
+          id: 'contact_form',
+          name: 'Contact Form',
+          type: 'contact',
+          completed: true,
+          fields: ['name', 'email', 'phone', 'message']
+        });
+        
         // Add a small delay to show the loading state
         await new Promise(resolve => setTimeout(resolve, 500));
         setIsSubmitted(true);
