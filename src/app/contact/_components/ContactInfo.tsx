@@ -75,7 +75,7 @@ export default function ContactInfo() {
             Get in Touch
           </h2>
           <p className="text-xl text-primary/80 max-w-3xl mx-auto">
-            We're here to help bring your digital vision to life. Choose the way that works best for you.
+            We&apos;re here to help bring your digital vision to life. Choose the way that works best for you.
           </p>
         </motion.div>
 
@@ -126,7 +126,7 @@ export default function ContactInfo() {
               Why Choose Wafipix?
             </h3>
             <p className="text-lg text-primary/80 mb-8 max-w-2xl mx-auto">
-              We're not just another digital agency. We're your creative partners, 
+              We&apos;re not just another digital agency. We&apos;re your creative partners, 
               committed to delivering exceptional results that exceed expectations.
             </p>
             

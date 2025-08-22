@@ -4,7 +4,7 @@
 
 import useSWR from 'swr';
 import { apiClient } from '@/lib/api';
-import type { Work, WorkAsCard, WorkGallery, WorksFilters, ApiResponse } from '@/types';
+import type { Work, WorkAsCard, WorksFilters, ApiResponse, GalleryBlock } from '@/types';
 
 // ============================================================================
 // WORKS HOOKS
@@ -53,7 +53,7 @@ export function useWork(slug: string) {
 }
 
 export function useWorkGallery(workId: string) {
-  return useSWR<ApiResponse<WorkGallery>>(
+  return useSWR<ApiResponse<GalleryBlock[]>>(
     workId ? `/works/${workId}/gallery` : null,
     () => apiClient.get(`/works/${workId}/gallery`),
     {

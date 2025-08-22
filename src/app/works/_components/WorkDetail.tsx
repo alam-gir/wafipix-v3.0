@@ -56,8 +56,8 @@ export default function WorkDetail({ work, onClose, isModal = false }: WorkDetai
           </div>
         </div>
         
-        {work.shortDescription && (
-          <p className="text-lg text-primary/80 leading-relaxed">{work.shortDescription}</p>
+        {work.description && (
+          <p className="text-lg text-primary/80 leading-relaxed">{work.description}</p>
         )}
         
         {/* Richtext description (trusted HTML for demo) */}

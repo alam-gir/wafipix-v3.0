@@ -22,15 +22,15 @@ export default function ContactHero() {
           className="max-w-4xl mx-auto"
         >
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-            Let's Create
+            Let&apos;s Create
             <span className="block bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
               Something Amazing
             </span>
           </h1>
           
           <p className="text-xl md:text-2xl text-primary/80 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Ready to transform your digital presence? We're here to turn your vision into reality. 
-            Let's start the conversation that will change everything.
+            Ready to transform your digital presence? We&apos;re here to turn your vision into reality. 
+            Let&apos;s start the conversation that will change everything.
           </p>
 
           <motion.div

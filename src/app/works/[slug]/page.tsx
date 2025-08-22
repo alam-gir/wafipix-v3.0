@@ -4,13 +4,14 @@ import { createWorkMetadata } from '@/lib/meta';
 import { works } from '@/lib/data/works';
 
 interface WorkDetailPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({ params }: WorkDetailPageProps): Promise<Metadata> {
-  const work = works.find(w => w.slug === params.slug);
+  const { slug } = await params;
+  const work = works.find(w => w.slug === slug);
   
   if (!work) {
     return {
@@ -22,8 +23,9 @@ export async function generateMetadata({ params }: WorkDetailPageProps): Promise
   return createWorkMetadata(work);
 }
 
-export default function WorkDetailPage({ params }: WorkDetailPageProps) {
-  return <WorkDetailPageClient slug={params.slug} />;
+export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
+  const { slug } = await params;
+  return <WorkDetailPageClient slug={slug} />;
 }
 
 

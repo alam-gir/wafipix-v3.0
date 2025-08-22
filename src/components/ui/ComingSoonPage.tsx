@@ -13,7 +13,7 @@ interface ComingSoonPageProps {
 
 export default function ComingSoonPage({ 
   pageName = "This Page",
-  description = "We're crafting something amazing for you",
+  description = "We&apos;re crafting something amazing for you",
   estimatedDate = "Coming Soon"
 }: ComingSoonPageProps) {
   return (
@@ -96,7 +96,7 @@ export default function ComingSoonPage({
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">Innovation</h3>
               <p className="text-sm text-gray-600">
-                We're pushing the boundaries of what's possible
+                We&apos;re pushing the boundaries of what&apos;s possible
               </p>
             </motion.div>
 
@@ -110,7 +110,7 @@ export default function ComingSoonPage({
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">Quality First</h3>
               <p className="text-sm text-gray-600">
-                We won't launch until it's perfect for you
+                We won&apos;t launch until it&apos;s perfect for you
               </p>
             </motion.div>
           </div>

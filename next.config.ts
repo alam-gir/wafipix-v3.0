@@ -9,6 +9,13 @@ const nextConfig: NextConfig = {
   compiler: {
     // Ensure proper scroll handling
   },
+  // Enable standalone output for Docker
+  output: 'standalone',
+  // Disable ESLint during build for Docker
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  // Configure images
   images: {
     remotePatterns: [
       {

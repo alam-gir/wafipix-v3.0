@@ -32,7 +32,7 @@ export default function ContactSuccess() {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-bold text-white mb-6"
           >
-            We're Here to Help
+            We&apos;re Here to Help
           </motion.h2>
 
           <motion.p
@@ -43,7 +43,7 @@ export default function ContactSuccess() {
             className="text-xl text-primary/80 mb-12 max-w-3xl mx-auto"
           >
             Whether you have a question, need a quote, or want to discuss your next project, 
-            we're ready to turn your ideas into reality. Let's create something amazing together!
+            we&apos;re ready to turn your ideas into reality. Let&apos;s create something amazing together!
           </motion.p>
 
           <motion.div

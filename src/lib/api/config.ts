@@ -32,8 +32,9 @@ export const API_CONFIG = {
   },
 } as const;
 
-// API client selection
-export const isUsingMockApi = process.env.NODE_ENV === 'development' && !process.env.NEXT_PUBLIC_API_URL;
+// API client selection - Use mock APIs in both development and production for now
+// When backend is ready, set NEXT_PUBLIC_USE_REAL_API=true to switch to real APIs
+export const isUsingMockApi = !process.env.NEXT_PUBLIC_USE_REAL_API;
 
 // Helper functions
 export const getApiUrl = (endpoint: string) => `${API_CONFIG.BASE_URL}${API_CONFIG.API_PATH}${endpoint}`;
@@ -44,4 +45,5 @@ if (process.env.NODE_ENV === 'development') {
   console.log(`🚀 API Mode: ${isUsingMockApi ? 'Mock API' : 'Real API'}`);
   console.log(`🌐 Base URL: ${API_CONFIG.BASE_URL}`);
   console.log(`📡 API Path: ${API_CONFIG.API_PATH}`);
+  console.log(`🔧 Use Real API: ${process.env.NEXT_PUBLIC_USE_REAL_API || 'false'}`);
 }

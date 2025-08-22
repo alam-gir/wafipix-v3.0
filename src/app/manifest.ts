@@ -21,13 +21,13 @@ export default function manifest(): MetadataRoute.Manifest {
         src: '/icon-192.png',
         sizes: '192x192',
         type: 'image/png',
-        purpose: 'maskable any',
+        purpose: 'maskable',
       },
       {
         src: '/icon-512.png',
         sizes: '512x512',
         type: 'image/png',
-        purpose: 'maskable any',
+        purpose: 'maskable',
       },
     ],
     categories: ['business', 'productivity', 'design'],
@@ -35,12 +35,7 @@ export default function manifest(): MetadataRoute.Manifest {
     dir: 'ltr',
     scope: '/',
     display_override: ['standalone', 'minimal-ui'],
-    edge_side_panel: {
-      preferred_width: 400,
-    },
-    launch_handler: {
-      client_mode: 'navigate-existing',
-    },
+
     shortcuts: [
       {
         name: 'Our Works',
