@@ -100,7 +100,7 @@ export function FooterCTASection({ className }: FooterCTASectionProps) {
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center w-full sm:w-auto mb-12">
                 <MagneticWrapper className="w-full sm:w-auto">
                   <Link 
-                    href="/contact"
+                    href="/start-project"
                     className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 font-semibold inline-flex items-center justify-center gap-2 hover:from-primary/90 hover:to-primary/70"
                   >
                     Start Your Project
