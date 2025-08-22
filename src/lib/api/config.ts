@@ -32,18 +32,18 @@ export const API_CONFIG = {
   },
 } as const;
 
-// API client selection - Use mock APIs in both development and production for now
+// API client selection - Use mock APIs by default in both development and production
 // When backend is ready, set NEXT_PUBLIC_USE_REAL_API=true to switch to real APIs
-export const isUsingMockApi = !process.env.NEXT_PUBLIC_USE_REAL_API;
+export const isUsingMockApi = process.env.NEXT_PUBLIC_USE_REAL_API !== 'true';
 
 // Helper functions
 export const getApiUrl = (endpoint: string) => `${API_CONFIG.BASE_URL}${API_CONFIG.API_PATH}${endpoint}`;
 export const getMockApiUrl = (endpoint: string) => `mock://${endpoint}`;
 
-// Debug logging
-if (process.env.NODE_ENV === 'development') {
-  console.log(`🚀 API Mode: ${isUsingMockApi ? 'Mock API' : 'Real API'}`);
-  console.log(`🌐 Base URL: ${API_CONFIG.BASE_URL}`);
-  console.log(`📡 API Path: ${API_CONFIG.API_PATH}`);
-  console.log(`🔧 Use Real API: ${process.env.NEXT_PUBLIC_USE_REAL_API || 'false'}`);
-}
+// Enhanced debug logging for both development and production
+console.log(`🚀 API Mode: ${isUsingMockApi ? 'Mock API' : 'Real API'}`);
+console.log(`🌐 Base URL: ${API_CONFIG.BASE_URL}`);
+console.log(`📡 API Path: ${API_CONFIG.API_PATH}`);
+console.log(`🔧 Use Real API: ${process.env.NEXT_PUBLIC_USE_REAL_API || 'false'}`);
+console.log(`🌍 Environment: ${process.env.NODE_ENV || 'unknown'}`);
+console.log(`📱 Mock API Enabled: ${isUsingMockApi}`);
