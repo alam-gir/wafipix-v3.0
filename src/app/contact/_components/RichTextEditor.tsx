@@ -100,45 +100,49 @@ export default function RichTextEditor({
      <div className={cn("border border-border/20 rounded-lg overflow-hidden flex flex-col", className)}>
        {/* Toolbar */}
        <div className="flex flex-wrap items-center gap-1 p-3 bg-card/50 border-b border-border/20">
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => editor.chain().focus().toggleBold().run()}
-          className={cn(
-            "h-8 w-8 p-0",
-            editor.isActive('bold') && "bg-primary/20 text-primary"
-          )}
-        >
-          <Bold className="w-4 h-4" />
-        </Button>
-        
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => editor.chain().focus().toggleItalic().run()}
-          className={cn(
-            "h-8 w-8 p-0",
-            editor.isActive('italic') && "bg-primary/20 text-primary"
-          )}
-        >
-          <Italic className="w-4 h-4" />
-        </Button>
-        
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => editor.chain().focus().toggleUnderline().run()}
-          className={cn(
-            "h-8 w-8 p-0",
-            editor.isActive('underline') && "bg-primary/20 text-primary"
-          )}
-        >
-          <UnderlineIcon className="w-4 h-4" />
-        </Button>
+                 <Button
+           type="button"
+           variant="ghost"
+           size="sm"
+           onClick={() => editor.chain().focus().toggleBold().run()}
+           className={cn(
+             "h-8 w-8 p-0",
+             editor.isActive('bold') && "bg-primary/20 text-primary"
+           )}
+         >
+           <Bold className="w-4 h-4" />
+         </Button>
+         
+         <Button
+           type="button"
+           variant="ghost"
+           size="sm"
+           onClick={() => editor.chain().focus().toggleItalic().run()}
+           className={cn(
+             "h-8 w-8 p-0",
+             editor.isActive('italic') && "bg-primary/20 text-primary"
+           )}
+         >
+           <Italic className="w-4 h-4" />
+         </Button>
+         
+         <Button
+           type="button"
+           variant="ghost"
+           size="sm"
+           onClick={() => editor.chain().focus().toggleUnderline().run()}
+           className={cn(
+             "h-8 w-8 p-0",
+             editor.isActive('underline') && "bg-primary/20 text-primary"
+           )}
+         >
+           <UnderlineIcon className="w-4 h-4" />
+         </Button>
 
         <div className="w-px h-6 bg-border/30 mx-1" />
 
         <Button
+          type="button"
           variant="ghost"
           size="sm"
           onClick={() => editor.chain().focus().toggleBulletList().run()}
@@ -151,6 +155,7 @@ export default function RichTextEditor({
         </Button>
         
         <Button
+          type="button"
           variant="ghost"
           size="sm"
           onClick={() => editor.chain().focus().toggleOrderedList().run()}
@@ -163,6 +168,7 @@ export default function RichTextEditor({
         </Button>
 
         <Button
+          type="button"
           variant="ghost"
           size="sm"
           onClick={() => editor.chain().focus().toggleBlockquote().run()}
@@ -177,6 +183,7 @@ export default function RichTextEditor({
         <div className="w-px h-6 bg-border/30 mx-1" />
 
         <Button
+          type="button"
           variant="ghost"
           size="sm"
           onClick={() => editor.chain().focus().setTextAlign('left').run()}
@@ -189,6 +196,7 @@ export default function RichTextEditor({
         </Button>
         
         <Button
+          type="button"
           variant="ghost"
           size="sm"
           onClick={() => editor.chain().focus().setTextAlign('center').run()}
@@ -201,6 +209,7 @@ export default function RichTextEditor({
         </Button>
         
         <Button
+          type="button"
           variant="ghost"
           size="sm"
           onClick={() => editor.chain().focus().setTextAlign('right').run()}
@@ -215,6 +224,7 @@ export default function RichTextEditor({
         <div className="w-px h-6 bg-border/30 mx-1" />
 
         <Button
+          type="button"
           variant="ghost"
           size="sm"
           onClick={editor.isActive('link') ? addLink : setLink}
