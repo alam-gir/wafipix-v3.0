@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
 
-// Email transporter configuration
+// Email transporter configuration - simplified for reliability
 export const createTransporter = () => {
   // Validate required environment variables
   if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
@@ -11,45 +11,32 @@ export const createTransporter = () => {
   const isGmail = process.env.GMAIL_USER.includes('@gmail.com');
   
   if (isGmail) {
-    // Gmail configuration
+    // Simple Gmail configuration
     return nodemailer.createTransport({
       service: 'gmail',
       auth: {
         user: process.env.GMAIL_USER,
         pass: process.env.GMAIL_APP_PASSWORD,
       },
-      // Additional configuration for better reliability
-      pool: true, // Use pooled connections
-      maxConnections: 5, // Maximum number of connections to pool
-      maxMessages: 100, // Maximum number of messages per connection
-      rateLimit: 14, // Maximum number of messages per second
-      // Connection timeout settings
-      connectionTimeout: 60000, // 60 seconds
-      greetingTimeout: 30000, // 30 seconds
-      socketTimeout: 60000, // 60 seconds
+      // Basic settings for reliability
+      secure: true,
+      tls: {
+        rejectUnauthorized: false, // More permissive for development
+      },
     });
   } else {
-    // Custom domain email (Namecheap, etc.) configuration
+    // Simple custom domain configuration
     return nodemailer.createTransport({
-      host: 'mail.privateemail.com', // Namecheap Private Email
-      port: 587, // TLS port
-      secure: false, // Use TLS
+      host: 'mail.privateemail.com',
+      port: 587,
+      secure: false,
       auth: {
         user: process.env.GMAIL_USER,
         pass: process.env.GMAIL_APP_PASSWORD,
       },
-      // Additional configuration for better reliability
-      pool: true, // Use pooled connections
-      maxConnections: 5, // Maximum number of connections to pool
-      maxMessages: 100, // Maximum number of messages per connection
-      rateLimit: 14, // Maximum number of messages per second
-      // Connection timeout settings
-      connectionTimeout: 60000, // 60 seconds
-      greetingTimeout: 30000, // 30 seconds
-      socketTimeout: 60000, // 60 seconds
-      // TLS configuration
+      // Basic TLS settings
       tls: {
-        rejectUnauthorized: false, // Allow self-signed certificates
+        rejectUnauthorized: false, // More permissive for development
       },
     });
   }

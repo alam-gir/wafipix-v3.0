@@ -1,293 +1,118 @@
 import { ContactFormData } from '@/app/contact/_components/contactSchema';
 
-// Base email template styles
-const getBaseStyles = () => `
-  <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      line-height: 1.6;
-      color: #1f2937;
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 20px;
-      background-color: #f0f9ff;
-    }
-    .container {
-      background-color: #ffffff;
-      border-radius: 12px;
-      padding: 28px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-      border: 1px solid #e0f2fe;
-    }
-    .header {
-      text-align: center;
-      margin-bottom: 28px;
-      padding-bottom: 20px;
-      border-bottom: 2px solid #e0f2fe;
-    }
-    .logo {
-      font-size: 28px;
-      font-weight: 700;
-      background: linear-gradient(135deg, #059669 0%, #10b981 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 6px;
-    }
-    .subtitle {
-      color: #64748b;
-      font-size: 15px;
-      font-weight: 500;
-    }
-    .field {
-      margin-bottom: 20px;
-    }
-    .field-label {
-      font-weight: 600;
-      color: #374151;
-      margin-bottom: 6px;
-      display: block;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .field-value {
-      background-color: #f0f9ff;
-      padding: 12px 16px;
-      border-radius: 8px;
-      border-left: 3px solid #059669;
-      font-size: 14px;
-      word-wrap: break-word;
-      color: #1f2937;
-      font-weight: 500;
-    }
-    .message-field {
-      background-color: #f0f9ff;
-      padding: 16px;
-      border-radius: 8px;
-      border-left: 3px solid #059669;
-      white-space: pre-wrap;
-      font-size: 14px;
-      line-height: 1.6;
-      color: #1f2937;
-      font-weight: 400;
-    }
-    .footer {
-      margin-top: 28px;
-      padding-top: 20px;
-      border-top: 1px solid #e0f2fe;
-      text-align: center;
-      color: #64748b;
-      font-size: 13px;
-    }
-    .timestamp {
-      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-      padding: 12px;
-      border-radius: 8px;
-      text-align: center;
-      margin-top: 20px;
-      font-size: 12px;
-      color: #475569;
-      font-weight: 500;
-    }
-    .priority-badge {
-      display: inline-block;
-      background: linear-gradient(135deg, #059669 0%, #10b981 100%);
-      color: white;
-      padding: 4px 10px;
-      border-radius: 16px;
-      font-size: 11px;
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-    .cta-button {
-      display: inline-block;
-      background: linear-gradient(135deg, #059669 0%, #10b981 100%);
-      color: white;
-      padding: 10px 20px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 600;
-      margin-top: 12px;
-      transition: all 0.2s ease;
-      font-size: 14px;
-    }
-    .cta-button:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
-    }
-  </style>
-`;
-
-// Create contact form email template
+// Create clean, simple HTML admin notification email template
 export const createContactEmailTemplate = (data: ContactFormData): string => {
   const { name, email, phone, message } = data;
-  const timestamp = new Date().toLocaleString('en-US', {
-    timeZone: 'UTC',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit'
-  });
+  const timestamp = new Date().toLocaleString('en-US', { timeZone: 'UTC' });
 
-  return `
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>New Contact Form Submission - Wafipix</title>
-      ${getBaseStyles()}
-    </head>
-    <body>
-      <div class="container">
-        <div class="header">
-          <div class="logo">Wafipix</div>
-          <div class="subtitle">Digital Magic Creators</div>
-        </div>
-        
-        <div class="priority-badge">New Contact Form Submission</div>
-        
-        <h2 style="color: #1f2937; margin-bottom: 28px; font-size: 24px; font-weight: 700;">
-          New Contact Form Submission
-        </h2>
-        
-        <p style="color: #64748b; font-size: 16px; line-height: 1.6; margin-bottom: 24px;">
-          A new contact form has been submitted through the website. Please review the details below and respond accordingly.
-        </p>
-        
-        <div class="field">
-          <span class="field-label">Full Name</span>
-          <div class="field-value">${name}</div>
-        </div>
-        
-        <div class="field">
-          <span class="field-label">Email Address</span>
-          <div class="field-value">${email}</div>
-        </div>
-        
-        ${phone ? `
-        <div class="field">
-          <span class="field-label">Phone Number</span>
-          <div class="field-value">${phone}</div>
-        </div>
-        ` : ''}
-        
-        <div class="field">
-          <span class="field-label">Message</span>
-          <div class="message-field">${message}</div>
-        </div>
-        
-        <div class="timestamp">
-          Submitted on: ${timestamp} UTC
-        </div>
-        
-        <div class="footer">
-          <p style="margin-bottom: 16px; color: #64748b;">
-            <strong>Action Required:</strong> Please respond to this customer within 24 hours to maintain our high service standards.
-          </p>
-          <a href="mailto:${email}?subject=Re: Your inquiry to Wafipix" class="cta-button">
-            Reply to Customer
-          </a>
-          <p style="margin-top: 16px; font-size: 12px; color: #94a3b8;">
-            This message was automatically generated from the Wafipix website contact form.
-          </p>
-        </div>
-      </div>
-    </body>
-    </html>
-  `;
+  return `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>New Contact Form Submission</title>
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 20px; background-color: #f5f5f5;">
+  <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 30px; border-radius: 8px; border: 1px solid #ddd;">
+    <h1 style="color: #2563eb; margin: 0 0 20px 0; font-size: 24px;">New Contact Form Submission</h1>
+    <p style="color: #666; margin: 0 0 20px 0;">Wafipix - Digital Magic Creators</p>
+    
+    <div style="background-color: #f8f9fa; padding: 20px; border-radius: 6px; margin: 20px 0;">
+      <h2 style="color: #1e40af; margin: 0 0 15px 0; font-size: 18px;">Contact Details</h2>
+      <p style="margin: 5px 0;"><strong>Name:</strong> ${name}</p>
+      <p style="margin: 5px 0;"><strong>Email:</strong> <a href="mailto:${email}" style="color: #2563eb;">${email}</a></p>
+      ${phone ? `<p style="margin: 5px 0;"><strong>Phone:</strong> ${phone}</p>` : ''}
+      <p style="margin: 5px 0;"><strong>Date:</strong> ${timestamp}</p>
+    </div>
+    
+    <div style="background-color: #fff3cd; padding: 20px; border-radius: 6px; margin: 20px 0;">
+      <h3 style="color: #856404; margin: 0 0 10px 0; font-size: 16px;">Message</h3>
+      <p style="margin: 0; white-space: pre-wrap;">${message}</p>
+    </div>
+    
+    <div style="text-align: center; margin: 30px 0;">
+      <a href="mailto:${email}" style="background-color: #2563eb; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block;">Reply to Customer</a>
+    </div>
+    
+    <div style="border-top: 1px solid #eee; padding-top: 20px; margin-top: 30px; text-align: center; color: #666; font-size: 14px;">
+      <p style="margin: 0;">This message was sent from the Wafipix website contact form.</p>
+    </div>
+  </div>
+</body>
+</html>`;
 };
 
-// Create plain text version for email clients that don't support HTML
+// Create simple plain text version (same as HTML for consistency)
 export const createContactEmailText = (data: ContactFormData): string => {
   const { name, email, phone, message } = data;
   const timestamp = new Date().toLocaleString('en-US', { timeZone: 'UTC' });
 
-  return `
-NEW CONTACT FORM SUBMISSION - WAFIPIX
-=====================================
+  return `NEW CONTACT FORM SUBMISSION - WAFIPIX
 
 Digital Magic Creators
 
-A new contact form has been submitted through the website. Please review the details below and respond accordingly.
+A new contact form has been submitted through the website.
 
-Full Name: ${name}
-Email Address: ${email}
-${phone ? `Phone Number: ${phone}` : ''}
+CONTACT DETAILS:
+Name: ${name}
+Email: ${email}
+${phone ? `Phone: ${phone}` : ''}
+Date: ${timestamp}
 
-Message:
+MESSAGE:
 ${message}
 
-Submitted on: ${timestamp} UTC
-
 ---
-ACTION REQUIRED: Please respond to this customer within 24 hours to maintain our high service standards.
+Please respond to this customer within 24 hours.
 
 Reply to: ${email}
 
-This message was automatically generated from the Wafipix website contact form.
-  `.trim();
+This message was sent from the Wafipix website contact form.`.trim();
 };
 
-// Create customer confirmation email template
+// Create clean, simple HTML customer confirmation email template
 export const createCustomerConfirmationTemplate = (data: ContactFormData): string => {
   const { name } = data;
   const timestamp = new Date().toLocaleString('en-US', { timeZone: 'UTC' });
 
-  return `
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Thank you for contacting Wafipix</title>
-      ${getBaseStyles()}
-    </head>
-    <body>
-      <div class="container">
-        <div class="header">
-          <div class="logo">Wafipix</div>
-          <div class="subtitle">Digital Magic Creators</div>
-        </div>
-        
-        <h2 style="color: #1f2937; margin-bottom: 28px; font-size: 24px; font-weight: 700;">
-          Thank you for contacting us, ${name}
-        </h2>
-        
-        <p style="color: #374151; font-size: 16px; line-height: 1.6; margin-bottom: 24px;">
-          We have successfully received your message and appreciate you taking the time to reach out to us.
-        </p>
-        
-        <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 20px; border-radius: 8px; margin-bottom: 20px;">
-          <h3 style="color: #059669; margin-bottom: 12px; font-size: 16px; font-weight: 600;">
-            Next Steps
-          </h3>
-          <ul style="color: #065f46; margin: 0; padding-left: 18px;">
-            <li style="margin-bottom: 6px;">Our team will review your requirements within 24 hours</li>
-            <li style="margin-bottom: 6px;">We will schedule a consultation call to discuss your project in detail</li>
-            <li style="margin-bottom: 6px;">You will receive a comprehensive proposal tailored to your specific needs</li>
-          </ul>
-        </div>
-        
-        <div class="timestamp">
-          Message received on: ${timestamp} UTC
-        </div>
-        
-        <div class="footer">
-          <p style="margin-bottom: 16px; color: #64748b;">
-            If you have any questions or need immediate assistance, please do not hesitate to reply to this email.
-          </p>
-          <p style="font-size: 12px; color: #94a3b8;">
-            Best regards,<br>
-            The Wafipix Team<br>
-            <span style="color: #cbd5e1; font-size: 11px;">Digital Magic Creators</span>
-          </p>
-        </div>
-      </div>
-    </body>
-    </html>
-  `;
+  return `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Thank you for contacting Wafipix</title>
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 20px; background-color: #f5f5f5;">
+  <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 30px; border-radius: 8px; border: 1px solid #ddd;">
+    <div style="text-align: center; margin-bottom: 30px;">
+      <h1 style="color: #2563eb; margin: 0 0 10px 0; font-size: 28px;">Wafipix</h1>
+      <p style="color: #666; margin: 0; font-size: 16px;">Digital Magic Creators</p>
+    </div>
+    
+    <h2 style="color: #059669; margin: 0 0 20px 0; font-size: 22px;">Thank you for contacting us, ${name}!</h2>
+    
+    <p style="margin: 0 0 20px 0; font-size: 16px;">We have successfully received your message and appreciate you taking the time to reach out to us.</p>
+    
+    <div style="background-color: #f0f9ff; padding: 20px; border-radius: 6px; margin: 20px 0;">
+      <h3 style="color: #1e40af; margin: 0 0 15px 0; font-size: 18px;">What happens next?</h3>
+      <ul style="margin: 0; padding-left: 20px; color: #374151;">
+        <li style="margin-bottom: 8px;">Our team will review your requirements within 24 hours</li>
+        <li style="margin-bottom: 8px;">We will schedule a consultation call to discuss your project</li>
+        <li style="margin-bottom: 8px;">You will receive a comprehensive proposal tailored to your needs</li>
+      </ul>
+    </div>
+    
+    <div style="background-color: #fff3cd; padding: 15px; border-radius: 6px; margin: 20px 0; text-align: center;">
+      <p style="margin: 0; color: #856404; font-size: 14px;"><strong>Message received:</strong> ${timestamp}</p>
+    </div>
+    
+    <p style="margin: 20px 0; font-size: 16px;">If you have any questions or need immediate assistance, please reply to this email.</p>
+    
+    <div style="border-top: 1px solid #eee; padding-top: 20px; margin-top: 30px; text-align: center;">
+      <p style="margin: 0 0 10px 0; color: #666;">Best regards,</p>
+      <p style="margin: 0 0 5px 0; font-weight: bold; color: #333;">The Wafipix Team</p>
+      <p style="margin: 0 0 5px 0; color: #666; font-size: 14px;">Digital Magic Creators</p>
+      <p style="margin: 0; color: #2563eb; font-size: 14px;"><a href="mailto:info@wafipix.com" style="color: #2563eb; text-decoration: none;">info@wafipix.com</a></p>
+    </div>
+  </div>
+</body>
+</html>`;
 };
