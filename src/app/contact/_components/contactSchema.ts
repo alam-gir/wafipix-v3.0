@@ -17,7 +17,7 @@ export const contactFormSchema = z.object({
     .optional()
     .refine((val) => {
       if (!val) return true; // Optional field
-      const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+      const phoneRegex = /^[\+]?[0-9][\d]{0,15}$/;
       return phoneRegex.test(val.replace(/[\s\-\(\)]/g, ''));
     }, 'Please enter a valid phone number'),
   

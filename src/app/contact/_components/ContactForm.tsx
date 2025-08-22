@@ -1,13 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
-import { Send, User, Mail, Phone, MessageSquare } from "lucide-react";
+import { Send, User, Mail, Phone, MessageSquare, Check, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/Badge";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import { contactFormSchema, type ContactFormData } from "./contactSchema";
 
 // Dynamically import RichTextEditor to prevent SSR issues
@@ -52,6 +52,13 @@ export default function ContactForm() {
 
   const messageValue = watch("message");
 
+  // Scroll to top when showing success state
+  useEffect(() => {
+    if (isSubmitted) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [isSubmitted]);
+
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     
@@ -65,6 +72,8 @@ export default function ContactForm() {
       const result = await response.json();
       
       if (result.success) {
+        // Add a small delay to show the loading state
+        await new Promise(resolve => setTimeout(resolve, 500));
         setIsSubmitted(true);
         reset();
       } else {
@@ -84,71 +93,78 @@ export default function ContactForm() {
     setValue("message", value);
   };
 
-  if (isSubmitted) {
+    if (isSubmitted) {
     return (
-      <section id="contact-form" className="h-screen w-screen flex items-center justify-center bg-card/50">
+      <section id="contact-form" className="min-h-screen flex items-center justify-center bg-card/50">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
-            className="max-w-2xl mx-auto text-center"
+            className="max-w-xl mx-auto text-center"
           >
             <div className="bg-card rounded-3xl p-12 shadow-xl border border-border/20">
+              {/* Professional Success Icon */}
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6"
+                className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-8"
               >
                 <motion.div
-                  initial={{ rotate: -180, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
+                  className="text-primary"
                 >
-                  <Send className="w-10 h-10 text-primary" />
+                  <Check className="w-12 h-12" />
                 </motion.div>
               </motion.div>
               
+              {/* Success Title */}
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="text-3xl font-bold text-white mb-4"
+                className="text-3xl font-bold text-white mb-6"
               >
-                Message Sent Successfully!
+                Message Sent Successfully
               </motion.h2>
               
+              {/* Success Message */}
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="text-lg text-primary/80 mb-8"
+                className="text-lg text-primary/80 mb-8 leading-relaxed"
               >
-                {"Thank you for reaching out! We've received your message and will get back to you within 24 hours."}
+                Thank you for reaching out. We&apos;ve received your message and will contact you within 24 hours.
               </motion.p>
               
+              {/* Action Buttons */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="space-y-4"
+                className="flex flex-col sm:flex-row gap-4 justify-center"
               >
-                                 <div className="flex items-center justify-center gap-2 text-primary">
-                   <Badge 
-                     icon={Mail}
-                     text="Check your email"
-                     variant="outline" 
-                     className="bg-primary/10 text-primary border-primary/20"
-                   />
-                 </div>
-                
-                                 <Button
-                   onClick={() => setIsSubmitted(false)}
-                   className="bg-gradient-to-r from-primary to-primary/80 hover:shadow-lg hover:shadow-primary/25 text-primary-foreground px-8 py-3 rounded-xl hover:from-primary/90 hover:to-primary/70"
-                 >
+                <Button
+                  onClick={() => setIsSubmitted(false)}
+                  className="bg-gradient-to-r from-primary to-primary/80 hover:shadow-lg hover:shadow-primary/25 text-primary-foreground px-8 py-3 rounded-xl hover:from-primary/90 hover:to-primary/70 transition-all duration-300"
+                >
+                  <Send className="w-4 h-4 mr-2" />
                   Send Another Message
                 </Button>
+                
+                <Link href="/">
+                  <Button
+                    variant="outline"
+                    className="border-primary/30 text-primary hover:bg-primary/10 px-8 py-3 rounded-xl transition-all duration-300"
+                  >
+                    <Home className="w-4 h-4 mr-2" />
+                    Back to Home
+                  </Button>
+                </Link>
               </motion.div>
             </div>
           </motion.div>
@@ -264,28 +280,75 @@ export default function ContactForm() {
                   viewport={{ once: true }}
                   className="pt-6"
                 >
-                                     <Button
-                     type="submit"
-                     disabled={isSubmitting}
-                     className="w-full bg-gradient-to-r from-primary to-primary/80 hover:shadow-lg hover:shadow-primary/25 text-primary-foreground py-4 px-8 rounded-xl text-lg font-semibold transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none hover:from-primary/90 hover:to-primary/70"
-                   >
-                                         {isSubmitting ? (
-                                           <div className="flex items-center gap-2">
-                       <motion.div
-                         animate={{ rotate: 360 }}
-                         transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                       >
-                         <Send className="w-5 h-5" />
-                       </motion.div>
-                       Sending Message...
-                     </div>
-                                         ) : (
-                       <div className="flex items-center gap-2">
-                         <Send className="w-5 h-5" />
-                         Send Message
-                       </div>
-                     )}
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-gradient-to-r from-primary to-primary/80 hover:shadow-lg hover:shadow-primary/25 text-primary-foreground py-4 px-8 rounded-xl text-lg font-semibold transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none hover:from-primary/90 hover:to-primary/70"
+                  >
+                    {isSubmitting ? (
+                      <div className="flex items-center gap-3">
+                        {/* Animated loading spinner */}
+                        <motion.div
+                          animate={{ rotate: 360 }}
+                          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                          className="relative"
+                        >
+                          <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full"></div>
+                        </motion.div>
+                        
+                        {/* Loading text with dots animation */}
+                        <div className="flex items-center gap-1">
+                          <span>Sending Message</span>
+                          <motion.div
+                            animate={{ opacity: [0, 1, 0] }}
+                            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                          >
+                            .
+                          </motion.div>
+                          <motion.div
+                            animate={{ opacity: [0, 1, 0] }}
+                            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
+                          >
+                            .
+                          </motion.div>
+                          <motion.div
+                            animate={{ opacity: [0, 1, 0] }}
+                            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
+                          >
+                            .
+                          </motion.div>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="flex items-center gap-2">
+                        <motion.div
+                          whileHover={{ rotate: 15 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <Send className="w-5 h-5" />
+                        </motion.div>
+                        Send Message
+                      </div>
+                    )}
                   </Button>
+                  
+                  {/* Submission status indicator */}
+                  {isSubmitting && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="mt-4 text-center"
+                    >
+                      <div className="inline-flex items-center gap-2 text-sm text-primary/70">
+                        <motion.div
+                          animate={{ scale: [1, 1.2, 1] }}
+                          transition={{ duration: 1, repeat: Infinity }}
+                          className="w-2 h-2 bg-primary/50 rounded-full"
+                        />
+                        <span>Please wait while we send your message...</span>
+                      </div>
+                    </motion.div>
+                  )}
                 </motion.div>
               </form>
             </div>
