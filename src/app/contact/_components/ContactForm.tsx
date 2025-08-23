@@ -101,11 +101,9 @@ export default function ContactForm() {
         reset();
       } else {
         // Handle error - you might want to show a toast notification here
-        console.error('Failed to send message:', result.message);
         alert('Failed to send message. Please try again.');
       }
     } catch (error) {
-      console.error('Error sending message:', error);
       alert('Failed to send message. Please try again.');
     } finally {
       setIsSubmitting(false);

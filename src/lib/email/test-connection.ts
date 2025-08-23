@@ -1,4 +1,5 @@
-import { emailService } from './service';
+import { sendContactEmails } from './service';
+import { getTransporter, verifyTransporter } from './transporter';
 
 /**
  * Test email service connection and functionality
@@ -10,7 +11,7 @@ export async function testEmailService() {
   try {
     // Test 1: Verify connection
     console.log('1️⃣ Testing email service connection...');
-    const isConnected = await emailService.verifyConnection();
+    const isConnected = await verifyTransporter();
     
     if (isConnected) {
       console.log('✅ Email service connection successful!\n');
@@ -19,14 +20,9 @@ export async function testEmailService() {
       return false;
     }
 
-    // Test 2: Get service status
-    console.log('2️⃣ Getting email service status...');
-    const status = await emailService.getStatus();
-    console.log('📊 Service Status:', status, '\n');
-
-    // Test 3: Test with sample data (optional - uncomment to test actual email sending)
+    // Test 2: Test with sample data (optional - uncomment to test actual email sending)
     /*
-    console.log('3️⃣ Testing email sending with sample data...');
+    console.log('2️⃣ Testing email sending with sample data...');
     const sampleData = {
       name: 'Test User',
       email: 'test@example.com',
@@ -34,7 +30,7 @@ export async function testEmailService() {
       message: 'This is a test message from the email service test utility.',
     };
 
-    const results = await emailService.sendContactEmails(sampleData);
+    const results = await sendContactEmails(sampleData);
     console.log('📧 Email Test Results:', results, '\n');
     */
 

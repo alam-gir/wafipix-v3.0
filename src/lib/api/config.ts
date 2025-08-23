@@ -40,10 +40,4 @@ export const isUsingMockApi = process.env.NEXT_PUBLIC_USE_REAL_API !== 'true';
 export const getApiUrl = (endpoint: string) => `${API_CONFIG.BASE_URL}${API_CONFIG.API_PATH}${endpoint}`;
 export const getMockApiUrl = (endpoint: string) => `mock://${endpoint}`;
 
-// Enhanced debug logging for both development and production
-console.log(`🚀 API Mode: ${isUsingMockApi ? 'Mock API' : 'Real API'}`);
-console.log(`🌐 Base URL: ${API_CONFIG.BASE_URL}`);
-console.log(`📡 API Path: ${API_CONFIG.API_PATH}`);
-console.log(`🔧 Use Real API: ${process.env.NEXT_PUBLIC_USE_REAL_API || 'false'}`);
-console.log(`🌍 Environment: ${process.env.NODE_ENV || 'unknown'}`);
-console.log(`📱 Mock API Enabled: ${isUsingMockApi}`);
+// Configuration loaded successfully

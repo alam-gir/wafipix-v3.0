@@ -1,61 +1,69 @@
-// Test Email Configuration
-// Run this with: node test-email.js
+// Simple email test script for production debugging
+// Run with: node test-email.js
 
-import dotenv from 'dotenv';
-dotenv.config({ path: '.env.local' });
+require('dotenv').config({ path: '.env.local' });
 
-console.log('🔍 Checking Email Configuration...\n');
+const nodemailer = require('nodemailer');
 
-// Check environment variables
-const emailUser = process.env.GMAIL_USER;
-const emailPassword = process.env.GMAIL_APP_PASSWORD;
-const contactEmail = process.env.CONTACT_EMAIL;
-const metaPixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
+async function testEmail() {
+  console.log('Testing email configuration...');
+  console.log('GMAIL_USER:', process.env.GMAIL_USER ? 'Set' : 'Not set');
+  console.log('GMAIL_APP_PASSWORD:', process.env.GMAIL_APP_PASSWORD ? 'Set' : 'Not set');
+  console.log('CONTACT_EMAIL:', process.env.CONTACT_EMAIL ? 'Set' : 'Not set');
+  console.log('NODE_ENV:', process.env.NODE_ENV || 'Not set');
+  
+  if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+    console.error('❌ Missing required environment variables');
+    return;
+  }
 
-console.log('📧 Email Configuration:');
-console.log(`GMAIL_USER: ${emailUser ? '✅ Set' : '❌ Missing'}`);
-console.log(`GMAIL_APP_PASSWORD: ${emailPassword ? '✅ Set' : '❌ Missing'}`);
-console.log(`CONTACT_EMAIL: ${contactEmail ? '✅ Set' : '❌ Missing'}`);
-console.log(`NEXT_PUBLIC_META_PIXEL_ID: ${metaPixelId ? '✅ Set' : '❌ Missing'}`);
+  try {
+    // Create transporter
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_APP_PASSWORD,
+      },
+      secure: true,
+      tls: {
+        rejectUnauthorized: true,
+      },
+      connectionTimeout: 60000,
+      greetingTimeout: 30000,
+      socketTimeout: 60000,
+    });
 
-console.log('\n🔧 Validation:');
+    console.log('✅ Transporter created successfully');
 
-if (!emailUser) {
-  console.log('❌ GMAIL_USER is missing');
-} else if (emailUser.includes('@gmail.com')) {
-  console.log('✅ GMAIL_USER is a Gmail address (will use Gmail SMTP)');
-} else {
-  console.log('✅ GMAIL_USER is a custom domain (will use Namecheap/Private Email SMTP)');
+    // Test connection
+    await transporter.verify();
+    console.log('✅ Connection verified successfully');
+
+    // Test sending email
+    const mailOptions = {
+      from: `"Wafipix Test" <${process.env.GMAIL_USER}>`,
+      to: process.env.CONTACT_EMAIL || process.env.GMAIL_USER,
+      subject: 'Email Test - Wafipix',
+      text: 'This is a test email to verify the email service is working correctly.',
+      html: '<h1>Email Test</h1><p>This is a test email to verify the email service is working correctly.</p>',
+    };
+
+    const result = await transporter.sendMail(mailOptions);
+    console.log('✅ Test email sent successfully');
+    console.log('Message ID:', result.messageId);
+    
+  } catch (error) {
+    console.error('❌ Email test failed:', error.message);
+    
+    if (error.code === 'EAUTH') {
+      console.error('Authentication failed. Check your GMAIL_USER and GMAIL_APP_PASSWORD');
+    } else if (error.code === 'ECONNECTION') {
+      console.error('Connection failed. Check your network and firewall settings');
+    } else if (error.code === 'ETIMEDOUT') {
+      console.error('Connection timed out. Check your network settings');
+    }
+  }
 }
 
-if (!emailPassword) {
-  console.log('❌ GMAIL_APP_PASSWORD is missing');
-} else {
-  console.log('✅ GMAIL_APP_PASSWORD is set');
-}
-
-if (!contactEmail) {
-  console.log('❌ CONTACT_EMAIL is missing (will default to GMAIL_USER)');
-} else {
-  console.log('✅ CONTACT_EMAIL is set');
-}
-
-if (!metaPixelId) {
-  console.log('❌ NEXT_PUBLIC_META_PIXEL_ID is missing');
-} else {
-  console.log('✅ NEXT_PUBLIC_META_PIXEL_ID is set');
-}
-
-console.log('\n📝 Next Steps:');
-if (!emailUser || !emailPassword) {
-  console.log('1. Set up your email credentials in .env.local');
-  console.log('2. For Gmail: Get App Password from: https://myaccount.google.com/apppasswords');
-  console.log('3. For Namecheap: Use your email password');
-  console.log('4. Restart your development server');
-} else {
-  console.log('1. ✅ Email configuration looks good!');
-  console.log('2. Restart your development server');
-  console.log('3. Test the contact form');
-}
-
-console.log('\n💡 Tip: Make sure .env.local is in your project root (same folder as package.json)');
+testEmail();

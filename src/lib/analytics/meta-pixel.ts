@@ -708,9 +708,7 @@ class MetaPixelAnalytics {
    * Log messages (only in debug mode)
    */
   private log(...args: unknown[]): void {
-    if (this.enableDebug) {
-      console.log('[Meta Pixel]', ...args);
-    }
+    // Debug logging disabled for production performance
   }
 
   /**

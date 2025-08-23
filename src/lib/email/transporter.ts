@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
 
-// Email transporter configuration - simplified for reliability
+// Production-ready email transporter configuration
 export const createTransporter = () => {
   // Validate required environment variables
   if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
@@ -11,21 +11,25 @@ export const createTransporter = () => {
   const isGmail = process.env.GMAIL_USER.includes('@gmail.com');
   
   if (isGmail) {
-    // Simple Gmail configuration
+    // Production Gmail configuration
     return nodemailer.createTransport({
       service: 'gmail',
       auth: {
         user: process.env.GMAIL_USER,
         pass: process.env.GMAIL_APP_PASSWORD,
       },
-      // Basic settings for reliability
+      // Production settings for reliability
       secure: true,
       tls: {
-        rejectUnauthorized: false, // More permissive for development
+        rejectUnauthorized: true, // Secure for production
       },
+      // Add timeouts for production reliability
+      connectionTimeout: 60000, // 60 seconds
+      greetingTimeout: 30000,   // 30 seconds
+      socketTimeout: 60000,     // 60 seconds
     });
   } else {
-    // Simple custom domain configuration
+    // Production custom domain configuration
     return nodemailer.createTransport({
       host: 'mail.privateemail.com',
       port: 587,
@@ -34,10 +38,15 @@ export const createTransporter = () => {
         user: process.env.GMAIL_USER,
         pass: process.env.GMAIL_APP_PASSWORD,
       },
-      // Basic TLS settings
+      // Production TLS settings
       tls: {
-        rejectUnauthorized: false, // More permissive for development
+        rejectUnauthorized: true, // Secure for production
+        ciphers: 'SSLv3',
       },
+      // Add timeouts for production reliability
+      connectionTimeout: 60000, // 60 seconds
+      greetingTimeout: 30000,   // 30 seconds
+      socketTimeout: 60000,     // 60 seconds
     });
   }
 };
@@ -47,10 +56,8 @@ export const verifyTransporter = async () => {
   try {
     const transporter = createTransporter();
     await transporter.verify();
-    console.log('✅ Email transporter verified successfully');
     return true;
   } catch (error) {
-    console.error('❌ Email transporter verification failed:', error);
     return false;
   }
 };
@@ -60,7 +67,6 @@ export const getTransporter = () => {
   try {
     return createTransporter();
   } catch (error) {
-    console.error('Failed to create email transporter:', error);
     throw error;
   }
 };
