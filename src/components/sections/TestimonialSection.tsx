@@ -1,87 +1,170 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-import { Quote, Star, Heart } from "lucide-react";
+import { motion } from "framer-motion";
+import { Star, Heart } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
+import { useReviews } from "@/hooks/api/useCommon";
+import type { ReviewResponsePublic } from "@/types/common";
 
 interface TestimonialSectionProps {
   className?: string;
 }
 
 export function TestimonialSection({ className }: TestimonialSectionProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
+  const { data: reviewsData, error: reviewsError, isLoading: reviewsLoading } = useReviews();
+  const [api, setApi] = useState<CarouselApi>();
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const fadeUpVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0 },
   };
 
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
-      },
-    },
+  const renderStars = (rating: number) => {
+    return Array.from({ length: 5 }, (_, i) => (
+      <Star
+        key={i}
+        className={`w-4 h-4 ${
+          i < rating ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'
+        }`}
+      />
+    ));
   };
 
-  const testimonials = [
-    {
-      quote: "Wafipix transformed our brand identity completely. Their creative vision and attention to detail exceeded all our expectations. Our conversion rates increased by 300% within the first month!",
-      author: "Sarah Johnson",
-      position: "CEO, TechFlow Solutions",
-      company: "TechFlow",
-      rating: 5,
-      avatar: "SJ",
-      color: "from-primary to-primary/80",
-    },
-    {
-      quote: "Working with Wafipix was like having a creative partner who truly understood our business. They didn't just design a website – they crafted an experience that our customers love.",
-      author: "Michael Chen",
-      position: "Founder, GreenEats",
-      company: "GreenEats",
-      rating: 5,
-      avatar: "MC",
-      color: "from-primary/80 to-primary/60",
-    },
-    {
-      quote: "The team at Wafipix delivered beyond our wildest dreams. Their strategic approach to design and development resulted in a digital presence that perfectly represents our brand values.",
-      author: "Emma Rodriguez",
-      position: "Marketing Director, LuxeStyle",
-      company: "LuxeStyle",
-      rating: 5,
-      avatar: "ER",
-      color: "from-primary/60 to-primary/40",
-    },
-    {
-      quote: "Incredible attention to detail and innovative solutions. Wafipix didn't just meet our requirements – they anticipated our needs and delivered a solution that exceeded expectations.",
-      author: "David Kim",
-      position: "CTO, InnovateTech",
-      company: "InnovateTech",
-      rating: 5,
-      avatar: "DK",
-      color: "from-primary/40 to-primary/20",
-    },
-    {
-      quote: "The transformation was remarkable. From concept to launch, Wafipix guided us through every step with professionalism and creativity. Our customers can't stop raving about the new experience.",
-      author: "Lisa Thompson",
-      position: "VP Marketing, GrowthCo",
-      company: "GrowthCo",
-      rating: 5,
-      avatar: "LT",
-      color: "from-primary/20 to-primary/10",
-    },
-  ];
+  // Auto-play carousel
+  useEffect(() => {
+    if (!api) return;
+
+    const startAutoPlay = () => {
+      intervalRef.current = setInterval(() => {
+        api.scrollNext();
+      }, 3000); // Auto-scroll every 3 seconds
+    };
+
+    const stopAutoPlay = () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+    };
+
+    // Start auto-play
+    startAutoPlay();
+
+    // Pause on hover
+    const carouselElement = api.rootNode();
+    if (carouselElement) {
+      carouselElement.addEventListener('mouseenter', stopAutoPlay);
+      carouselElement.addEventListener('mouseleave', startAutoPlay);
+    }
+
+    return () => {
+      stopAutoPlay();
+      if (carouselElement) {
+        carouselElement.removeEventListener('mouseenter', stopAutoPlay);
+        carouselElement.removeEventListener('mouseleave', startAutoPlay);
+      }
+    };
+  }, [api]);
+
+  const ReviewCard = ({ review }: { review: ReviewResponsePublic }) => {
+    const hasImage = review.reviewImage && review.reviewImage.trim() !== '';
+    const clientName = review.clientName || 'Anonymous';
+    const clientInitial = clientName.charAt(0).toUpperCase();
+
+    return (
+      <motion.div
+        variants={fadeUpVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        className="h-full max-w-fit"
+      >
+        {hasImage ? (
+          /* Image-based Review Card - Natural Image Width */
+          <div className="relative h-80 bg-card/95 backdrop-blur-xl border border-border/50 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] overflow-hidden inline-block">
+            {/* Review Image - Natural Size */}
+            <Image
+              src={review.reviewImage!}
+              alt={`${clientName} review`}
+              width={0}
+              height={0}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="h-full w-auto object-cover"
+              priority={true}
+            />
+            
+            {/* Overlay Content */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            
+            {/* Content Overlay - Bottom */}
+            <div className="absolute bottom-0 left-0 right-0 p-4">
+              <div className="space-y-3">
+                {/* Platform */}
+                <div className="flex justify-start">
+                  <span className="text-xs font-semibold text-white/90 uppercase tracking-wide bg-black/20 px-2 py-1 rounded">
+                    {review.platform}
+                  </span>
+                </div>
+                
+                {/* Client Name & Rating */}
+                <div className="flex items-center justify-between">
+                  <h4 className="text-sm font-bold text-white">
+                    {clientName}
+                  </h4>
+                  <div className="flex items-center gap-1">
+                    {renderStars(review.rating)}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          /* Text-based Review Card - Fixed Width */
+          <div className="relative h-80 w-80 bg-card/95 backdrop-blur-xl border border-border/50 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] overflow-hidden">
+            <div className="h-full w-full flex flex-col p-6">
+              {/* Client Info - Top */}
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-gradient-to-r from-primary to-primary/80 rounded-lg flex items-center justify-center">
+                  <span className="text-primary-foreground font-bold text-sm">
+                    {clientInitial}
+                  </span>
+                </div>
+                <div>
+                  <div className="font-bold text-white text-sm">
+                    {clientName}
+                  </div>
+                  <span className="text-xs font-semibold text-primary uppercase tracking-wide">
+                    {review.platform}
+                  </span>
+                </div>
+              </div>
+
+              {/* Review Text - Middle */}
+              <div className="flex-1 flex flex-col justify-center">
+                <blockquote className="text-white leading-relaxed text-sm">
+                  "{review.reviewText}"
+                </blockquote>
+              </div>
+
+              {/* Rating - Bottom */}
+              <div className="flex items-center justify-center pt-4 border-t border-border/30">
+                <div className="flex items-center gap-1">
+                  {renderStars(review.rating)}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </motion.div>
+    );
+  };
 
   return (
-    <section ref={containerRef} className={`py-20 md:py-28 relative overflow-hidden ${className}`}>
+    <section className={`py-20 md:py-28 relative overflow-hidden ${className}`}>
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         {/* Section Header */}
         <SectionHeader
@@ -93,123 +176,77 @@ export function TestimonialSection({ className }: TestimonialSectionProps) {
           className="mb-20"
         />
 
-        {/* Sticky Testimonials Container */}
+        {/* Reviews Carousel */}
         <div className="relative">
           {/* Background Elements */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-96 h-96 bg-gradient-to-r from-primary/5 to-primary/5 rounded-full blur-3xl" />
           </div>
 
-          {/* Testimonials Stack */}
-          <div className="relative space-y-6">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 100, scale: 0.8 }}
-                whileInView={{ 
-                  opacity: 1, 
-                  y: 0, 
-                  scale: 1,
-                  transition: {
-                    duration: 0.8,
-                    delay: index * 0.2,
-                    ease: "easeOut"
-                  }
-                }}
-                viewport={{ once: true, margin: "-100px" }}
-                className="sticky top-20 md:top-32"
-              >
-                <motion.div
-                  style={{
-                    transformOrigin: "center",
-                  }}
-                  className="max-w-4xl mx-auto"
-                >
-                  <motion.div
-                    whileHover={{ 
-                      y: -8, 
-                      scale: 1.02,
-                      transition: { duration: 0.3 }
-                    }}
-                    className="group relative"
-                  >
-                    {/* Professional Card Design */}
-                    <div className="relative p-8 md:p-10 rounded-3xl bg-card/95 backdrop-blur-xl border border-border/50 shadow-2xl shadow-black/10 dark:shadow-black/30 overflow-hidden">
-                      
-                      {/* Subtle Background Pattern */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-card/50 to-card/30" />
-                      
-                      {/* Professional Border Accent */}
-                      <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${testimonial.color} opacity-80`} />
+          {/* Loading State */}
+          {reviewsLoading && (
+            <div className="flex items-center justify-center py-20">
+              <div className="flex flex-col items-center space-y-4">
+                <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
+                <p className="text-sm text-muted-foreground">Loading reviews...</p>
+              </div>
+            </div>
+          )}
 
-                      {/* Decorative Quote Icon */}
-                      <div className="absolute top-6 right-6 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
-                        <Quote className="w-16 h-16 text-primary" />
+          {/* Error State */}
+          {reviewsError && (
+            <div className="flex items-center justify-center py-20">
+              <div className="flex flex-col items-center space-y-4 text-center">
+                <div className="w-12 h-12 bg-destructive/10 rounded-full flex items-center justify-center">
+                  <svg className="w-6 h-6 text-destructive" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-destructive">Failed to load reviews</p>
+                  <p className="text-xs text-muted-foreground mt-1">Please try again later</p>
+                </div>
+              </div>
                       </div>
+          )}
 
-                      <div className="relative z-10">
-                        {/* Rating with Professional Styling */}
-                        <motion.div 
-                          className="flex items-center gap-1 mb-8"
-                          initial={{ opacity: 0, x: -20 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ delay: index * 0.1 }}
-                        >
-                          {[...Array(testimonial.rating)].map((_, i) => (
-                            <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                          ))}
-                          <span className="ml-2 text-sm font-medium text-primary/80">
-                            {testimonial.rating}.0 Rating
-                          </span>
-                        </motion.div>
+          {/* Reviews Carousel */}
+          {!reviewsLoading && !reviewsError && reviewsData?.data && reviewsData.data.length > 0 && (
+            <Carousel
+              setApi={setApi}
+              opts={{
+                align: "start",
+                loop: true,
+                skipSnaps: false,
+                dragFree: true,
+                containScroll: "trimSnaps",
+              }}
+              className="w-full max-w-7xl mx-auto"
+            >
+              <CarouselContent className="-ml-2 md:-ml-4">
+                {reviewsData.data.map((review) => (
+                  <CarouselItem key={review.id} className="pl-2 md:pl-4 basis-auto flex-shrink-0">
+                    <ReviewCard review={review} />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
+          )}
 
-                        {/* Professional Quote Styling */}
-                        <motion.blockquote 
-                          className="text-lg md:text-xl text-white leading-relaxed mb-8 font-medium"
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          transition={{ delay: index * 0.1 + 0.2 }}
-                        >
-                          <span className="text-3xl text-primary/60 mr-2">&ldquo;</span>
-                          {testimonial.quote}
-                          <span className="text-3xl text-primary/60 ml-2">&rdquo;</span>
-                        </motion.blockquote>
-
-                        {/* Professional Author Section */}
-                        <motion.div 
-                          className="flex items-center gap-4 pt-6 border-t border-border/50"
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          transition={{ delay: index * 0.1 + 0.4 }}
-                        >
-                          <div className={`w-14 h-14 rounded-xl bg-gradient-to-r ${testimonial.color} flex items-center justify-center text-primary-foreground font-bold text-lg shadow-lg ring-2 ring-white/20 dark:ring-gray-800/20`}>
-                            {testimonial.avatar}
+          {/* Empty State */}
+          {!reviewsLoading && !reviewsError && (!reviewsData?.data || reviewsData.data.length === 0) && (
+            <div className="flex items-center justify-center py-20">
+              <div className="flex flex-col items-center space-y-4 text-center">
+                <div className="w-12 h-12 bg-muted rounded-full flex items-center justify-center">
+                  <Heart className="w-6 h-6 text-muted-foreground" />
                           </div>
-                          <div className="flex-1">
-                            <div className="font-bold text-white text-lg">
-                              {testimonial.author}
+                <div>
+                  <p className="text-sm font-medium text-muted-foreground">No reviews available</p>
+                  <p className="text-xs text-muted-foreground mt-1">Check back later</p>
                             </div>
-                            <div className="text-sm text-primary/80 font-medium">
-                              {testimonial.position}
-                            </div>
-                            <div className="text-xs font-semibold text-primary uppercase tracking-wide">
-                              {testimonial.company}
                             </div>
                           </div>
-                          {/* Professional Verification Badge */}
-                          <div className="w-8 h-8 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
-                            <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                            </svg>
-                          </div>
-                        </motion.div>
-                      </div>
-                    </div>
-                  </motion.div>
-                </motion.div>
-              </motion.div>
-            ))}
-          </div>
+          )}
         </div>
       </div>
     </section>

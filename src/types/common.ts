@@ -86,6 +86,16 @@ export interface SeoMetadata {
   canonicalUrl?: string;
 }
 
+// Review Types
+export interface ReviewResponsePublic {
+  id: string;
+  reviewImage: string | null;
+  platform: string;
+  clientName: string;
+  rating: number;
+  reviewText: string;
+}
+
 // Contact Types
 export interface ContactFormData {
   name: string;

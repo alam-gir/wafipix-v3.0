@@ -4,7 +4,7 @@
 
 import useSWR from 'swr';
 import { apiClient } from '@/lib/api';
-import type { SocialMediaLink, ApiResponse } from '@/types/common';
+import type { SocialMediaLink, ApiResponse, ReviewResponsePublic } from '@/types/common';
 
 // ============================================================================
 // COMMON HOOKS
@@ -43,6 +43,19 @@ export function useHeroVideo() {
       revalidateOnFocus: false,
       revalidateOnReconnect: true,
       dedupingInterval: 600000, // 10 minutes (hero video doesn't change often)
+    }
+  );
+}
+
+// Reviews Hook
+export function useReviews() {
+  return useSWR<ApiResponse<ReviewResponsePublic[]>>(
+    '/public/reviews',
+    () => apiClient.get('/public/reviews'),
+    {
+      revalidateOnFocus: false,
+      revalidateOnReconnect: true,
+      dedupingInterval: 300000, // 5 minutes (reviews don't change often)
     }
   );
 }
