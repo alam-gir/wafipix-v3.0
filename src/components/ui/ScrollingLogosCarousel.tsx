@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/carousel";
 
 interface ScrollingLogosCarouselProps {
-  logos: { logo: string }[];
+  logos: string[];
   speed: number;
   className?: string;
 }
@@ -33,7 +33,7 @@ export function ScrollingLogosCarousel({
                    >
                                            <div className="mx-3 sm:mx-4 md:mx-6 flex shrink-0 items-center justify-center">
                         <Image
-                          src={logo.logo}
+                          src={logo}
                           alt="Company logo"
                           width={480}
                           height={480}

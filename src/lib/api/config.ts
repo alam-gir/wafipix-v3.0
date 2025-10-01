@@ -6,7 +6,7 @@
 export const API_CONFIG = {
   // Base URLs
   BASE_URL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080',
-  API_PATH: '/api',
+  API_PATH: '/v3',
   
   // Timeouts
   TIMEOUT: 10000, // 10 seconds
@@ -32,12 +32,7 @@ export const API_CONFIG = {
   },
 } as const;
 
-// API client selection - Use mock APIs by default in both development and production
-// When backend is ready, set NEXT_PUBLIC_USE_REAL_API=true to switch to real APIs
-export const isUsingMockApi = process.env.NEXT_PUBLIC_USE_REAL_API !== 'true';
-
 // Helper functions
 export const getApiUrl = (endpoint: string) => `${API_CONFIG.BASE_URL}${API_CONFIG.API_PATH}${endpoint}`;
-export const getMockApiUrl = (endpoint: string) => `mock://${endpoint}`;
 
 // Configuration loaded successfully

@@ -2,12 +2,9 @@
 // COMMON TYPES
 // ============================================================================
 
-export interface TrustedCustomer {
-  logo: string;
-}
 
 export interface SocialMediaLink {
-  name: string;
+  title: string;
   url: string;
 }
 

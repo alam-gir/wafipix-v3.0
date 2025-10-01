@@ -30,7 +30,7 @@ export function SocialLink({ social, index }: SocialLinkProps) {
         scale: 0.95,
       }}
     >
-      <span className="text-sm font-medium">{social.name}</span>
+      <span className="text-sm font-medium">{social.title}</span>
     </motion.a>
   );
 } 

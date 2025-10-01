@@ -1,7 +1,7 @@
 export const SITE_CONSTANTS = {
   // Hero Section
   HERO: {
-    TAGLINE: "Your Trusted Global Brand Housemind™",
+    TAGLINE: "Your Trusted Global Brand Wafipix™",
     SUBTAGLINE: "We design impactful brands for startups, agencies & businesses worldwide.",
   },
   

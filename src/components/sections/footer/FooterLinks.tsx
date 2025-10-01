@@ -59,7 +59,7 @@ export function FooterLinks() {
         {/* Right Section - Social Media */}
         <div className="flex items-center gap-2">
           {socialMedia.map((social, index) => (
-            <SocialLink key={social.name} social={social} index={index} />
+            <SocialLink key={social.title} social={social} index={index} />
           ))}
         </div>
       </motion.div>
@@ -74,7 +74,7 @@ export function FooterLinks() {
         {/* Social Media Links - Mobile */}
         <div className="flex flex-wrap justify-center gap-2">
           {socialMedia.map((social, index) => (
-            <SocialLink key={social.name} social={social} index={index} />
+            <SocialLink key={social.title} social={social} index={index} />
           ))}
         </div>
 
