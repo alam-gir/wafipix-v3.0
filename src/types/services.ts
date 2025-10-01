@@ -78,3 +78,33 @@ export interface ServiceCategory {
 export interface ServiceCategoriesResponse {
   data: ServiceCategory[];
 }
+
+// Navigation Services (for navbar submenu)
+export interface NavigationService {
+  id: string;
+  title: string;
+  href: string; // Frontend uses href (converted from slug)
+}
+
+export interface NavigationCategory {
+  id: string;
+  title: string;
+  items: NavigationService[];
+}
+
+// API Response types (backend returns slug)
+export interface ApiNavigationService {
+  id: string;
+  title: string;
+  slug: string; // Backend provides slug
+}
+
+export interface ApiNavigationCategory {
+  id: string;
+  title: string;
+  items: ApiNavigationService[];
+}
+
+export interface NavigationServicesResponse {
+  data: ApiNavigationCategory[]; // Backend response with slug
+}

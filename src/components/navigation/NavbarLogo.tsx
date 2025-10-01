@@ -1,32 +1,36 @@
 'use client';
 
+import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { cn } from '@/lib/utils';
+import MagneticWrapper from '@/components/ui/MagneticWrapper';
 
 interface NavbarLogoProps {
-  isScrolled?: boolean;
+  className?: string;
 }
 
-export default function NavbarLogo({ isScrolled = false }: NavbarLogoProps) {
+/**
+ * NavbarLogo - Company logo component
+ * Single responsibility: Display company logo with link to home
+ */
+export default function NavbarLogo({ className = '' }: NavbarLogoProps) {
   return (
     <motion.div
-      className="flex items-center"
-      whileHover={{ scale: 1.05 }}
-      transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+      className={`flex items-center ${className}`}
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.3 }}
     >
-      <motion.h1 
-        className={cn(
-          "font-bold text-primary transition-all duration-500",
-          isScrolled ? "text-lg" : "text-2xl"
-        )}
-        animate={{
-          scale: isScrolled ? 0.9 : 1,
-          opacity: isScrolled ? 0.8 : 1,
-        }}
-        transition={{ duration: 0.3, ease: 'easeOut' }}
-      >
-        Wafipix
-      </motion.h1>
+      <MagneticWrapper strength={0.2} attractArea={80}>
+        <Link 
+          href="/" 
+          className="flex items-center space-x-2 text-xl font-bold text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-lg hover:bg-muted/50"
+        >
+          <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
+            <span className="text-primary-foreground font-bold text-sm">W</span>
+          </div>
+          <span className="hidden sm:block">Wafipix</span>
+        </Link>
+      </MagneticWrapper>
     </motion.div>
   );
-} 
+}
