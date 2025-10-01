@@ -23,6 +23,13 @@ export default function VideoPlayer({
   const playerRef = useRef<HTMLDivElement>(null);
   const [showControls, setShowControls] = useState(false);
 
+  // Force video reload when src changes
+  useEffect(() => {
+    if (videoRef.current && videoSrc) {
+      videoRef.current.load();
+    }
+  }, [videoSrc]);
+
   // Video controls hook
   const {
     isPlaying,

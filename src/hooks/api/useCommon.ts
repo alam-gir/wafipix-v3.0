@@ -34,3 +34,16 @@ export function useSocialMedia() {
   );
 }
 
+// Hero Video Hook
+export function useHeroVideo() {
+  return useSWR<ApiResponse<string>>(
+    '/public/advertisement-videos',
+    () => apiClient.get('/public/advertisement-videos'),
+    {
+      revalidateOnFocus: false,
+      revalidateOnReconnect: true,
+      dedupingInterval: 600000, // 10 minutes (hero video doesn't change often)
+    }
+  );
+}
+
