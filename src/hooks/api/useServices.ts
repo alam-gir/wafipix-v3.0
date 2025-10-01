@@ -17,8 +17,8 @@ export function useAllServices() {
     title: string;
     subtitle: string;
   }>>>(
-    '/services',
-    () => apiClient.get('/services'),
+    '/public/services',
+    () => apiClient.get('/public/services'),
     {
       revalidateOnFocus: false,
       revalidateOnReconnect: true,
@@ -29,8 +29,8 @@ export function useAllServices() {
 
 export function useServicePage(slug: string) {
   return useSWR<ApiResponse<ServicePageData>>(
-    slug ? `/services/${slug}` : null,
-    () => apiClient.get(`/services/${slug}`),
+    slug ? `/public/services/slug/${slug}` : null,
+    () => apiClient.get(`/public/services/slug/${slug}`),
     {
       revalidateOnFocus: false,
       revalidateOnReconnect: true,
@@ -41,8 +41,8 @@ export function useServicePage(slug: string) {
 
 export function useServicePackages() {
   return useSWR<ApiResponse<ServicePackage[]>>(
-    '/services/packages',
-    () => apiClient.get('/services/packages'),
+    '/public/services/packages',
+    () => apiClient.get('/public/services/packages'),
     {
       revalidateOnFocus: false,
       revalidateOnReconnect: true,
@@ -53,8 +53,8 @@ export function useServicePackages() {
 
 export function useServiceCategories() {
   return useSWR<ApiResponse<ServiceCategory[]>>(
-    '/services/categories',
-    () => apiClient.get('/services/categories'),
+    '/public/services/categories',
+    () => apiClient.get('/public/services/categories'),
     {
       revalidateOnFocus: false,
       revalidateOnReconnect: true,
