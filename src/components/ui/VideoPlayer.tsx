@@ -59,7 +59,7 @@ export default function VideoPlayer({
   return (
     <motion.div
       ref={playerRef}
-      className={`relative overflow-hidden rounded-lg bg-black ${className}`}
+      className={`relative overflow-hidden rounded-3xl bg-black ${className}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       initial={{ opacity: 0, scale: 0.95 }}

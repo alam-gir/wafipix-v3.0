@@ -45,7 +45,7 @@ export function VideoSection({
           "md:absolute md:top-0 md:h-screen md:left-1/2 md:-translate-x-1/2"
         )}
         style={{
-          width: `clamp(80%, ${width}%, 100%)`,
+          width: `clamp(90%, ${width}%, 100%)`,
         }}
         transition={{
           width: { duration: 0.1, ease: "easeOut" },

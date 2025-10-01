@@ -6,7 +6,6 @@ import { FeaturesGridSection } from "@/components/sections/FeaturesGridSection";
 import { StatsSection } from "@/components/sections/StatsSection";
 import { TrustedCustomersSection } from "@/components/sections/TrustedCustomersSection";
 import { TestimonialSection } from "@/components/sections/TestimonialSection";
-import { VideoSection } from "@/components/sections/VideoSection";
 import WhyChooseUsSection from "@/components/sections/WhyChooseUsSection";
 import { CTASection } from "@/components/sections/CTASection";
 import PageViewTracker from "@/components/analytics/PageViewTracker";
@@ -27,7 +26,6 @@ export default function HomePage() {
       <HeroQuoteSection />
       <FeaturesGridSection />
       <StatsSection />
-      <VideoSection />
       <TrustedCustomersSection />
       <CTASection />
       <TestimonialSection />
