@@ -20,8 +20,7 @@ export function SectionHeader({
   title,
   subtitle,
   description,
-  className = "",
-  animationDelay = 0,
+  className = ""
 }: SectionHeaderProps) {
   const fadeUpVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -45,7 +44,7 @@ export function SectionHeader({
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
       variants={staggerContainer}
-      className={`text-center ${className}`}
+      className={`text-center space-y-6 ${className}`}
     >
       <Badge
         icon={BadgeIcon}

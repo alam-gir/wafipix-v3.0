@@ -15,7 +15,7 @@ export function HeroQuoteSection({ className }: HeroQuoteSectionProps) {
   };
 
   return (
-    <section className={`py-16 md:py-20 relative overflow-hidden ${className}`}>
+    <section className={`pt-8 pb-16 md:pt-12 md:pb-20 relative overflow-hidden ${className}`}>
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         {/* Main Quote Section */}
         <SectionHeader
@@ -23,7 +23,7 @@ export function HeroQuoteSection({ className }: HeroQuoteSectionProps) {
           badgeText="Trusted by 500+ Brands"
           title="We Don't Just Design"
           subtitle="We Create Digital Magic"
-          className="mb-12"
+          className="mb-18"
         />
 
         <motion.div
