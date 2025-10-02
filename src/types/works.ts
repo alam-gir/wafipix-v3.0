@@ -1,70 +1,101 @@
 // ============================================================================
-// WORKS TYPES
+// WORKS TYPES - Based on API Response Structure
 // ============================================================================
 
-export interface Work {
+// Service Filter Types
+export interface ServiceFilter {
   id: string;
-  slug: string;
-  name: string;
-  service: string;
-  description: string;
-  coverVideoUrl: string;
-  coverImageUrl: string;
-  profileVideoUrl: string;
-  profileImageUrl: string;
-  gallery: GalleryBlock[];
-  tags: string[];
+  title: string;
 }
 
-export interface WorkAsCard {
+export interface ServiceFiltersResponse {
+  data: ServiceFilter[];
+}
+
+// Work Types
+export interface WorkListPublicResponse {
   id: string;
+  title: string;
   slug: string;
-  name: string;
-  service: string;
-  coverVideoUrl: string;
-  coverImageUrl: string;
-  profileVideoUrl: string;
-  profileImageUrl: string;
+  serviceTitle: string;
+  coverVideo: string | null;
+  coverImage: string | null;
+  profileVideo: string | null;
+  profileImage: string | null;
 }
 
-export type GalleryBlock = {
-  workId: string;
-  isMobileGrid: boolean;
-  items: {
-    url: string;
-    type: 'image' | 'video'
-  }[]
-}
-
-export interface WorksFilters {
-  service?: string;
-  tags?: string[];
-  client?: string;
-  year?: number;
-  search?: string;
+// Pagination Types (Spring Boot Page structure)
+export interface Page<T> {
+  content: T[];
+  pageable: {
+    pageNumber: number;
+    pageSize: number;
+    sort: {
+      empty: boolean;
+      sorted: boolean;
+      unsorted: boolean;
+    };
+    offset: number;
+    paged: boolean;
+    unpaged: boolean;
+  };
+  last: boolean;
+  totalPages: number;
+  totalElements: number;
+  size: number;
+  number: number;
+  sort: {
+    empty: boolean;
+    sorted: boolean;
+    unsorted: boolean;
+  };
+  first: boolean;
+  numberOfElements: number;
+  empty: boolean;
 }
 
 // API Response Types
 export interface WorksResponse {
-  data: Work[];
-  pagination: {
-    page: number;
-    limit: number;
-    total: number;
-    totalPages: number;
-  };
+  data: Page<WorkListPublicResponse>;
 }
 
-export interface WorkCardsResponse {
-  data: WorkAsCard[];
-  pagination: {
-    page: number;
-    limit: number;
-    total: number;
-    totalPages: number;
-  };
+// Frontend Work Card Type (processed for display)
+export interface WorkCard {
+  id: string;
+  title: string;
+  slug: string;
+  serviceTitle: string;
+  coverMedia: {
+    url: string;
+    type: 'video' | 'image';
+  } | null;
+  profileMedia: {
+    url: string;
+    type: 'video' | 'image';
+  } | null;
 }
 
-export interface SingleWorkResponse {
-  data: Work;
+// Filter State
+export interface WorksFilterState {
+  serviceId: string | null; // null means "All"
+  page: number;
+  size: number;
 }
+
+// Hook Return Types
+export interface UseWorksReturn {
+  works: WorkCard[];
+  isLoading: boolean;
+  error: Error | null;
+  hasMore: boolean;
+  loadMore: () => void;
+  filterByService: (serviceId: string | null) => void;
+  currentFilter: WorksFilterState;
+}
+
+export interface UseServiceFiltersReturn {
+  services: ServiceFilter[];
+  isLoading: boolean;
+  error: Error | null;
+}
+

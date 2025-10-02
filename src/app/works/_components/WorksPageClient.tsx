@@ -1,51 +1,72 @@
-'use client';
+"use client";
 
-import { cn } from '@/lib/utils';
-import { useWorksAsCards } from '@/hooks/api/useWorks';
-import { useWorksScrollRestoration } from '@/hooks';
+import React from 'react';
+import { motion } from 'framer-motion';
 import WorksFilterBar from './WorksFilterBar';
 import WorksGrid from './WorksGrid';
-import ShowMoreButton from './ShowMoreButton';
-import Loading from '@/components/ui/Loading';
-import Error from '@/app/error';
+import { useWorks, useServiceFilters } from '@/hooks/api/useWorks';
 
-
-interface WorksPageClientProps {
-  filter: string | null;
-}
-
-export function WorksPageClient({ filter }: WorksPageClientProps) {
-  // Initialize scroll restoration
-  useWorksScrollRestoration();
+export default function WorksPageClient() {
+  const { 
+    works, 
+    isLoading, 
+    error, 
+    hasMore, 
+    loadMore, 
+    filterByService, 
+    currentFilter 
+  } = useWorks();
   
-  const { data: worksData, isLoading, error } = useWorksAsCards();
-  if (isLoading) {
-    return (
-      <main className={cn('h-screen w-screen')}>
-        <Loading />
-      </main>
-    );
-  }
-  
-  if (error || !worksData?.data) {
-    return <Error error={error} reset={() => {}}/>
-  }
+  const { services, isLoading: filtersLoading } = useServiceFilters();
 
-  const worksAsCard = worksData.data;
-
-  const f = filter;
-
+  const fadeUpVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0 },
+  };
 
   return (
-    <main className={cn('container mx-auto px-4 md:px-6 py-10 md:py-14 space-y-8')}>
-      <section className="flex flex-col gap-6 md:mt-12">
-        <WorksFilterBar filters={[{service: "abc"}]} />
+    <div className="min-h-screen bg-background">
+      {/* Filter Section */}
+      <section className="pt-6 pb-16 md:pt-24 md:pb-12 px-4">
+        <div className="p-4 md:px-6">
+          <motion.div
+            variants={fadeUpVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className=""
+          >
+            <WorksFilterBar
+              services={services}
+              isLoading={filtersLoading}
+              currentFilter={currentFilter.serviceId}
+              onFilterChange={filterByService}
+            />
+          </motion.div>
+        </div>
       </section>
 
-      <section>
-        <WorksGrid items={worksAsCard} />
-        <ShowMoreButton hasMore={true} href={`/works${f ? `?filter=${encodeURIComponent(f)}` : ''}`} />
+      {/* Works Grid Section */}
+      <section className="pb-20 md:pb-28">
+        <div className="h-full w-full mx-auto px-4 md:px-6">
+          <motion.div
+            variants={fadeUpVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="mx-auto"
+          >
+            <WorksGrid
+              works={works}
+              isLoading={isLoading}
+              error={error}
+              hasMore={hasMore}
+              onLoadMore={loadMore}
+            />
+          </motion.div>
+        </div>
       </section>
-    </main>
+    </div>
   );
 }
+

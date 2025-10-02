@@ -1,75 +1,86 @@
-'use client';
+"use client";
 
-import { useMemo } from 'react';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { cn } from '@/lib/utils';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
 import MagneticWrapper from '@/components/ui/MagneticWrapper';
-
-interface WorkFilter {
-  category?: string;
-  service?: string;
-}
+import type { ServiceFilter } from '@/types/works';
 
 interface WorksFilterBarProps {
-  filters: Array<WorkFilter>;
-  className?: string;
+  services: ServiceFilter[];
+  isLoading: boolean;
+  currentFilter: string | null;
+  onFilterChange: (serviceId: string | null) => void;
 }
 
-function getFilterLabel(filter: WorkFilter): string {
-  // union helper: pick whichever property exists
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const f: any = filter;
-  return (f.category as string) || (f.service as string) || '';
-}
-
-export default function WorksFilterBar({ filters, className }: WorksFilterBarProps) {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-  const pathname = usePathname();
-
-  const active = searchParams.get('filter');
-
-  const labels = useMemo(() => {
-    const unique = new Set<string>();
-    filters.forEach((f) => unique.add(getFilterLabel(f)));
-    return ['All', ...Array.from(unique)];
-  }, [filters]);
-
-  const handleChange = (value: string) => {
-    const params = new URLSearchParams(searchParams.toString());
-    if (!value || value === 'All') {
-      params.delete('filter');
-    } else {
-      params.set('filter', value);
-    }
-    router.replace(`${pathname}?${params.toString()}`);
+export default function WorksFilterBar({
+  services,
+  currentFilter,
+  onFilterChange,
+}: WorksFilterBarProps) {
+  const fadeUpVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
   };
 
   return (
-    <div className={cn('w-full flex flex-wrap gap-3 md:gap-4', className)}>
-      {labels.map((label) => {
-        const isActive = (!active && label === 'All') || active === label;
-        return (
-          <MagneticWrapper key={label} attractArea={90}>
-            <button
-              type="button"
-              aria-pressed={isActive}
-              onClick={() => handleChange(label)}
-              className={cn(
-                'px-4 py-2 rounded-full text-sm font-semibold transition-colors border',
-                // outline style for clarity in both light/dark
-                isActive
-                  ? 'bg-primary text-primary-foreground border-primary shadow-sm shadow-primary/25'
-                  : 'bg-transparent text-white border-border/40 hover:border-primary/60 hover:text-primary/80 hover:bg-primary/5'
-              )}
+    <motion.div
+      variants={fadeUpVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-100px" }}
+    >
+      {/* Filter Buttons */}
+      <div className="flex flex-wrap justify-start gap-3">
+        {/* All Button */}
+        <MagneticWrapper strength={0.2} attractArea={80}>
+          <Button
+            onClick={() => onFilterChange(null)}
+            variant={currentFilter === null ? "default" : "outline"}
+            className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+              currentFilter === null
+                ? 'bg-gradient-primary text-primary-foreground hover:shadow-lg hover:shadow-primary/25'
+                : 'bg-card/50 text-muted-foreground hover:bg-primary/10 hover:text-primary border-border/20'
+            }`}
+          >
+            All
+          </Button>
+        </MagneticWrapper>
+
+        {/* Service Buttons */}
+        {services.map((service) => (
+          <MagneticWrapper key={service.id} strength={0.2} attractArea={80}>
+            <Button
+              onClick={() => onFilterChange(service.id)}
+              variant={currentFilter === service.id ? "default" : "outline"}
+              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                currentFilter === service.id
+                  ? 'bg-gradient-primary text-primary-foreground hover:shadow-lg hover:shadow-primary/25'
+                  : 'bg-card/50 text-muted-foreground hover:bg-primary/10 hover:text-primary border-border/20'
+              }`}
             >
-              {label}
-            </button>
+              {service.title}
+            </Button>
           </MagneticWrapper>
-        );
-      })}
-    </div>
+        ))}
+      </div>
+
+      {/* Active Filter Indicator */}
+      {currentFilter && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="mt-6"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full border border-primary/20">
+            <div className="w-2 h-2 bg-primary rounded-full"></div>
+            <span className="text-sm text-primary font-medium">
+              Showing: {services.find(s => s.id === currentFilter)?.title || 'Unknown Service'}
+            </span>
+          </div>
+        </motion.div>
+      )}
+    </motion.div>
   );
 }
-
 
