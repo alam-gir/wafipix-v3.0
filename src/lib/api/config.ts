@@ -9,8 +9,8 @@ export const API_CONFIG = {
   API_PATH: '/v3',
   
   // Timeouts
-  TIMEOUT: 10000, // 10 seconds
-  REQUEST_TIMEOUT: 15000, // 15 seconds for long requests
+  TIMEOUT: 30000, // 30 seconds
+  REQUEST_TIMEOUT: 45000, // 45 seconds for long requests
   
   // Retry settings
   RETRY_ATTEMPTS: 3,

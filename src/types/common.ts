@@ -86,6 +86,22 @@ export interface SeoMetadata {
   canonicalUrl?: string;
 }
 
+// Contact Types
+export interface ContactFormRequest {
+  fullName: string;
+  email: string;
+  phone?: string;
+  message: string;
+}
+
+export interface ContactFormResponse {
+  id: string;
+  fullName: string;
+  email: string;
+  phone?: string;
+  message: string;
+}
+
 // Review Types
 export interface ReviewResponsePublic {
   id: string;
@@ -97,20 +113,18 @@ export interface ReviewResponsePublic {
 }
 
 // Contact Types
-export interface ContactFormData {
-  name: string;
+export interface ContactFormRequest {
+  fullName: string;
   email: string;
-  company?: string;
-  service?: string;
-  budget?: string;
-  message: string;
   phone?: string;
-  website?: string;
+  message: string;
 }
 
 export interface ContactFormResponse {
-  success: boolean;
+  id: string;
+  fullName: string;
+  email: string;
+  phone?: string;
   message: string;
-  formId?: string;
 }
 

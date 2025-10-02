@@ -10,6 +10,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { contactFormSchema, type ContactFormData } from "./contactSchema";
 import { useMetaPixelTracking } from "@/hooks/useMetaPixelTracking";
+import { useContactForm } from "@/hooks/api/useCommon";
 
 // Dynamically import RichTextEditor to prevent SSR issues
 const RichTextEditor = dynamic(() => import("./RichTextEditor"), {
@@ -34,6 +35,7 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { trackContactSubmission, trackFormInteraction } = useMetaPixelTracking();
+  const { submitContactForm } = useContactForm();
 
   const {
     register,
@@ -74,13 +76,15 @@ export default function ContactForm() {
     });
     
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
+      // Transform data to match API format
+      const apiData = {
+        fullName: data.name,
+        email: data.email,
+        phone: data.phone || undefined,
+        message: data.message,
+      };
       
-      const result = await response.json();
+      const result = await submitContactForm(apiData);
       
       if (result.success) {
         // Track successful contact submission
@@ -104,6 +108,7 @@ export default function ContactForm() {
         alert('Failed to send message. Please try again.');
       }
     } catch (error) {
+      console.error('Contact form submission error:', error);
       alert('Failed to send message. Please try again.');
     } finally {
       setIsSubmitting(false);

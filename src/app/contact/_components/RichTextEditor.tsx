@@ -43,7 +43,13 @@ export default function RichTextEditor({
 
   const editor = useEditor({
     extensions: [
-      StarterKit,
+      StarterKit.configure({
+        paragraph: {
+          HTMLAttributes: {
+            class: 'text-primary/80',
+          },
+        },
+      }),
       Link.configure({
         openOnClick: false,
         HTMLAttributes: {
@@ -56,6 +62,7 @@ export default function RichTextEditor({
       Underline,
       Placeholder.configure({
         placeholder,
+        emptyEditorClass: 'is-editor-empty',
       }),
     ],
     content: value,
@@ -63,7 +70,20 @@ export default function RichTextEditor({
       onChange(editor.getHTML());
     },
     immediatelyRender: false,
+    editorProps: {
+      attributes: {
+        class: 'prose prose-sm prose-neutral dark:prose-invert max-w-none focus:outline-none',
+        style: 'min-height: 200px; height: 100%; width: 100%;',
+      },
+    },
   });
+
+  // Update editor content when value prop changes
+  useEffect(() => {
+    if (editor && value !== editor.getHTML()) {
+      editor.commands.setContent(value);
+    }
+  }, [editor, value]);
 
   if (!editor || !isMounted) {
     return (
@@ -237,17 +257,16 @@ export default function RichTextEditor({
         </Button>
       </div>
 
-                                         {/* Editor Content */}
-         <div 
-           className="p-4 min-h-[200px] max-h-[400px] overflow-y-auto cursor-text flex-1 bg-card/30"
-           onClick={() => editor.chain().focus().run()}
-         >
-           <EditorContent 
-             editor={editor} 
-             className="prose prose-sm prose-neutral dark:prose-invert max-w-none focus:outline-none h-full min-h-[200px] w-full prose-headings:text-white prose-p:text-primary/80 prose-strong:text-white prose-a:text-primary hover:prose-a:text-primary/80"
-             style={{ minHeight: '200px', height: '100%' }}
-           />
-         </div>
+      {/* Editor Content */}
+      <div 
+        className="p-4 min-h-[200px] max-h-[400px] overflow-y-auto cursor-text flex-1 bg-card/30 focus-within:ring-2 focus-within:ring-primary focus-within:ring-opacity-20"
+        onClick={() => editor.chain().focus().run()}
+      >
+        <EditorContent 
+          editor={editor} 
+          className="w-full h-full"
+        />
+      </div>
     </div>
   );
 } 

@@ -4,7 +4,7 @@
 
 import useSWR from 'swr';
 import { apiClient } from '@/lib/api';
-import type { SocialMediaLink, ApiResponse, ReviewResponsePublic } from '@/types/common';
+import type { SocialMediaLink, ApiResponse, ReviewResponsePublic, ContactFormRequest, ContactFormResponse } from '@/types/common';
 
 // ============================================================================
 // COMMON HOOKS
@@ -58,5 +58,16 @@ export function useReviews() {
       dedupingInterval: 300000, // 5 minutes (reviews don't change often)
     }
   );
+}
+
+// Contact Form Hook
+export function useContactForm() {
+  const submitContactForm = async (data: ContactFormRequest): Promise<ApiResponse<ContactFormResponse>> => {
+    return apiClient.post('/public/contacts', data, { timeout: 45000 }); // 45 seconds
+  };
+
+  return {
+    submitContactForm,
+  };
 }
 

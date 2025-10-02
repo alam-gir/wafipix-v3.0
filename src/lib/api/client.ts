@@ -9,11 +9,11 @@ import { API_CONFIG, getApiUrl } from './config';
 // ============================================================================
 
 export interface ApiClientInterface {
-  get<T>(endpoint: string): Promise<T>;
-  post<T>(endpoint: string, data?: unknown): Promise<T>;
-  put<T>(endpoint: string, data?: unknown): Promise<T>;
-  patch<T>(endpoint: string, data?: unknown): Promise<T>;
-  delete<T>(endpoint: string): Promise<T>;
+  get<T>(endpoint: string, options?: { timeout?: number }): Promise<T>;
+  post<T>(endpoint: string, data?: unknown, options?: { timeout?: number }): Promise<T>;
+  put<T>(endpoint: string, data?: unknown, options?: { timeout?: number }): Promise<T>;
+  patch<T>(endpoint: string, data?: unknown, options?: { timeout?: number }): Promise<T>;
+  delete<T>(endpoint: string, options?: { timeout?: number }): Promise<T>;
 }
 
 // ============================================================================
@@ -23,12 +23,13 @@ export interface ApiClientInterface {
 class ApiClient implements ApiClientInterface {
   private async request<T>(
     endpoint: string,
-    options: RequestInit = {}
+    options: RequestInit & { timeout?: number } = {}
   ): Promise<T> {
     const url = getApiUrl(endpoint);
     const controller = new AbortController();
+    const timeout = options.timeout || API_CONFIG.TIMEOUT;
     
-    const timeoutId = setTimeout(() => controller.abort(), API_CONFIG.TIMEOUT);
+    const timeoutId = setTimeout(() => controller.abort(), timeout);
     
     try {
       const response = await fetch(url, {
@@ -58,33 +59,36 @@ class ApiClient implements ApiClientInterface {
     }
   }
   
-  async get<T>(endpoint: string): Promise<T> {
-    return this.request<T>(endpoint, { method: 'GET' });
+  async get<T>(endpoint: string, options?: { timeout?: number }): Promise<T> {
+    return this.request<T>(endpoint, { method: 'GET', ...options });
   }
   
-  async post<T>(endpoint: string, data?: unknown): Promise<T> {
+  async post<T>(endpoint: string, data?: unknown, options?: { timeout?: number }): Promise<T> {
     return this.request<T>(endpoint, {
       method: 'POST',
       body: data ? JSON.stringify(data) : undefined,
+      ...options,
     });
   }
   
-  async put<T>(endpoint: string, data?: unknown): Promise<T> {
+  async put<T>(endpoint: string, data?: unknown, options?: { timeout?: number }): Promise<T> {
     return this.request<T>(endpoint, {
       method: 'PUT',
       body: data ? JSON.stringify(data) : undefined,
+      ...options,
     });
   }
   
-  async patch<T>(endpoint: string, data?: unknown): Promise<T> {
+  async patch<T>(endpoint: string, data?: unknown, options?: { timeout?: number }): Promise<T> {
     return this.request<T>(endpoint, {
       method: 'PATCH',
       body: data ? JSON.stringify(data) : undefined,
+      ...options,
     });
   }
   
-  async delete<T>(endpoint: string): Promise<T> {
-    return this.request<T>(endpoint, { method: 'DELETE' });
+  async delete<T>(endpoint: string, options?: { timeout?: number }): Promise<T> {
+    return this.request<T>(endpoint, { method: 'DELETE', ...options });
   }
 }
 
