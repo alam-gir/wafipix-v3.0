@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
-import MagneticWrapper from '@/components/ui/MagneticWrapper';
 
 interface NavbarLogoProps {
   className?: string;
@@ -20,17 +20,31 @@ export default function NavbarLogo({ className = '' }: NavbarLogoProps) {
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <MagneticWrapper strength={0.2} attractArea={80}>
-        <Link 
-          href="/" 
-          className="flex items-center space-x-2 text-xl font-bold text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-lg hover:bg-muted/50"
-        >
-          <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-sm">W</span>
-          </div>
-          <span className="hidden sm:block">Wafipix</span>
-        </Link>
-      </MagneticWrapper>
+      <Link 
+        href="/" 
+        className="flex items-center text-xl font-bold text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 rounded-lg hover:bg-muted/50"
+      >
+        {/* Logo Image or Text Fallback */}
+        <div className="h-10 w-auto flex items-center justify-center p-0.5">
+          <Image
+            src="/logo.png"
+            alt="Wafipix Logo"
+            width={0}
+            height={0}
+            className="h-full w-auto object-contain"
+            sizes="400px"
+            quality={100}
+            onError={(e) => {
+              // Hide image on error and show text fallback
+              e.currentTarget.style.display = 'none';
+              const parent = e.currentTarget.parentElement;
+              if (parent) {
+                parent.innerHTML = '<span class="text-primary font-bold text-2xl">W</span>';
+              }
+            }}
+          />
+        </div>
+      </Link>
     </motion.div>
   );
 }
