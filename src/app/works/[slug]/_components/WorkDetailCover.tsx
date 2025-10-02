@@ -43,10 +43,27 @@ export default function WorkDetailCover({ work, onBack }: WorkDetailCoverProps) 
       {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
-      {/* Title and Back Button - Bottom Left */}
+      {/* Title and Back Button - Bottom Left (PC) / Center (Mobile) */}
       <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-10">
         <div className="container max-w-7xl mx-auto">
-          <div className="flex items-end space-x-6">
+          {/* Mobile: Centered layout */}
+          <div className="md:hidden flex flex-col items-center text-center space-y-4">
+            {/* Back Button */}
+            <button
+              onClick={onBack}
+              className="flex items-center text-white/80 hover:text-white transition-colors"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            
+            {/* Title */}
+            <h1 className="text-2xl font-bold text-white leading-tight max-w-sm">
+              {work.title}
+            </h1>
+          </div>
+
+          {/* PC: Left-aligned layout */}
+          <div className="hidden md:flex items-end space-x-6">
             {/* Back Button */}
             <button
               onClick={onBack}

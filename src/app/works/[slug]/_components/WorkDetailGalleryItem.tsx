@@ -44,7 +44,7 @@ export default function WorkDetailGalleryItem({
           alt="Gallery item"
           width={0}
           height={0}
-          className="w-full h-auto object-cover"
+          className="w-full h-auto object-cover block"
           sizes="(max-width: 768px) 100vw, 50vw"
           quality={95}
         />
