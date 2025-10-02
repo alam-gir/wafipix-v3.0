@@ -99,3 +99,28 @@ export interface UseServiceFiltersReturn {
   error: Error | null;
 }
 
+// Work Detail Types
+export interface GalleryItemPublicResponse {
+  id: string;
+  type: 'image' | 'video';
+  url: string;
+}
+
+export interface GalleryPublicResponse {
+  id: string;
+  isMobileGrid: boolean;
+  items: GalleryItemPublicResponse[];
+}
+
+export interface WorkDetailPublicResponse {
+  id: string;
+  title: string;
+  slug: string;
+  description: string;
+  coverVideo: string | null;
+  coverImage: string | null;
+  profileVideo: string | null;
+  profileImage: string | null;
+  galleries: GalleryPublicResponse[];
+}
+

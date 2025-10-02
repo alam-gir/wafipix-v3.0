@@ -4,6 +4,7 @@
 
 import { useState, useCallback, useEffect } from 'react';
 import { apiClient } from '@/lib/api';
+import { ApiResponse } from '@/types/common';
 import type { 
   ServiceFiltersResponse, 
   WorksResponse, 
@@ -12,7 +13,8 @@ import type {
   ServiceFilter,
   WorksFilterState,
   UseWorksReturn,
-  UseServiceFiltersReturn
+  UseServiceFiltersReturn,
+  WorkDetailPublicResponse
 } from '@/types/works';
 
 // ============================================================================
@@ -45,6 +47,55 @@ export function useServiceFilters(): UseServiceFiltersReturn {
 
   return {
     services,
+    isLoading,
+    error,
+  };
+}
+
+// ============================================================================
+// WORK DETAIL HOOK
+// ============================================================================
+
+export interface UseWorkDetailReturn {
+  work: WorkDetailPublicResponse | null;
+  isLoading: boolean;
+  error: Error | null;
+}
+
+export function useWorkDetail(slug: string): UseWorkDetailReturn {
+  const [work, setWork] = useState<WorkDetailPublicResponse | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
+
+  const fetchWorkDetail = useCallback(async () => {
+    if (!slug) return;
+    
+    setIsLoading(true);
+    setError(null);
+    
+    try {
+      const response = await apiClient.get<ApiResponse<WorkDetailPublicResponse>>(
+        `/public/works/slug/${slug}`
+      );
+      
+      if (response.success && response.data) {
+        setWork(response.data);
+      } else {
+        setError(new Error(response.message || 'Failed to fetch work detail'));
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err : new Error('Failed to fetch work detail'));
+    } finally {
+      setIsLoading(false);
+    }
+  }, [slug]);
+
+  useEffect(() => {
+    fetchWorkDetail();
+  }, [fetchWorkDetail]);
+
+  return {
+    work,
     isLoading,
     error,
   };
